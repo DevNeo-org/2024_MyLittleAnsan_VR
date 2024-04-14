@@ -3491,6 +3491,7 @@ GameObject:
   - component: {fileID: 1160981592}
   - component: {fileID: 1160981591}
   - component: {fileID: 1160981590}
+  - component: {fileID: 1160981594}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3594,6 +3595,21 @@ Transform:
   - {fileID: 1243928601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1160981594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160981589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22290dba35e1c674d9358208b8f826f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkingCirclePrefab: {fileID: 831900663629442140, guid: 53dd9fbd799c64a4187c6c88aaad1568,
+    type: 3}
+  blinkInterval: 0.5
 --- !u!1 &1166885911
 GameObject:
   m_ObjectHideFlags: 0
