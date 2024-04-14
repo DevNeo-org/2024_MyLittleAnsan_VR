@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 50313445}
   - component: {fileID: 50313444}
   m_Layer: 0
-  m_Name: Pad (6)
+  m_Name: Pad6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0.5, z: -3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 401969400}
@@ -949,13 +949,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20105973, y: -0, z: -0, w: 0.97957903}
-  m_LocalPosition: {x: 0, y: 7.04, z: -16.46}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 23.198, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 448799026}
   - component: {fileID: 448799025}
   m_Layer: 0
-  m_Name: Pad (3)
+  m_Name: Pad3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1617051215}
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 537002752}
   - component: {fileID: 537002751}
   m_Layer: 0
-  m_Name: Pad (4)
+  m_Name: Pad4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1664,7 +1664,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 77785785}
@@ -3277,7 +3277,7 @@ GameObject:
   - component: {fileID: 1147727064}
   - component: {fileID: 1147727063}
   m_Layer: 0
-  m_Name: Pad (7)
+  m_Name: Pad7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3293,7 +3293,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1653580095}
@@ -3578,7 +3578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160981589}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -3593,7 +3593,7 @@ Transform:
   - {fileID: 1147727062}
   - {fileID: 1243928601}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1166885911
 GameObject:
   m_ObjectHideFlags: 0
@@ -3712,7 +3712,7 @@ GameObject:
   - component: {fileID: 1169544804}
   - component: {fileID: 1169544803}
   m_Layer: 0
-  m_Name: Pad (5)
+  m_Name: Pad5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3728,7 +3728,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 394887842}
@@ -3822,7 +3822,7 @@ GameObject:
   - component: {fileID: 1243928603}
   - component: {fileID: 1243928602}
   m_Layer: 0
-  m_Name: Pad (8)
+  m_Name: Pad8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3838,7 +3838,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.5, z: -3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1126747803}
@@ -5087,7 +5087,7 @@ GameObject:
   - component: {fileID: 1794700469}
   - component: {fileID: 1794700468}
   m_Layer: 0
-  m_Name: Pad (2)
+  m_Name: Pad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5103,7 +5103,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.5, z: 3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1166885912}
@@ -5389,7 +5389,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0.5, z: 3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1155791596}
@@ -5937,7 +5937,7 @@ GameObject:
   - component: {fileID: 2127807970}
   - component: {fileID: 2127807969}
   m_Layer: 0
-  m_Name: Pad (1)
+  m_Name: Pad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5953,7 +5953,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 3}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 3, y: 0, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 390811412}
