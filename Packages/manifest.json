@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.all": "63.0.0",
+    "com.meta.xr.sdk.all": "64.0.0",
     "com.unity.ext.nunit": "2.0.5",
     "com.unity.render-pipelines.universal": "14.0.10",
     "com.unity.xr.oculus": "4.2.0",
