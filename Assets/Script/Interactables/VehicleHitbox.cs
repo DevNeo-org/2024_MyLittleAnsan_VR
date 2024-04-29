@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hitbox : MonoBehaviour
+public class VehicleHitbox : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private bool isCorrect = false; // 오브젝트 위치가 점수 획득 가능한 위치인지 체크
     void Start()
     {
         
@@ -14,5 +14,18 @@ public class Hitbox : MonoBehaviour
     void Update()
     {
         
+    }
+    public int ObjectHit()
+    {
+        if (isCorrect)
+        {
+            Destroy(gameObject, 0.01f);
+            return 0;
+        }
+        else
+        {
+            Destroy(gameObject, 0.01f);
+            return 1;
+        }
     }
 }
