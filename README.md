@@ -23,7 +23,7 @@
 # ⚙설치 및 실행 방법
 # 📁프로젝트 구조
 # 📄문서
-> 🔗[동작시나리오](https://drive.google.com/file/d/1a-GfcEe9GGgTRsy_p90hQUdgto5Z4_nB/view?usp=sharing)
+> 🔗[동작시나리오](https://drive.google.com/file/d/1-t_zbweEWNYh9zIoSPi7PHAw1hgHfJox/view?usp=sharing)
 > 
 > 🔗[개발 일정](https://github.com/orgs/DevNeo-org/projects/4)
 > 
