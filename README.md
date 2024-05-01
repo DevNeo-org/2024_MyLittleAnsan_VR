@@ -23,7 +23,7 @@
 # ⚙설치 및 실행 방법
 # 📁프로젝트 구조
 # 📄문서
-> 🔗[동작시나리오](https://www.notion.so/My-Little-Ansan-9f7f8868390e410d90886bba93bb03e7?pvs=4)
+> 🔗[동작시나리오](https://drive.google.com/file/d/1a-GfcEe9GGgTRsy_p90hQUdgto5Z4_nB/view?usp=sharing)
 > 
 > 🔗[개발 일정](https://github.com/orgs/DevNeo-org/projects/4)
 > 
