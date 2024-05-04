@@ -10,12 +10,11 @@ public class ElecManagement : MonoBehaviour
     private float rowposition = -0.3f;
     private float columnposition = 0.3f;
     private GameObject[] circles;
-    int i = 0;
-
+    
     void Start()
     {
         circles = new GameObject[9];
-        while (true)
+        for (int i = 0; i < 9; i++)
         {
             
             GameObject circle = Instantiate(blinkingCirclePrefab, transform.position, Quaternion.identity);
@@ -34,13 +33,7 @@ public class ElecManagement : MonoBehaviour
                 rowposition = -0.3f;
                 columnposition = -0.3f;
             }
-            i++;
-            if(i == 9)
-            {
-                i = 0;
-            }
 
-            
         }
         InvokeRepeating("ToggleRandomCircle", 0, blinkInterval);
     }

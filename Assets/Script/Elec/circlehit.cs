@@ -24,7 +24,7 @@ public class circlehit : MonoBehaviour
         }
         else
         {
-           
+            gameObject.SetActive(false);
             return 1;
         }
     }
