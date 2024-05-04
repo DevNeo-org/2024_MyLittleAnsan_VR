@@ -19,12 +19,12 @@ public class circlehit : MonoBehaviour
     {
         if (isCorrect)
         {
-            Destroy(gameObject, 0.01f);
+            gameObject.SetActive(false);
             return 0;
         }
         else
         {
-            Destroy(gameObject, 0.01f);
+           
             return 1;
         }
     }
