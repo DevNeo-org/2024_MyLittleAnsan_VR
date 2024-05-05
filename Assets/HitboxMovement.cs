@@ -16,6 +16,7 @@ public class HitboxMovement : MonoBehaviour
         finalPoint = spawner.finalPoints[Random.Range(0, spawner.finalPoints.Length)];
         direction = (finalPoint.position - rb.position).normalized;
         rb.velocity = direction * force;
+        transform.GetChild(1).GetChild(Random.Range(0, 4)).gameObject.SetActive(true);
     }
 
     void Update()
@@ -24,7 +25,7 @@ public class HitboxMovement : MonoBehaviour
         //Debug.Log(direction * force);
         if ((finalPoint.position - rb.position).magnitude < 0.01)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
         }
     }
 }

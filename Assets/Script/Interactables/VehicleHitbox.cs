@@ -19,12 +19,12 @@ public class VehicleHitbox : MonoBehaviour
     {
         if (isCorrect)
         {
-            Destroy(gameObject, 0.01f);
+            Destroy(transform.parent.gameObject, 0.01f);
             return 0;
         }
         else
         {
-            Destroy(gameObject, 0.01f);
+            Destroy(transform.parent.gameObject, 0.01f);
             return 1;
         }
     }
