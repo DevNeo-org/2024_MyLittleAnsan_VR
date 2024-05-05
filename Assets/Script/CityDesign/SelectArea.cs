@@ -8,32 +8,38 @@ public class selectArea : MonoBehaviour
     public GameObject effectPrefab;
     GameObject instateEffectObj;
 
-    // Collider 컴포넌트의 is Trigger가 false인 상태로 충돌을 시작했을 때
-    private void OnTriggerEnter(Collider Collider)
+    //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 있을 때
+    private void OnTriggerEnter(Collider collider)
     { 
-        if(Collider.tag == "Buildings")
+        if(collider.tag == "Buildings")
         {
+            //선택 효과 파티클 재생
             EffectPlay();
         }
         
     }
 
-    // Collider 컴포넌트의 is Trigger가 false인 상태로 충돌이 끝났을 때
-    private void OnTriggerExit(Collider Collider)
+    //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 없을 때
+    private void OnTriggerExit(Collider collider)
     {
-        if (Collider.tag == "Buildings")
+        if (collider.tag == "Buildings")
         {
+            //선택 효과 파티클 정지 및 삭제
             effect.Stop();
             Destroy(instateEffectObj);
         }
           
     }
+
     void EffectPlay()
     {
+        //파티클프리팹 생성
         instateEffectObj = Instantiate(effectPrefab, transform.position, Quaternion.identity);
         ParticleSystem instantEffect = instateEffectObj.GetComponent<ParticleSystem>();
+        //파티클 생성 위치와 크기 설정
         effect.transform.position = transform.position;
         effect.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+        //파티클 재생
         effect.Play();
     }
 
