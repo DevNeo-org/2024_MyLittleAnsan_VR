@@ -1,41 +1,40 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BugBMS : MonoBehaviour
-{
-    public GameObject blinkingCirclePrefab; // ±ôºýÀÌ´Â ¿ø ÇÁ¸®ÆÕ
-    public float blinkInterval = 0.5f; // ±ôºýÀÌ´Â °£°Ý
-    private float rowposition = -6f;
-    private float columnposition = 6f;
-    private GameObject[] circles;
 
-    // Start is called before the first frame update
+public class ElecManagement : MonoBehaviour
+{
+    public GameObject blinkingCirclePrefab; 
+    public float blinkInterval = 0.5f; 
+    private float rowposition = -0.3f;
+    private float columnposition = 0.3f;
+    private GameObject[] circles;
+    
     void Start()
     {
         circles = new GameObject[9];
         for (int i = 0; i < 9; i++)
         {
+            
             GameObject circle = Instantiate(blinkingCirclePrefab, transform.position, Quaternion.identity);
-            circle.transform.position = new Vector3(rowposition , columnposition, 0f);
+            circle.transform.position = new Vector3(rowposition, columnposition, -0.05f);
             circle.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
             circle.SetActive(false);
             circles[i] = circle;
-            rowposition = rowposition + 6f;
+            rowposition = rowposition + 0.3f;
             if (i == 2)
             {
-                rowposition = -6f;
+                rowposition = -0.3f;
                 columnposition = 0f;
             }
-            if(i == 5)
+            if (i == 5)
             {
-                rowposition = -6f;
-                columnposition = -6f;
+                rowposition = -0.3f;
+                columnposition = -0.3f;
             }
 
-            
         }
-
         InvokeRepeating("ToggleRandomCircle", 0, blinkInterval);
     }
 
@@ -45,4 +44,7 @@ public class BugBMS : MonoBehaviour
         GameObject randomCircle = circles[randomIndex];
         randomCircle.SetActive(!randomCircle.activeSelf);
     }
+
+   
+
 }
