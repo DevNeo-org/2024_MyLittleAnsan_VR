@@ -366,12 +366,12 @@ PrefabInstance:
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.558
+      value: 0.644
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.342
+      value: -0.39100003
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
@@ -502,6 +502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034758298917400431, guid: c2eb74a2a5cf56344b38ef258b97efa2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1226,12 +1231,12 @@ PrefabInstance:
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.342
+      value: -0.39100003
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.389
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
@@ -1352,6 +1357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034758298917400431, guid: c2eb74a2a5cf56344b38ef258b97efa2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1775,7 +1785,7 @@ PrefabInstance:
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.342
+      value: -0.39100003
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
@@ -1906,6 +1916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -1.8722152
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034758298917400431, guid: c2eb74a2a5cf56344b38ef258b97efa2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2180,8 +2195,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.29, y: 0.76, z: 0.97}
+  m_Center: {x: -0.02, y: 0.4, z: -0.07}
 --- !u!1 &576459476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 839963010970241078, guid: c2eb74a2a5cf56344b38ef258b97efa2,
@@ -2207,8 +2222,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.12, y: 0.84, z: 1.61}
+  m_Center: {x: 0.05, y: 0.42, z: -0.1}
 --- !u!1 &649155889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,8 +2607,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.04, y: 0.4, z: 1.69}
+  m_Center: {x: -0.06, y: 0.21, z: 0.03}
 --- !u!1 &739992874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,8 +2665,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.99, y: 1.07, z: 1.22}
+  m_Center: {x: -0.58, y: 0.47, z: -1.78}
 --- !u!1 &767380230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,17 +3657,17 @@ PrefabInstance:
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.834
+      value: 0.726
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.342
+      value: -0.39100003
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.74
+      value: 0.825
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
@@ -3733,6 +3748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034758298917400431, guid: c2eb74a2a5cf56344b38ef258b97efa2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4553,7 +4573,7 @@ PrefabInstance:
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.342
+      value: -0.391
       objectReference: {fileID: 0}
     - target: {fileID: 2091862998961867420, guid: c2eb74a2a5cf56344b38ef258b97efa2,
         type: 3}
@@ -4639,6 +4659,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034758298917400431, guid: c2eb74a2a5cf56344b38ef258b97efa2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6364,8 +6389,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.84, y: 0.65, z: 1.23}
+  m_Center: {x: -0.13, y: 0.41, z: -0.94}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

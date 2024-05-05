@@ -24,23 +24,23 @@ public class BuildPosition : MonoBehaviour
             switch (bulidingType)
             {
                 case "BuildingSample1":
-                    Instantiate(builidngPrefabs[0], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[0], transform.position, builidngPrefabs[0].transform.rotation);
                     break;
 
                 case "BuildingSample2":
-                    Instantiate(builidngPrefabs[1], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[1], transform.position, builidngPrefabs[1].transform.rotation);
                     break;
                 case "BuildingSample3":
-                    Instantiate(builidngPrefabs[2], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[2], transform.position, builidngPrefabs[2].transform.rotation);
                     break;
                 case "BuildingSample4":
-                    Instantiate(builidngPrefabs[3], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[3], transform.position, builidngPrefabs[3].transform.rotation);
                     break;
                 case "BuildingSample5":
-                    Instantiate(builidngPrefabs[4], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[4], transform.position, builidngPrefabs[4].transform.rotation);
                     break;
                 default:
-                    Instantiate(builidngPrefabs[0], transform.position, Quaternion.identity);
+                    Instantiate(builidngPrefabs[0], transform.position, builidngPrefabs[0].transform.rotation);
                     break;
 
             }
