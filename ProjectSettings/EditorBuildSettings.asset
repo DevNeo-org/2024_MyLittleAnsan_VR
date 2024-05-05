@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CityDesign.unity
+    guid: c8f6c36e6f1722f4485592b4b89de93b
+  - enabled: 1
     path: Assets/Scenes/AutomobIndScene.unity
     guid: 926e8e1c43398e04dbf9fe43c3489ee3
+  - enabled: 1
+    path: Assets/Scenes/Electronic.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/TextileIndScene.unity
+    guid: c3dc5b18f1ac92d4c9464ef299197452
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 33c48ec6bec078745931bb7fab656315,
       type: 2}
