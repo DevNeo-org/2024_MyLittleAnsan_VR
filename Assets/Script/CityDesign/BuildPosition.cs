@@ -12,6 +12,7 @@ public class BuildPosition : MonoBehaviour
     public ParticleSystem buildEffect;
     public GameObject buildEffectPrefab;
     GameObject buildEffectObject;
+    public OVRInput.Controller controller;
 
     //buildPosition¿¡ ºôµù ¿ÀºêÁ§Æ®°¡ ´êÀ¸¸é ºôµù »ý¼º
     private void OnTriggerEnter(Collider Collider)
@@ -19,6 +20,8 @@ public class BuildPosition : MonoBehaviour
         if (Collider.tag == "Buildings")
         {
             playBuildEffect();
+            //ÇÝÆ½ ½ÇÇà
+            StartCoroutine(TriggerHaptics());
             //buildPosition¿¡ ºôµù ÇÁ¸®ÆÕ »ý¼º
             string bulidingType = Collider.gameObject.name;
             switch (bulidingType)
@@ -71,5 +74,13 @@ public class BuildPosition : MonoBehaviour
         buildEffect.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
         //ÆÄÆ¼Å¬ Àç»ý
         buildEffect.Play();
+    }
+
+    //ÇÝÆ½
+    IEnumerator TriggerHaptics()
+    {
+        OVRInput.SetControllerVibration(1f, 1f, controller);
+        yield return new WaitForSeconds(1f);
+        OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }

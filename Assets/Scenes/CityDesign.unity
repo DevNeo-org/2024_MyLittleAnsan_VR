@@ -665,6 +665,7 @@ MonoBehaviour:
     type: 3}
   buildEffectPrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa,
     type: 3}
+  controller: -1
 --- !u!65 &140426337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4491,6 +4492,7 @@ MonoBehaviour:
     type: 3}
   buildEffectPrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa,
     type: 3}
+  controller: -1
 --- !u!65 &1636308236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5143,6 +5145,7 @@ MonoBehaviour:
   effect: {fileID: 4823518202205099634, guid: cdc919a43bba95b4a8b6916b6aa5321d, type: 3}
   effectPrefab: {fileID: 4823518202205099639, guid: cdc919a43bba95b4a8b6916b6aa5321d,
     type: 3}
+  controller: -1
 --- !u!136 &1731748225
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5645,6 +5648,7 @@ MonoBehaviour:
   effect: {fileID: 4823518202205099634, guid: cdc919a43bba95b4a8b6916b6aa5321d, type: 3}
   effectPrefab: {fileID: 4823518202205099639, guid: cdc919a43bba95b4a8b6916b6aa5321d,
     type: 3}
+  controller: -1
 --- !u!136 &1982861744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5950,6 +5954,7 @@ MonoBehaviour:
   effect: {fileID: 4823518202205099634, guid: cdc919a43bba95b4a8b6916b6aa5321d, type: 3}
   effectPrefab: {fileID: 4823518202205099639, guid: cdc919a43bba95b4a8b6916b6aa5321d,
     type: 3}
+  controller: -1
 --- !u!1 &2066657385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,6 +6189,7 @@ MonoBehaviour:
     type: 3}
   buildEffectPrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa,
     type: 3}
+  controller: -1
 --- !u!65 &2080434020
 BoxCollider:
   m_ObjectHideFlags: 0
