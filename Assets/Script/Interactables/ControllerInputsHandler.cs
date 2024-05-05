@@ -6,55 +6,45 @@ using Oculus.Interaction.Input;
 
 public class ControllerInputsHandler : MonoBehaviour
 {
-    [Tooltip("The interactable to monitor for state changes.")]
-    /// <summary>
-    /// The interactable to monitor for state changes.
-    /// </summary>
-    [SerializeField, Interface(typeof(IInteractableView))]
-    private UnityEngine.Object _interactableView;
+    private OVRInput.Button IndexTriggerAsButton => _controllerRef.Handedness == Handedness.Left ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
 
-    [Tooltip("The mesh that will change color based on the current state.")]
-    /// <summary>
-    /// The mesh that will change color based on the current state.
-    /// </summary>
-    [SerializeField]
-    private Renderer _renderer;
-
-    [Tooltip("Displayed when the state is normal.")]
-    /// <summary>
-    /// Displayed when the state is normal.
-    /// </summary>
-    [SerializeField]
-    private Color _normalColor = Color.red;
-
-    [Tooltip("Displayed when the state is hover.")]
-    /// <summary>
-    /// Displayed when the state is hover.
-    /// </summary>
-    [SerializeField]
-    private Color _hoverColor = Color.blue;
-
-    [Tooltip("Displayed when the state is selected.")]
-    /// <summary>
-    /// Displayed when the state is selected.
-    /// </summary>
-    [SerializeField]
-    private Color _selectColor = Color.green;
-
-    [Tooltip("Displayed when the state is disabled.")]
-    /// <summary>
-    /// Displayed when the state is disabled.
-    /// </summary>
-    [SerializeField]
-    private Color _disabledColor = Color.black;
-
-    void Start()
+    [SerializeField] private ControllerRef _controllerRef;
+    [SerializeField] private GrabInteractor _grabInteractor;
+    [SerializeField] private OVRControllerHelper _controllerHelper;
+    [SerializeField] private GameObject wrench;
+    private GrabInteractable _grabInteractable;
+    private HitboxSpawner _hitboxSpawner;
+    
+    private void Start()
     {
-        
+        _hitboxSpawner = FindAnyObjectByType<HitboxSpawner>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (!_grabInteractor.HasSelectedInteractable)
+        {
+            _grabInteractable = null;
+            return;
+        }
+        if (_grabInteractable == null)
+        {
+            wrench.gameObject.SetActive(true);
+            _hitboxSpawner.PickUp();
+            _controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            _grabInteractable = _grabInteractor.SelectedInteractable;
+            Destroy(_grabInteractor.gameObject);
+            Destroy(_grabInteractable.gameObject);
+            Destroy(gameObject);
+        }
+        //ReadInputs();
+    }
+    private void ReadInputs()
+    {
+        HandleButton(OVRInput.Get(IndexTriggerAsButton), IndexTriggerAsButton);
+
+    }
+    private void HandleButton(bool isPressed, OVRInput.Button button)
+    {
+
     }
 }
