@@ -32,7 +32,7 @@ public class ControllerInputsHandler : MonoBehaviour
             _hitboxSpawner.PickUp();
             _controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
             _grabInteractable = _grabInteractor.SelectedInteractable;
-            Destroy(_grabInteractor.gameObject);
+            Destroy(_grabInteractor.transform.parent.gameObject);
             Destroy(_grabInteractable.gameObject);
             Destroy(gameObject);
         }
