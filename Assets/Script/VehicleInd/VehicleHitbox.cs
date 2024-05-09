@@ -10,15 +10,7 @@ public class VehicleHitbox : MonoBehaviour
     private GameObject instateEffectObj;
     private void Start()
     {
-        switch (Random.Range(0, 2))
-        {
-            case 0:
-                isCorrect = true;
-                break;
-            case 1:
-                isCorrect = false;
-                break;
-        }
+        
     }
     public int ObjectHit()
     {
