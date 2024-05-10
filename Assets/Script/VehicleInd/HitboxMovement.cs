@@ -9,22 +9,30 @@ public class HitboxMovement : MonoBehaviour
     Transform finalPoint;
     Vector3 direction;
     Rigidbody rb;
+    float rotationSpeedX, rotationSpeedY, rotationSpeedZ;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        spawner = FindAnyObjectByType<HitboxSpawner>();
-        finalPoint = spawner.finalPoints[Random.Range(0, spawner.finalPoints.Length)];
         direction = (finalPoint.position - rb.position).normalized;
         rb.velocity = direction * force;
+        transform.GetChild(1).GetChild(Random.Range(0, 10)).gameObject.SetActive(true);
+        rotationSpeedX = Random.Range(30,110);
+        rotationSpeedY = Random.Range(30, 110);
+        rotationSpeedZ = Random.Range(30, 110);
     }
-
     void Update()
     {
         //rb.AddForce(direction);
         //Debug.Log(direction * force);
+        transform.Rotate(new Vector3(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, rotationSpeedZ * Time.deltaTime));
         if ((finalPoint.position - rb.position).magnitude < 0.01)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
         }
+    }
+    public void SetFinalPoint(int num)
+    {
+        spawner = FindAnyObjectByType<HitboxSpawner>();
+        finalPoint = spawner.finalPoints[num];
     }
 }
