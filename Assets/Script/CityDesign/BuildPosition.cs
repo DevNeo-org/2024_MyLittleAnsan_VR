@@ -9,46 +9,41 @@ public class BuildPosition : MonoBehaviour
     public bool isBuildComplete = false;
     GameObject selctEffect;
 
+    public GameObject dataManager;
     public ParticleSystem buildEffect;
     public GameObject buildEffectPrefab;
     GameObject buildEffectObject;
     public OVRInput.Controller controller;
+    string[] buildingSamples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
+    string[] SampleNames = new string[] { "BuildingSample1(Clone)", "BuildingSample2(Clone)", "BuildingSample3(Clone)", "BuildingSample4(Clone)", "BuildingSample5(Clone)" };
 
     //buildPosition에 빌딩 오브젝트가 닿으면 빌딩 생성
     private void OnTriggerEnter(Collider Collider)
     {
-        if (Collider.tag == "Buildings")
+        //토큰이 있는지 확인
+        if (Collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
+            //건설 이펙트
             playBuildEffect();
             //햅틱 실행
             StartCoroutine(TriggerHaptics());
             //buildPosition에 빌딩 프리팹 생성
+
             string bulidingType = Collider.gameObject.name;
-            switch (bulidingType)
+            for(int i = 0; i<5; i++)
             {
-                case "BuildingSample1":
-                    Instantiate(builidngPrefabs[0], transform.position, builidngPrefabs[0].transform.rotation);
-                    break;
-
-                case "BuildingSample2":
-                    Instantiate(builidngPrefabs[1], transform.position, builidngPrefabs[1].transform.rotation);
-                    break;
-                case "BuildingSample3":
-                    Instantiate(builidngPrefabs[2], transform.position, builidngPrefabs[2].transform.rotation);
-                    break;
-                case "BuildingSample4":
-                    Instantiate(builidngPrefabs[3], transform.position, builidngPrefabs[3].transform.rotation);
-                    break;
-                case "BuildingSample5":
-                    Instantiate(builidngPrefabs[4], transform.position, builidngPrefabs[4].transform.rotation);
-                    break;
-                default:
-                    Instantiate(builidngPrefabs[0], transform.position, builidngPrefabs[0].transform.rotation);
-                    break;
-
+                if (SampleNames[i] == bulidingType)
+                {
+                    //건물 모형 사용
+                    PlayerPrefs.SetInt(buildingSamples[i], System.Convert.ToInt16(true));
+                    //dataManager.GetComponent<DataManager>().SampleDestroyed(i);
+                    Instantiate(builidngPrefabs[i], transform.position, builidngPrefabs[i].transform.rotation);
+                }
             }
-            //buildingSample 오브젝트 비활성화
-            Collider.gameObject.SetActive(false);
+            //토큰 사용
+            PlayerPrefs.SetInt("Token", System.Convert.ToInt16(false));
+            //buildingSample 오브젝트 삭제
+            Destroy(Collider.gameObject);
             //buildPosition의 콜라이더 비활성화
             gameObject.GetComponent<BoxCollider>().enabled = false;
             //SelectArea 오브젝트 삭제
