@@ -5,15 +5,27 @@ using UnityEngine;
 
 public class Lobby : MonoBehaviour
 {
+    //건물 모형 프리팹
     public GameObject[] samplePrefabs;
+    //건물 프리팹
+    public GameObject[] buildingPrefabs;
+    //씬 전환 버튼 오브젝트
     public GameObject[] buttonObjects;
+    //건설 구역 오브젝트
+    public GameObject[] AreaObjects;
+    //저장 데이터 관리 오브젝트
     public GameObject dataManager;
-
+    //건설 토큰
     public bool token;
-
+    
     public string[] samples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
+    public string[] areas = new string[] { "area1","area2","area3"};
+    
     public bool[] isClear = new bool[3];
     public bool[] sampleDestroyed = new bool[5];
+    public int[] areaBuild = new int[3];
+
+    GameObject area;
 
     void Start()
     {
@@ -31,10 +43,14 @@ public class Lobby : MonoBehaviour
             {
                 sampleDestroyed[i] = false;
             }
-            //씬 클리어 여부 초기화
+            
             for(int i = 0; i < 3; i++)
             {
+                //씬 클리어 여부 초기화
                 isClear[i] = false;
+                //구역 건설 여부 초기화
+                // 0 : 미건설 , 1 ~ 5 : 각 번호의 건물 건설
+                areaBuild[i] = 0;
             }
         }
 
@@ -42,36 +58,48 @@ public class Lobby : MonoBehaviour
         else
         {
             token = true;
-            //씬 클리어 여부 불러오기
+            
             for (int i = 0; i < 3; i++)
             {
+                //씬 클리어 여부 불러오기
                 isClear[i] = dataManager.GetComponent<DataManager>().GetClear(i);
+                //구역 건설 여부 불러오기
+                areaBuild[i] = dataManager.GetComponent<DataManager>().GetAreaState(i);
             }
             for (int i = 0; i < 5; i++)
             {
+                //건물 모형 사용 여부 불러오기
                 sampleDestroyed[i] = dataManager.GetComponent<DataManager>().GetSampleDestroyed(i);
             }
         }
         makePrefab();
     }
+    
 
     void makePrefab()
     {
         //건물 모형이 사용되지 않았으면 프리팹 생성
         for (int i = 0; i < 5; i++)
         {
-            //bool isDestroyed = System.Convert.ToBoolean(PlayerPrefs.GetInt(samples[i]));
             if (!sampleDestroyed[i])
             {
                 Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
             }
         }
-        //씬 클리어 되었으면 씬 전환 버튼 비활성화
+        
         for (int i = 0; i < 3; i++)
         {
+            //씬 클리어 되었으면 씬 전환 버튼 비활성화
             if (isClear[i])
             {
                 buttonObjects[i].SetActive(false);
+            }
+            //1. 구역에 건물이 건설되어있다면 구역오브젝트 비활성화
+            //2. 해당 구역에 건설된 건물 프리팹 생성
+            if (areaBuild[i] != 0)
+            {
+                AreaObjects[i].SetActive(false);
+                Instantiate(buildingPrefabs[areaBuild[i]-1], AreaObjects[i].transform.position, buildingPrefabs[areaBuild[i]-1].transform.rotation);
             }
         }
     }

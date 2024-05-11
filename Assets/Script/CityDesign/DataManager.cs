@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
 {
     string[] buildingSamples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
     string[] SceneNames = new string[] { "AutoMobile", "Electronic", "Textile", "AutoMobile" };
+    public string[] areas = new string[] { "area1", "area2", "area3" };
 
     //게임 시작시 모든 데이터 삭제
     public void DataClear()
@@ -42,5 +43,10 @@ public class DataManager : MonoBehaviour
     public void SampleDestroyed(int num)
     {
         PlayerPrefs.SetInt(buildingSamples[num], System.Convert.ToInt16(true));
+    }
+    //구역 건설 여부 반환
+    public int GetAreaState(int areaNum)
+    {
+        return PlayerPrefs.GetInt(areas[areaNum]);
     }
 }

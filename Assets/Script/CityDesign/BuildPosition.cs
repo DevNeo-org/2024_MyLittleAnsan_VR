@@ -16,6 +16,9 @@ public class BuildPosition : MonoBehaviour
     public OVRInput.Controller controller;
     string[] buildingSamples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
     string[] SampleNames = new string[] { "BuildingSample1(Clone)", "BuildingSample2(Clone)", "BuildingSample3(Clone)", "BuildingSample4(Clone)", "BuildingSample5(Clone)" };
+    string[] areas = new string[] { "area1", "area2", "area3" };
+
+
 
     //buildPosition에 빌딩 오브젝트가 닿으면 빌딩 생성
     private void OnTriggerEnter(Collider Collider)
@@ -23,12 +26,12 @@ public class BuildPosition : MonoBehaviour
         //토큰이 있는지 확인
         if (Collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
+            
             //건설 이펙트
             playBuildEffect();
             //햅틱 실행
             StartCoroutine(TriggerHaptics());
             //buildPosition에 빌딩 프리팹 생성
-
             string bulidingType = Collider.gameObject.name;
             for(int i = 0; i<5; i++)
             {
@@ -36,8 +39,16 @@ public class BuildPosition : MonoBehaviour
                 {
                     //건물 모형 사용
                     PlayerPrefs.SetInt(buildingSamples[i], System.Convert.ToInt16(true));
-                    //dataManager.GetComponent<DataManager>().SampleDestroyed(i);
+                    //건물 생성
                     Instantiate(builidngPrefabs[i], transform.position, builidngPrefabs[i].transform.rotation);
+                    //현재 구역 확인
+                    string areaName = transform.parent.gameObject.name;
+                    for (int j = 0; j < 3 ; j++){
+                        if (areas[j] == areaName)
+                        {
+                            PlayerPrefs.SetInt(areas[j], i+1);
+                        }
+                    }
                 }
             }
             //토큰 사용
@@ -51,7 +62,17 @@ public class BuildPosition : MonoBehaviour
             //선택 이펙트 삭제
             selctEffect = GameObject.Find("Area_circles_blue(Clone)");
             Destroy(selctEffect);
+
+            if (PlayerPrefs.GetInt(areas[0]) != 0 && PlayerPrefs.GetInt(areas[1]) != 0 && PlayerPrefs.GetInt(areas[2]) != 0)
+            {
+                Debug.Log("게임 클리어");
+            }
         }
+    }
+
+    void Update()
+    {
+        
     }
 
     public bool returnBuildComplete()

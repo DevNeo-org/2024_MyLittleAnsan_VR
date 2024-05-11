@@ -5130,10 +5130,20 @@ MonoBehaviour:
   - {fileID: 5247255183483527588, guid: 90009cb80875d3e499b2c95be31bde4f, type: 3}
   - {fileID: 1563715431682297333, guid: ef8e591b672862a4ca52ecf515226ffc, type: 3}
   - {fileID: 346560685734184997, guid: 1755c7cacdd2ae0489a4ae034dabe801, type: 3}
+  buildingPrefabs:
+  - {fileID: 2659551186766662338, guid: 8e7f2741e3941ed4b9154ce0793d5650, type: 3}
+  - {fileID: 2659551186766662338, guid: 2d6fe00ecfe404745bba1e0bd7730616, type: 3}
+  - {fileID: 2659551186766662338, guid: 9269631c59340c043a3a5edbca56ab38, type: 3}
+  - {fileID: 2659551186766662338, guid: d4454f90b2cd3fb4abb647b459910b91, type: 3}
+  - {fileID: 2659551186766662338, guid: 7d800682c8c163142b0367a200297076, type: 3}
   buttonObjects:
   - {fileID: 891038785}
   - {fileID: 29169177}
   - {fileID: 58369191}
+  AreaObjects:
+  - {fileID: 2055029790}
+  - {fileID: 1982861742}
+  - {fileID: 1731748223}
   dataManager: {fileID: 1620122555}
   token: 0
   samples:
@@ -5142,7 +5152,13 @@ MonoBehaviour:
   - 
   - 
   - 
+  areas:
+  - area1
+  - area2
+  - area3
   isClear: 000000
+  sampleDestroyed: 0000000000
+  areaBuild: 000000000000000000000000
 --- !u!4 &836758518
 Transform:
   m_ObjectHideFlags: 0
@@ -8695,6 +8711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94be9193ee2bed1458fdd993d8389848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areas:
+  - area1
+  - area2
+  - area3
 --- !u!4 &1620122557
 Transform:
   m_ObjectHideFlags: 0
@@ -9608,8 +9628,8 @@ GameObject:
   - component: {fileID: 1731748225}
   - component: {fileID: 1731748224}
   m_Layer: 0
-  m_Name: Area3
-  m_TagString: Untagged
+  m_Name: area3
+  m_TagString: Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10590,8 +10610,8 @@ GameObject:
   - component: {fileID: 1982861744}
   - component: {fileID: 1982861743}
   m_Layer: 0
-  m_Name: Area2
-  m_TagString: Untagged
+  m_Name: area2
+  m_TagString: Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11198,8 +11218,8 @@ GameObject:
   - component: {fileID: 2055029791}
   - component: {fileID: 2055029795}
   m_Layer: 0
-  m_Name: Area1
-  m_TagString: Untagged
+  m_Name: area1
+  m_TagString: Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
