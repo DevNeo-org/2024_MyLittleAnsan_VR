@@ -428,6 +428,7 @@ MonoBehaviour:
     type: 3}
   wrongEffectPrefab: {fileID: 7823327091382468809, guid: af0d06ad2f476cc43be23ac0f464a510,
     type: 3}
+  isCorrect: 0
 --- !u!1 &963386563213540337
 GameObject:
   m_ObjectHideFlags: 0
