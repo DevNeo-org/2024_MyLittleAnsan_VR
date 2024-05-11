@@ -9,6 +9,7 @@ public class Soldering : MonoBehaviour
 
 
     public OVRInput.Controller controller;
+    int score=0;
     void Start()
     {
         
@@ -19,12 +20,18 @@ public class Soldering : MonoBehaviour
     {
         
     }
+    public int SendScore()
+    {
+        return score;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("circle"))
         {
             other.gameObject.GetComponent<circlehit>().ObjectHit();
+            score++;
             StartCoroutine(TriggerHaptics());
         }
     }
