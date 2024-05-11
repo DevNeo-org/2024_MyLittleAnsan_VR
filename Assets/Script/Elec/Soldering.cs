@@ -24,7 +24,6 @@ public class Soldering : MonoBehaviour
     {
         if (other.gameObject.CompareTag("circle"))
         {
-            Debug.Log("trigger");
             other.gameObject.GetComponent<circlehit>().ObjectHit();
             StartCoroutine(TriggerHaptics());
         }
