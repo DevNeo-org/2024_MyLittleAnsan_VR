@@ -30,10 +30,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int penSize = 35;
 
     private Color[] _color;
-
     private Whiteboard _whiteboard;
-
     [SerializeField] Material[] mats;
+    private Vector3 shootPos, shootDir;
+    private RaycastHit _touch;
+    private Vector2 _touchPos;
 
     void Start()
     {
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            shootPos = rigid.transform.position;
+            shootDir = Camera.main.transform.forward;
             particle.Play();
         }
 
@@ -86,24 +89,47 @@ public class Player : MonoBehaviour
         rigid.MoveRotation(rigid.rotation * Quaternion.Euler(playerRotateY));
     }
 
-    public void Draw(Vector3 pos, GameObject board)
+    public void Draw()
     {
-        if (_whiteboard == null)
+        if (Physics.Raycast(shootPos, shootDir, out _touch, 10f))
         {
-            _whiteboard = board.GetComponent<Whiteboard>();
+            UnityEngine.Debug.Log("hit");
+            if (_touch.transform.CompareTag("Whiteboard"))
+            {
+                if (_whiteboard == null)
+                {
+                    _whiteboard = _touch.transform.GetComponent<Whiteboard>();
+                }
+
+                _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
+
+                var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (penSize / 2));
+                var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (penSize / 2));
+
+                if (y < 0 || y > _whiteboard.textureSize.y || x < 0 || x > _whiteboard.textureSize.x)
+                {
+                    return;
+                }
+
+                for (int i=-1; i<=1; i++)
+                {
+                    for (int j=-2; j<=2; j++)
+                    {
+                        _whiteboard.texture.SetPixels(x + i*(penSize), y + j * (penSize), penSize, penSize, _color);
+                    }
+                }
+                _whiteboard.texture.SetPixels(x + (penSize) / 2, y + 3 * (penSize), penSize, penSize, _color);
+                _whiteboard.texture.SetPixels(x - (penSize) / 2, y + 3 * (penSize), penSize, penSize, _color);
+                _whiteboard.texture.SetPixels(x + (penSize) / 2, y - 3 * (penSize), penSize, penSize, _color);
+                _whiteboard.texture.SetPixels(x - (penSize) / 2, y - 3 * (penSize), penSize, penSize, _color);
+
+                _whiteboard.texture.Apply();
+
+                return;
+            }
         }
 
-        var x = (int)(pos.x * _whiteboard.textureSize.x - (penSize / 2));
-        var y = (int)(pos.y * _whiteboard.textureSize.y - (penSize / 2));
-
-        if (y < 0 || y > _whiteboard.textureSize.y || x < 0 || x > _whiteboard.textureSize.x)
-        {
-            return;
-        }
-        _whiteboard.texture.SetPixels(x, y, penSize, penSize, _color);
-
-        _whiteboard.texture.Apply();
         _whiteboard = null;
-    }
 
+    }
 }

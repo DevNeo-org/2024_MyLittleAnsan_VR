@@ -29,8 +29,7 @@ public class Whiteboard : MonoBehaviour
 
         foreach (ParticleCollisionEvent collisionEvent in collisionEvents) // for each collision, do the following:
         {
-            Vector3 pos = collisionEvent.intersection;
-            player.Draw(pos, board);
+            player.Draw();
         }
 
     }
