@@ -16,7 +16,7 @@ public class ElecManagement : MonoBehaviour
     void Start()
     {
         circles = new GameObject[9];
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 9; i++)
         {
            
             GameObject circle = Instantiate(blinkingCirclePrefab, transform.position, Quaternion.identity);
@@ -37,6 +37,7 @@ public class ElecManagement : MonoBehaviour
             }
 
         }
+        InvokeRepeating("ToggleRandomCircle", 0, blinkInterval);
         InvokeRepeating("ToggleRandomCircle", 0, blinkInterval);
     }
 
