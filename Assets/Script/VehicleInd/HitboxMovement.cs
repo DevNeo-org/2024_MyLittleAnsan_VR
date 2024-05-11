@@ -25,14 +25,23 @@ public class HitboxMovement : MonoBehaviour
         //rb.AddForce(direction);
         //Debug.Log(direction * force);
         transform.Rotate(new Vector3(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, rotationSpeedZ * Time.deltaTime));
-        if ((finalPoint.position - rb.position).magnitude < 0.01)
+        if ((finalPoint.position - rb.position).magnitude < 0.05)
         {
-            Destroy(gameObject, 0.5f);
+            transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = true;
+            Destroy(gameObject, 1f);
+        }
+        else if ((finalPoint.position - rb.position).magnitude > 0.05)
+        {
+            transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = false;
         }
     }
     public void SetFinalPoint(int num)
     {
         spawner = FindAnyObjectByType<HitboxSpawner>();
         finalPoint = spawner.finalPoints[num];
+    }
+    public Transform GetFinalPoint()
+    {
+        return finalPoint;
     }
 }
