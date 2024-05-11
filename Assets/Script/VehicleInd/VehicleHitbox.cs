@@ -8,15 +8,13 @@ public class VehicleHitbox : MonoBehaviour
     [SerializeField] private GameObject wrongEffectPrefab;
     private bool isCorrect = false; // 오브젝트 위치가 점수 획득 가능한 위치인지 체크
     private GameObject instateEffectObj;
-    private void Start()
-    {
-        
-    }
+    private VehicleManager vehicleManager;
     public int ObjectHit()
     {
         if (isCorrect)
         {
             CorrectEffectPlay();
+            vehicleManager.ScorePlus();
             Destroy(transform.parent.gameObject, 0.1f);
             return 0;
         }
@@ -52,5 +50,9 @@ public class VehicleHitbox : MonoBehaviour
         //파티클 재생
         instantEffect.Play();
         Destroy(instateEffectObj, 1f);
+    }
+    public void SetVehicleManager(VehicleManager temp)
+    {
+        vehicleManager = temp;
     }
 }
