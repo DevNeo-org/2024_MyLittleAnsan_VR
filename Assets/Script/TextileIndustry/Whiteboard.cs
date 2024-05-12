@@ -19,7 +19,6 @@ public class Whiteboard : MonoBehaviour
         var r = GetComponent<Renderer>();
         texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
         r.material.mainTexture = texture;
-        particleManager = GetComponent<ParticleManager>();
     }
 
     void OnParticleCollision(GameObject other)
