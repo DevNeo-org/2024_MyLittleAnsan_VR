@@ -17,16 +17,9 @@ public class circlehit : MonoBehaviour
     }
     public int ObjectHit()
     {
-        if (isCorrect)
-        {
             gameObject.SetActive(false);
             return 0;
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            return 1;
-        }
+       
     }
 }
 

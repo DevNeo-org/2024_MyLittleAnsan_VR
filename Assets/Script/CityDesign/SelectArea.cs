@@ -7,6 +7,7 @@ public class selectArea : MonoBehaviour
     public ParticleSystem effect;
     public GameObject effectPrefab;
     GameObject instateEffectObj;
+    public OVRInput.Controller controller;
 
     //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 있을 때
     private void OnTriggerEnter(Collider collider)
@@ -41,6 +42,16 @@ public class selectArea : MonoBehaviour
         effect.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
         //파티클 재생
         effect.Play();
+        //햅틱 실행
+        StartCoroutine(TriggerHaptics());
+    }
+
+    //햅틱
+    IEnumerator TriggerHaptics()
+    {
+        OVRInput.SetControllerVibration(0.3f, 0.3f, controller);
+        yield return new WaitForSeconds(1f);
+        OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 
 }
