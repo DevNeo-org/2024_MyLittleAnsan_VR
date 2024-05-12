@@ -17,11 +17,15 @@ public class VehicleManager : MonoBehaviour
     {
         if (score > 10)
         {
-            carClear = true;
+            //carClear = true;
         }
     }
     public void ScorePlus()
     {
         score++;
+    }
+    public int GetScore()
+    {
+        return score;
     }
 }
