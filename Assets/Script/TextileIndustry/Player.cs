@@ -91,9 +91,8 @@ public class Player : MonoBehaviour
 
     public void Draw()
     {
-        if (Physics.Raycast(shootPos, shootDir, out _touch, 10f))
+        if (Physics.Raycast(shootPos, shootDir, out _touch, 50f))
         {
-            UnityEngine.Debug.Log("hit");
             if (_touch.transform.CompareTag("Whiteboard"))
             {
                 if (_whiteboard == null)
