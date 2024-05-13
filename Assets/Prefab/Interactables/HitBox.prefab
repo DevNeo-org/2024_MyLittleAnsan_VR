@@ -428,6 +428,7 @@ MonoBehaviour:
     type: 3}
   wrongEffectPrefab: {fileID: 7823327091382468809, guid: af0d06ad2f476cc43be23ac0f464a510,
     type: 3}
+  isCorrect: 0
 --- !u!1 &963386563213540337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e486da03eaec24a94d4675ccd73538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.3
+  force: 0.4
 --- !u!54 &3874086189437139660
 Rigidbody:
   m_ObjectHideFlags: 0

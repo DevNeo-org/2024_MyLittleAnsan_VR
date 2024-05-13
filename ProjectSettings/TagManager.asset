@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Hitbox
   - Buildings
-  - circle
-  - Area
+  - Whiteboard
   layers:
   - Default
   - TransparentFX
@@ -15,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Paper
+  - Whiteboard
   - 
   - 
   - 
