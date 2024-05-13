@@ -7,7 +7,7 @@ public class HitboxSpawner : MonoBehaviour
     [SerializeField] GameObject[] hitboxPrefab;
     [SerializeField] Transform[] points;
     public Transform[] finalPoints;
-    private float beat = 3f;
+    private float beat = 2f;
     private float timer = 0;
     private int started = 0;
     private VehicleManager vehicleManager;
