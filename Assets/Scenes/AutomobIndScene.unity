@@ -1682,9 +1682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94be9193ee2bed1458fdd993d8389848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoMobClear: 0
-  elecClear: 0
-  textileClear: 0
+  areas:
+  - area1
+  - area2
+  - area3
 --- !u!4 &553526692
 Transform:
   m_ObjectHideFlags: 0
@@ -2116,6 +2117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 762387818}
+  leftRayController: {fileID: 1119268732}
+  rightRayController: {fileID: 1119268731}
 --- !u!4 &648566712
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &762387819
 Transform:
   m_ObjectHideFlags: 0
@@ -3960,6 +3963,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1119268731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5246452217843003710, guid: 4953d8edfb7665f47b786f2fbffcacc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3993204970431310173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1119268732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5965329524494022896, guid: 4953d8edfb7665f47b786f2fbffcacc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3993204970431310173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1139769307
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,7 +7411,7 @@ PrefabInstance:
     - target: {fileID: 5246452217843003710, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5460894939572082492, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
@@ -7406,7 +7421,7 @@ PrefabInstance:
     - target: {fileID: 5965329524494022896, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6822594950730591091, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
@@ -7531,6 +7546,7 @@ SceneRoots:
   - {fileID: 696035911}
   - {fileID: 1020825580}
   - {fileID: 1461245801}
+  - {fileID: 929241732}
   - {fileID: 959469303}
   - {fileID: 3993204970431310173}
   - {fileID: 1760151465}
@@ -7542,4 +7558,3 @@ SceneRoots:
   - {fileID: 1604793199}
   - {fileID: 3840552092673917716}
   - {fileID: 553526692}
-  - {fileID: 929241732}

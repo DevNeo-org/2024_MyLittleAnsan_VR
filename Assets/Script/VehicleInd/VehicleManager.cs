@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class VehicleManager : MonoBehaviour
 {
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject leftRayController;
+    [SerializeField] GameObject rightRayController;
     private bool carClear;
     private int score;
     private float timer;
@@ -25,12 +27,12 @@ public class VehicleManager : MonoBehaviour
             if (isMenuOn)
             {
                 isMenuOn = false;
-                menu.SetActive(false);
+                menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
             }
             else
             {
                 isMenuOn = true;
-                menu.SetActive(true);
+                menu.SetActive(true); leftRayController.SetActive(true); rightRayController.SetActive(true);
             }
         }
         if (score > 10)
