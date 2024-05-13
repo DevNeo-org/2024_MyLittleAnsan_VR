@@ -26,11 +26,13 @@ public class VehicleManager : MonoBehaviour
         {
             if (isMenuOn)
             {
+                Time.timeScale = 1;
                 isMenuOn = false;
                 menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
             }
             else
             {
+                Time.timeScale = 0;
                 isMenuOn = true;
                 menu.SetActive(true); leftRayController.SetActive(true); rightRayController.SetActive(true);
             }
@@ -51,6 +53,7 @@ public class VehicleManager : MonoBehaviour
     }
     public void LoadScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("CityDesign");
     }
 }
