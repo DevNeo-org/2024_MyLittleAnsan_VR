@@ -25,6 +25,11 @@ public class Lobby : MonoBehaviour
     public bool[] sampleDestroyed = new bool[5];
     public int[] areaBuild = new int[3];
 
+    public ParticleSystem completeEffect;
+    public GameObject completeEffectPrefab;
+    GameObject completeEffectObject;
+
+
     GameObject area;
 
     void Start()
@@ -103,6 +108,18 @@ public class Lobby : MonoBehaviour
             }
         }
     }
+    //게임 클리어 이펙트
+    public void playCompleteEffect()
+    {
+        //파티클프리팹 생성
+        completeEffectObject = Instantiate(completeEffectPrefab, transform.position, Quaternion.identity);
+        ParticleSystem instantEffect1 = completeEffectObject.GetComponent<ParticleSystem>();
+        //파티클 생성 위치와 크기 설정
+        completeEffect.transform.position = transform.position;
+        completeEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        //파티클 재생
+        completeEffect.Play();
+    }
 
-    
+
 }

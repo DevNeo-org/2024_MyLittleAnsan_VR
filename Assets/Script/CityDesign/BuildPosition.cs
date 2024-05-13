@@ -9,7 +9,9 @@ public class BuildPosition : MonoBehaviour
     public bool isBuildComplete = false;
     GameObject selctEffect;
 
+    public GameObject gameManager;
     public GameObject dataManager;
+
     public ParticleSystem buildEffect;
     public GameObject buildEffectPrefab;
     GameObject buildEffectObject;
@@ -65,6 +67,7 @@ public class BuildPosition : MonoBehaviour
 
             if (PlayerPrefs.GetInt(areas[0]) != 0 && PlayerPrefs.GetInt(areas[1]) != 0 && PlayerPrefs.GetInt(areas[2]) != 0)
             {
+                gameManager.GetComponent<Lobby>().playCompleteEffect();
                 Debug.Log("게임 클리어");
             }
         }
