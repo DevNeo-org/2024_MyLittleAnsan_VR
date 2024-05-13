@@ -7,9 +7,11 @@ public class VehicleManager : MonoBehaviour
     private bool carClear;
     private int score;
     private float timer;
+    DataManager dataManager;
     void Start()
     {
         score = 0;
+        dataManager = FindAnyObjectByType<DataManager>();
     }
 
     // Update is called once per frame
@@ -17,6 +19,7 @@ public class VehicleManager : MonoBehaviour
     {
         if (score > 10)
         {
+            dataManager.SetClear();
             //carClear = true;
         }
     }
