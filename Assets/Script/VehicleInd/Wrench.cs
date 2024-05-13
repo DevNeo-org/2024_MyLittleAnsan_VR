@@ -21,7 +21,6 @@ public class Wrench : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Hitbox"))
         {
-            Debug.Log("trigger");
             other.gameObject.GetComponent<VehicleHitbox>().ObjectHit();
             StartCoroutine(TriggerHaptics());
         }
@@ -29,7 +28,7 @@ public class Wrench : MonoBehaviour
     IEnumerator TriggerHaptics()
     {
         OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }

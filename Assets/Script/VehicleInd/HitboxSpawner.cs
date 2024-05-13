@@ -31,7 +31,6 @@ public class HitboxSpawner : MonoBehaviour
             hitbox.GetComponent<HitboxMovement>().SetFinalPoint(num);
             hitbox.transform.GetChild(0).GetComponent<VehicleHitbox>().SetVehicleManager(vehicleManager);
             timer -= beat;
-            Debug.Log("spawn" + timer);
         }
         timer += Time.deltaTime;
     }
