@@ -30,6 +30,7 @@ public class HitboxSpawner : MonoBehaviour
             hitbox.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
             hitbox.GetComponent<HitboxMovement>().SetFinalPoint(num);
             hitbox.transform.GetChild(0).GetComponent<VehicleHitbox>().SetVehicleManager(vehicleManager);
+            PlaySound();
             timer -= beat;
         }
         timer += Time.deltaTime;
@@ -37,5 +38,9 @@ public class HitboxSpawner : MonoBehaviour
     public void PickUp()
     {
         started++;
+    }
+    private void PlaySound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }

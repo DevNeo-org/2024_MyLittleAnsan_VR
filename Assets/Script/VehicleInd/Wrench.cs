@@ -22,6 +22,7 @@ public class Wrench : MonoBehaviour
         if (other.gameObject.CompareTag("Hitbox"))
         {
             other.gameObject.GetComponent<VehicleHitbox>().ObjectHit();
+            GetComponent<AudioSource>().Play();
             StartCoroutine(TriggerHaptics());
         }
     }
