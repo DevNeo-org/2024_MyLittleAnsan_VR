@@ -12,6 +12,7 @@ public class VehicleHitbox : MonoBehaviour
     private Transform finalPoint;
     public int ObjectHit()
     {
+        GetComponent<MeshCollider>().enabled = false;
         if (isCorrect)
         {
             CorrectEffectPlay();

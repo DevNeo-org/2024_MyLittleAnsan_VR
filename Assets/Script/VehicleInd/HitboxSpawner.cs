@@ -7,7 +7,7 @@ public class HitboxSpawner : MonoBehaviour
     [SerializeField] GameObject[] hitboxPrefab;
     [SerializeField] Transform[] points;
     public Transform[] finalPoints;
-    private float beat = 3f;
+    private float beat = 2f;
     private float timer = 0;
     private int started = 0;
     private VehicleManager vehicleManager;
@@ -30,13 +30,17 @@ public class HitboxSpawner : MonoBehaviour
             hitbox.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
             hitbox.GetComponent<HitboxMovement>().SetFinalPoint(num);
             hitbox.transform.GetChild(0).GetComponent<VehicleHitbox>().SetVehicleManager(vehicleManager);
+            PlaySound();
             timer -= beat;
-            Debug.Log("spawn" + timer);
         }
         timer += Time.deltaTime;
     }
     public void PickUp()
     {
         started++;
+    }
+    private void PlaySound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }
