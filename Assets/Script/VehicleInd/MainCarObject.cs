@@ -7,7 +7,6 @@ public class MainCarObject : MonoBehaviour
 {
     VehicleManager vehicleManager;
     int score = 0;
-    bool clear = false;
     private Animation anim;
 
     AnimationState[] animStates;
@@ -33,11 +32,6 @@ public class MainCarObject : MonoBehaviour
             if (score == 9 || score == 10)
             {
                 anim.Play(animStates[score - 1].name);
-            }
-            if (score == 10)
-            {
-                anim.Play(animStates[score - 1].name);
-                clear = true;
             }
         }
     }
