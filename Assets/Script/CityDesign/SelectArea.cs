@@ -12,7 +12,7 @@ public class selectArea : MonoBehaviour
     //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 있을 때
     private void OnTriggerEnter(Collider collider)
     { 
-        if(collider.tag == "Buildings")
+        if(collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
             //선택 효과 파티클 재생
             EffectPlay();
@@ -23,7 +23,7 @@ public class selectArea : MonoBehaviour
     //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 없을 때
     private void OnTriggerExit(Collider collider)
     {
-        if (collider.tag == "Buildings")
+        if (collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
             //선택 효과 파티클 정지 및 삭제
             effect.Stop();
