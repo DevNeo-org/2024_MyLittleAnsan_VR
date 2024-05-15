@@ -18,6 +18,5 @@ public class ParticleManager : MonoBehaviour
             ParticleSystem tempParticle = Instantiate(particle, particlePos, new Quaternion());
             tempParticle.Play();
         }
-
     }
 }
