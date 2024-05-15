@@ -16,9 +16,11 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private GameObject rightWrench;
     [SerializeField] TextMeshPro scoreText;
 
+    Timer timer;
     HitboxSpawner spawner;
     private int score;
     private bool isMenuOn = false;
+    private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager dataManager;
     void Start()
     {
@@ -26,11 +28,20 @@ public class VehicleManager : MonoBehaviour
         dataManager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
         spawner = FindAnyObjectByType<HitboxSpawner>();
+        timer = FindAnyObjectByType<Timer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameEnd) return;
+        gameEnd = timer.GetBool();
+        if (gameEnd) // 시간 종료 첫 확인 시 실행
+        {
+            OpenMenu();
+            // 게임 종료 메뉴 활성화 코드
+            rightRayController.SetActive(true);
+        }
         if (!isMenuOn)
         {
             if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
@@ -53,7 +64,7 @@ public class VehicleManager : MonoBehaviour
     public void ScorePlus()
     {
         score++;
-        scoreText.text = score.ToString();
+        scoreText.text = "점수: " + score.ToString();
     }
     public int GetScore()
     {
