@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class MainCarObject : MonoBehaviour
 {
+    [SerializeField] int scoreIndex; // 0 또는 10으로 설정
     VehicleManager vehicleManager;
     int score = 0;
-    bool clear = false;
     private Animation anim;
 
     AnimationState[] animStates;
@@ -25,19 +25,18 @@ public class MainCarObject : MonoBehaviour
         if (score != tmpScore)
         {
             score = tmpScore;
-            if (score < 9)
+            if (scoreIndex < score && score - scoreIndex < 9)
             {
-                transform.GetChild(score - 1).gameObject.SetActive(true);
-                anim.Play(animStates[score - 1].name);
+                transform.GetChild(score - scoreIndex - 1).gameObject.SetActive(true);
+                anim.Play(animStates[score - scoreIndex - 1].name);
             }
-            if (score == 9 || score == 10)
+            if (score - scoreIndex == 9)
             {
-                anim.Play(animStates[score - 1].name);
+                anim.Play(animStates[score - scoreIndex - 1].name);
             }
-            if (score == 10)
+            if (score - scoreIndex == 10)
             {
-                anim.Play(animStates[score - 1].name);
-                clear = true;
+                anim.Play(animStates[10 - (scoreIndex / 10)].name); // scoreIndex가 10이면 10번째, 0이면 9번째 클립 플레이
             }
         }
     }

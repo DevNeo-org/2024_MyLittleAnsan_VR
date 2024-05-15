@@ -6,45 +6,35 @@ using Oculus.Interaction.Input;
 
 public class ControllerInputsHandler : MonoBehaviour
 {
-    private OVRInput.Button IndexTriggerAsButton => _controllerRef.Handedness == Handedness.Left ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
-
-    [SerializeField] private ControllerRef _controllerRef;
-    [SerializeField] private GrabInteractor _grabInteractor;
-    [SerializeField] private OVRControllerHelper _controllerHelper;
+    [SerializeField] private ControllerRef controllerRef;
+    [SerializeField] private GrabInteractor grabInteractor;
+    [SerializeField] private OVRControllerHelper controllerHelper;
     [SerializeField] private GameObject wrench;
-    private GrabInteractable _grabInteractable;
-    private HitboxSpawner _hitboxSpawner;
+    [SerializeField] private bool isLeft;
+    private GrabInteractable grabInteractable;
+    private HitboxSpawner hitboxSpawner;
     
     private void Start()
     {
-        _hitboxSpawner = FindAnyObjectByType<HitboxSpawner>();
+        hitboxSpawner = FindAnyObjectByType<HitboxSpawner>();
     }
     private void Update()
     {
-        if (!_grabInteractor.HasSelectedInteractable)
+        if (!grabInteractor.HasSelectedInteractable)
         {
-            _grabInteractable = null;
+            grabInteractable = null;
             return;
         }
-        if (_grabInteractable == null)
+        if (grabInteractable == null)
         {
+            if (Time.timeScale == 0) { return; }
             wrench.gameObject.SetActive(true);
-            _hitboxSpawner.PickUp();
-            _controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-            _grabInteractable = _grabInteractor.SelectedInteractable;
-            Destroy(_grabInteractor.transform.parent.gameObject);
-            Destroy(_grabInteractable.gameObject);
+            hitboxSpawner.PickUp(isLeft);
+            controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            grabInteractable = grabInteractor.SelectedInteractable;
+            Destroy(grabInteractor.transform.parent.gameObject);
+            Destroy(grabInteractable.gameObject);
             Destroy(gameObject);
         }
-        //ReadInputs();
-    }
-    private void ReadInputs()
-    {
-        HandleButton(OVRInput.Get(IndexTriggerAsButton), IndexTriggerAsButton);
-
-    }
-    private void HandleButton(bool isPressed, OVRInput.Button button)
-    {
-
     }
 }
