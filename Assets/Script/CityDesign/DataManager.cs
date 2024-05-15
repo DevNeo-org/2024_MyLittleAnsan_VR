@@ -10,6 +10,23 @@ public class DataManager : MonoBehaviour
     string[] SceneNames = new string[] { "AutoMobile", "Electronic", "Textile"};
     public string[] areas = new string[] { "area1", "area2", "area3" };
 
+    void Update()
+    {
+        //테스트용
+        if (Input.GetKeyDown("c"))
+        {
+            //토큰 획득
+            PlayerPrefs.SetInt("Token", System.Convert.ToInt16(true));
+            //현재 씬의 인덱스 불러오기
+            PlayerPrefs.SetInt(SceneNames[2], System.Convert.ToInt16(true));
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            DataClear();
+            SceneManager.LoadScene(1);
+        }
+    }
     //게임 시작시 모든 데이터 삭제
     public void DataClear()
     {
