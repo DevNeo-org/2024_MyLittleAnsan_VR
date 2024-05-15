@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class circlehit : MonoBehaviour
 {
-    private bool isCorrect = false; // 오브젝트 위치가 점수 획득 가능한 위치인지 체크
+   
     void Start()
     {
 
@@ -17,9 +17,14 @@ public class circlehit : MonoBehaviour
     }
     public int ObjectHit()
     {
-            gameObject.SetActive(false);
-            return 0;
-       
+        StartCoroutine(DeactivateAfterDelay());
+        return 0;
+    }
+
+    IEnumerator DeactivateAfterDelay()
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        gameObject.SetActive(false); // Deactivate the game object
     }
 }
 
