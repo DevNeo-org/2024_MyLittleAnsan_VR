@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class DataManager : MonoBehaviour
 {
     string[] buildingSamples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
-    string[] SceneNames = new string[] { "AutoMobile", "Electronic", "Textile", "AutoMobile" };
+    string[] SceneNames = new string[] { "AutoMobile", "Electronic", "Textile"};
     public string[] areas = new string[] { "area1", "area2", "area3" };
 
     //게임 시작시 모든 데이터 삭제
@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("Token", System.Convert.ToInt16(true));
         //현재 씬의 인덱스 불러오기
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt(SceneNames[sceneNum - 1], System.Convert.ToInt16(true));
+        PlayerPrefs.SetInt(SceneNames[sceneNum - 2], System.Convert.ToInt16(true));
     }
 
     //각 체험의 클리어 여부 반환
