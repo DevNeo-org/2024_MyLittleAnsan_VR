@@ -30,16 +30,16 @@ public class VehicleManager : MonoBehaviour
     {
         if (!isMenuOn)
         {
-            if (OVRInput.GetDown(OVRInput.Button.One) ||  OVRInput.GetDown(OVRInput.Button.Three))
+            if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
             {
+                OpenMenu();
                 rightRayController.SetActive(true);
             }
-            else if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four))
+            else if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
             {
+                OpenMenu();
                 leftRayController.SetActive(true);
             }
-            OpenMenu();
-            
         }
         if (score > 10)
         {

@@ -27,6 +27,7 @@ public class ControllerInputsHandler : MonoBehaviour
         }
         if (grabInteractable == null)
         {
+            if (Time.timeScale == 0) { return; }
             wrench.gameObject.SetActive(true);
             hitboxSpawner.PickUp(isLeft);
             controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;

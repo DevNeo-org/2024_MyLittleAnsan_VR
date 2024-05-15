@@ -7424,6 +7424,8 @@ MonoBehaviour:
   - {fileID: 101392842}
   - {fileID: 1222726329}
   - {fileID: 1139769308}
+  leftWrenchOn: 0
+  rightWrenchOn: 0
 --- !u!4 &1784159337
 Transform:
   m_ObjectHideFlags: 0
