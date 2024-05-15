@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class VehicleManager : MonoBehaviour
 {
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject timerUI;
     [SerializeField] GameObject leftRayController;
     [SerializeField] GameObject rightRayController;
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
@@ -75,6 +76,7 @@ public class VehicleManager : MonoBehaviour
     }
     public void CloseMenu()
     {
+        timerUI.SetActive(true);
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
@@ -91,6 +93,7 @@ public class VehicleManager : MonoBehaviour
     }
     private void OpenMenu()
     {
+        timerUI.SetActive(false);
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true); 
