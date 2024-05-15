@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] private GameObject leftWrench;
     [SerializeField] private GameObject rightWrench;
+    [SerializeField] TextMeshPro scoreText;
 
     HitboxSpawner spawner;
     private int score;
@@ -51,6 +53,7 @@ public class VehicleManager : MonoBehaviour
     public void ScorePlus()
     {
         score++;
+        scoreText.text = score.ToString();
     }
     public int GetScore()
     {
