@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Whiteboard : MonoBehaviour
 {
+    private int curColorCode = 0;
     public ParticleSystem Particulas;
-    public Player player;
+    public Gun gun;
     public GameObject board;
 
     public List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
@@ -29,9 +30,13 @@ public class Whiteboard : MonoBehaviour
         foreach (ParticleCollisionEvent collisionEvent in collisionEvents) // for each collision, do the following:
         {
             Vector3 pos = collisionEvent.intersection;
-            particleManager.PlayParticle(0, pos);
-            player.Draw();
+            particleManager.PlayParticle(curColorCode, pos);
+            gun.Draw();
         }
+    }
 
+    public void ChangeCode(int code)
+    {
+        curColorCode = code;
     }
 }
