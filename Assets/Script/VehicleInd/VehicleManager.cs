@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class VehicleManager : MonoBehaviour
 {
-    [SerializeField] GameObject menu;
-    [SerializeField] GameObject timerUI;
+    [SerializeField] GameObject menu; // 일시정지 메뉴
+    [SerializeField] GameObject resultMenu; // 결과창
+    [SerializeField] GameObject timerUI; // 타이머, 점수 UI
     [SerializeField] GameObject leftRayController;
     [SerializeField] GameObject rightRayController;
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
@@ -27,6 +28,7 @@ public class VehicleManager : MonoBehaviour
         score = 0;
         dataManager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
+        resultMenu.SetActive(false);
         spawner = FindAnyObjectByType<HitboxSpawner>();
         timer = FindAnyObjectByType<Timer>();
     }
@@ -39,7 +41,7 @@ public class VehicleManager : MonoBehaviour
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
             OpenMenu();
-            // 게임 종료 메뉴 활성화 코드
+            resultMenu.SetActive(true);
             rightRayController.SetActive(true);
         }
         if (!isMenuOn)
@@ -70,10 +72,15 @@ public class VehicleManager : MonoBehaviour
     {
         return score;
     }
-    public void LoadScene()
+    public void LoadTitle()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
+    }
+    public void LoadCityScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("CityDesign");
     }
     public void RestartScene()
     {
