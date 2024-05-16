@@ -13,7 +13,7 @@ public class circlehit : MonoBehaviour
     public int ObjectHit()
     {
         StartCoroutine(DeactivateAfterDelay());
-        menuManagement.ScorePlus();
+        
         return 0;
     }
 
@@ -21,6 +21,7 @@ public class circlehit : MonoBehaviour
     {
         yield return new WaitForSeconds(1f); // Wait for 1 second
         gameObject.SetActive(false); // Deactivate the game object
+        menuManagement.ScorePlus();
     }
 }
 

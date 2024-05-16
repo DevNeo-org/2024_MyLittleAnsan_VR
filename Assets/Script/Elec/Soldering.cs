@@ -11,7 +11,7 @@ public class Soldering : MonoBehaviour
     public OVRInput.Controller controller;
     
     public GameObject particlePrefab;
-    public Vector3 particleScale = new Vector3(0.1f, 0.1f, 0.1f);
+    private Vector3 particleScale = new Vector3(0.1f, 0.05f, 0.1f);
 
 
     void Start()
@@ -38,6 +38,7 @@ public class Soldering : MonoBehaviour
                 GameObject particleInstance = Instantiate(particlePrefab, other.transform.position, Quaternion.identity);
                 particleInstance.transform.rotation = Quaternion.Euler(180f, 0f, 0f);
                 particleInstance.transform.localScale = particleScale;
+                
                 Destroy(particleInstance, 1f);
             }
             other.gameObject.GetComponent<circlehit>().ObjectHit();
