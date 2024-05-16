@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-
-public class ElecManagement : MonoBehaviour
+public class ElecManagement : MonoBehaviour    
 {
     public GameObject blinkingCirclePrefab;
     public float blinkInterval = 3f;
     private float rowposition = -0.19f;
     private float columnposition = 0.18f;
     private GameObject[] circles;
-
-    public GameObject timerText;
-
+    private Timer timer;
     void Start()
     {
+        timer = FindAnyObjectByType<Timer>();
         circles = new GameObject[9];
         for (int i = 0; i < 9; i++)
         {
@@ -41,14 +41,14 @@ public class ElecManagement : MonoBehaviour
         
         InvokeRepeating("ToggleRandomCircle", 30, blinkInterval);
     }
-
+   
 
     void ToggleRandomCircle()
     {
         int randomIndex = Random.Range(0, 9);
         GameObject randomCircle = circles[randomIndex];
         randomCircle.SetActive(true);
-        timerText.GetComponent<timer>().StartGame();
+        timer.StartGame();
     }
 
 

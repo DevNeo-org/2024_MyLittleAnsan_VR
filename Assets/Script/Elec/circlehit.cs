@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class circlehit : MonoBehaviour
 {
-   
-    void Start()
+    private ElecMenuManagement menuManagement;
+
+    private void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        menuManagement = FindAnyObjectByType<ElecMenuManagement>();
     }
     public int ObjectHit()
     {
         StartCoroutine(DeactivateAfterDelay());
+        menuManagement.ScorePlus();
         return 0;
     }
 

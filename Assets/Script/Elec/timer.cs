@@ -46,5 +46,9 @@ public class Timer : MonoBehaviour
     {
         return timeOver;
     }
+    public bool SendStartGame()
+    {
+        return gameStart;
+    }
 }
 

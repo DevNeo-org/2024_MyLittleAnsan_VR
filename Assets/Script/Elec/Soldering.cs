@@ -9,9 +9,11 @@ public class Soldering : MonoBehaviour
 
 
     public OVRInput.Controller controller;
-    private int score = 0;
+    
     public GameObject particlePrefab;
     public Vector3 particleScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+
     void Start()
     {
         
@@ -22,10 +24,7 @@ public class Soldering : MonoBehaviour
     {
         
     }
-    public int SendScore()
-    {
-        return score;
-    }
+    
 
 
     private void OnTriggerEnter(Collider other)
@@ -39,11 +38,11 @@ public class Soldering : MonoBehaviour
                 GameObject particleInstance = Instantiate(particlePrefab, other.transform.position, Quaternion.identity);
                 particleInstance.transform.rotation = Quaternion.Euler(180f, 0f, 0f);
                 particleInstance.transform.localScale = particleScale;
-                Destroy(particleInstance, 1f); // 2초 후에 파티클 객체 제거
+                Destroy(particleInstance, 1f);
             }
             other.gameObject.GetComponent<circlehit>().ObjectHit();
-            score++;
         }
+       
     }
     IEnumerator TriggerHaptics()
     {
