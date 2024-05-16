@@ -7,6 +7,10 @@ TagManager:
   - Hitbox
   - Buildings
   - Whiteboard
+  - BlueBucket
+  - RedBucket
+  - YellowBucket
+  - BlackBucket
   layers:
   - Default
   - TransparentFX

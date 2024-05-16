@@ -12,6 +12,8 @@ public class HitboxSpawner : MonoBehaviour
     private int started = 0;
     private VehicleManager vehicleManager;
     private GameObject timerText;
+    public bool leftWrenchOn = false;
+    public bool rightWrenchOn = false;
     void Start()
     {
         vehicleManager = FindAnyObjectByType<VehicleManager>();
@@ -20,8 +22,8 @@ public class HitboxSpawner : MonoBehaviour
 
     void Update()
     {
-        if (started < 2) { return; }
-        timerText.GetComponent<timer>().StartGame();
+        if (!leftWrenchOn || !rightWrenchOn) { return; }
+        timerText.GetComponent<Timer>().StartGame();
         if (timer > beat)
         {
             int num = Random.Range(0, 4);
@@ -35,9 +37,10 @@ public class HitboxSpawner : MonoBehaviour
         }
         timer += Time.deltaTime;
     }
-    public void PickUp()
+    public void PickUp(bool isLeft)
     {
-        started++;
+        if (isLeft){ leftWrenchOn = true; }
+        else { rightWrenchOn = true; }
     }
     private void PlaySound()
     {
