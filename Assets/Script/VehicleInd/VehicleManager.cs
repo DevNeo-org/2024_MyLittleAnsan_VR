@@ -1,34 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class VehicleManager : MonoBehaviour
 {
-    [SerializeField] GameObject menu;
-    [SerializeField] GameObject timerUI;
+    [SerializeField] GameObject menu; // 일시정지 메뉴
+    [SerializeField] GameObject resultMenu; // 결과창
+    [SerializeField] GameObject timerUI; // 타이머, 점수 UI
     [SerializeField] GameObject leftRayController;
     [SerializeField] GameObject rightRayController;
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] private GameObject leftWrench;
     [SerializeField] private GameObject rightWrench;
+    [SerializeField] TextMeshPro scoreText;
 
+    Timer timer;
     HitboxSpawner spawner;
     private int score;
     private bool isMenuOn = false;
+    private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager dataManager;
     void Start()
     {
         score = 0;
         dataManager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
+        resultMenu.SetActive(false);
         spawner = FindAnyObjectByType<HitboxSpawner>();
+        timer = FindAnyObjectByType<Timer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameEnd) return;
+        gameEnd = timer.GetBool();
+        if (gameEnd) // 시간 종료 첫 확인 시 실행
+        {
+            OpenMenu();
+            resultMenu.SetActive(true);
+            rightRayController.SetActive(true);
+        }
         if (!isMenuOn)
         {
             if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
@@ -51,15 +66,21 @@ public class VehicleManager : MonoBehaviour
     public void ScorePlus()
     {
         score++;
+        scoreText.text = "점수: " + score.ToString();
     }
     public int GetScore()
     {
         return score;
     }
-    public void LoadScene()
+    public void LoadTitle()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
+    }
+    public void LoadCityScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("CityDesign");
     }
     public void RestartScene()
     {

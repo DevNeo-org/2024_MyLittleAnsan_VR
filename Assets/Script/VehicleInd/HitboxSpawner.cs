@@ -23,7 +23,7 @@ public class HitboxSpawner : MonoBehaviour
     void Update()
     {
         if (!leftWrenchOn || !rightWrenchOn) { return; }
-        timerText.GetComponent<timer>().StartGame();
+        timerText.GetComponent<Timer>().StartGame();
         if (timer > beat)
         {
             int num = Random.Range(0, 4);
