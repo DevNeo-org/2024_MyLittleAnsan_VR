@@ -20,6 +20,7 @@ public class Whiteboard : MonoBehaviour
         var r = GetComponent<Renderer>();
         texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
         r.material.mainTexture = texture;
+        r.material.color = new Color(211 / (float)256, 210 / (float)256, 187 / (float)256, 20 / (float)256);
     }
 
     void OnParticleCollision(GameObject other)
