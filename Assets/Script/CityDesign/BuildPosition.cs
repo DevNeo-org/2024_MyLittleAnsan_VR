@@ -28,7 +28,8 @@ public class BuildPosition : MonoBehaviour
         //토큰이 있는지 확인
         if (Collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
-            
+            //효과음 재생
+            gameManager.GetComponent<AudioManager>().PlaySound(2);
             //건설 이펙트
             playBuildEffect();
             //햅틱 실행
