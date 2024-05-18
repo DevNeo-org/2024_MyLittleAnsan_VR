@@ -9,7 +9,6 @@ public class HitboxSpawner : MonoBehaviour
     public Transform[] finalPoints;
     private float beat = 2f;
     private float timer = 0;
-    private int started = 0;
     private VehicleManager vehicleManager;
     private GameObject timerText;
     public bool leftWrenchOn = false;
