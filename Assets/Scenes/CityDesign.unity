@@ -1826,6 +1826,7 @@ MonoBehaviour:
   isBuildComplete: 0
   gameManager: {fileID: 836758516}
   dataManager: {fileID: 1620122555}
+  dialogManager: {fileID: 2116046782}
   buildEffect: {fileID: 8919484260529707530, guid: 2c27f6103c8348844a3cc636de15052a,
     type: 3}
   buildEffectPrefab: {fileID: 8919484260529707532, guid: 2c27f6103c8348844a3cc636de15052a,
@@ -6041,6 +6042,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2cc59136d903eed44a9abe0c3b52c3d5,
     type: 3}
   m_PrefabInstance: {fileID: 541900383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &573349376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1324937105011838827, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 66675607847365638}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &581534633
 PrefabInstance:
@@ -15223,6 +15230,7 @@ MonoBehaviour:
   isBuildComplete: 0
   gameManager: {fileID: 836758516}
   dataManager: {fileID: 1620122555}
+  dialogManager: {fileID: 2116046782}
   buildEffect: {fileID: 8919484260529707530, guid: 2c27f6103c8348844a3cc636de15052a,
     type: 3}
   buildEffectPrefab: {fileID: 8919484260529707532, guid: 2c27f6103c8348844a3cc636de15052a,
@@ -18777,6 +18785,7 @@ MonoBehaviour:
   isBuildComplete: 0
   gameManager: {fileID: 836758516}
   dataManager: {fileID: 1620122555}
+  dialogManager: {fileID: 2116046782}
   buildEffect: {fileID: 8919484260529707530, guid: 2c27f6103c8348844a3cc636de15052a,
     type: 3}
   buildEffectPrefab: {fileID: 8919484260529707532, guid: 2c27f6103c8348844a3cc636de15052a,
@@ -19045,6 +19054,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2108002005}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2116046782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6443446778450814019, guid: 1c9526cb49e2e25498d70411c733b8bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2291817297307848417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137202191
 GameObject:
   m_ObjectHideFlags: 0
@@ -19247,6 +19262,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50670119064761094, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50670119064761094, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50670119064761094, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5597809243025842358, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19297,6 +19327,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6324838734473451059, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324838734473451059, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324838734473451059, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8588289149934279041, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
       propertyPath: m_Name
@@ -19307,6 +19352,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d, type: 3}
+--- !u!1 &66675607847365639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1921187466895775015, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 66675607847365638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &66675607847365640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185537461246953285, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 66675607847365638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &66675607847365641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6278253224750258402, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 66675607847365638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &183198392349678124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19993,9 +20056,39 @@ PrefabInstance:
       objectReference: {fileID: 1170581400}
     - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
         type: 3}
+      propertyPath: explainUI
+      value: 
+      objectReference: {fileID: 573349376}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
+      propertyPath: buildModUI
+      value: 
+      objectReference: {fileID: 66675607847365639}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 1779083021}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
+      propertyPath: gameClearUI
+      value: 
+      objectReference: {fileID: 66675607847365641}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
+      propertyPath: buttonselectUI
+      value: 
+      objectReference: {fileID: 573349376}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
+      propertyPath: selectButtonUI_1
+      value: 
+      objectReference: {fileID: 573349376}
+    - target: {fileID: 6430319741694209466, guid: 1c9526cb49e2e25498d70411c733b8bb,
+        type: 3}
+      propertyPath: selectButtonUI_2
+      value: 
+      objectReference: {fileID: 66675607847365640}
     - target: {fileID: 6443446778450814019, guid: 1c9526cb49e2e25498d70411c733b8bb,
         type: 3}
       propertyPath: m_Name
