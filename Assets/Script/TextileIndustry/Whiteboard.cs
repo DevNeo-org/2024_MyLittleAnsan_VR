@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Whiteboard : MonoBehaviour
 {
+    private int curColorCode = 0;
     public ParticleSystem Particulas;
-    public Player player;
+    public Gun gun;
     public GameObject board;
 
     public List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
@@ -19,6 +20,7 @@ public class Whiteboard : MonoBehaviour
         var r = GetComponent<Renderer>();
         texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
         r.material.mainTexture = texture;
+        r.material.color = new Color(211 / (float)256, 210 / (float)256, 187 / (float)256, 20 / (float)256);
     }
 
     void OnParticleCollision(GameObject other)
@@ -29,9 +31,13 @@ public class Whiteboard : MonoBehaviour
         foreach (ParticleCollisionEvent collisionEvent in collisionEvents) // for each collision, do the following:
         {
             Vector3 pos = collisionEvent.intersection;
-            particleManager.PlayParticle(0, pos);
-            player.Draw();
+            particleManager.PlayParticle(curColorCode, pos);
+            gun.Draw();
         }
+    }
 
+    public void ChangeCode(int code)
+    {
+        curColorCode = code;
     }
 }
