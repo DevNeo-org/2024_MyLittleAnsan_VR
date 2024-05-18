@@ -40,8 +40,12 @@ public class VehicleManager : MonoBehaviour
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            if (score >= 10)
+            {
+                dataManager.SetClear();
+                resultMenu.SetActive(true);
+            }
             OpenMenu();
-            resultMenu.SetActive(true);
             rightRayController.SetActive(true);
         }
         if (!isMenuOn)
@@ -56,11 +60,6 @@ public class VehicleManager : MonoBehaviour
                 OpenMenu();
                 leftRayController.SetActive(true);
             }
-        }
-        if (score > 10)
-        {
-            dataManager.SetClear();
-            //carClear = true;
         }
     }
     public void ScorePlus()
