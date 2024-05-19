@@ -46,18 +46,18 @@ public class Gun : MonoBehaviour
     {
         // input 
 
-        /* if (Get(Button.PrimaryIndexTrigger))
+        if (Get(Button.PrimaryIndexTrigger) && Time.time > nextShoot)
+        {
+            nextShoot = Time.time + shootRate;
+            Shoot();
+        }
+
+        /* if (Input.GetMouseButtonDown(0) && Time.time > nextShoot)
         {
             nextShoot = Time.time + shootRate;
             Shoot();
         }
         */
-
-        if (Input.GetMouseButtonDown(0) && Time.time > nextShoot)
-        {
-            nextShoot = Time.time + shootRate;
-            Shoot();
-        }
     }
 
     // shoot paint ball
