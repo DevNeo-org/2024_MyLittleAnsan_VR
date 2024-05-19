@@ -29,9 +29,13 @@ public class Gun : MonoBehaviour
 
     public int colorCode;
 
+    private TextileManager textileManager;
+
 
     void Start()
     {
+        textileManager = FindAnyObjectByType<TextileManager>();
+
         gunRenderer = gunObject.GetComponent<Renderer>();
         ballRenderer = ball.GetComponent<Renderer>();
         ballCS = ball.GetComponent<Ball>();
@@ -63,8 +67,11 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
-        paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
+        if (!textileManager.IsMenuOn())
+        {
+            GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
+            paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
+        }
     }
 
     // change color of paint and gun
@@ -80,21 +87,24 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "BlueBucket")
+        if (!textileManager.IsMenuOn())
         {
-            ChangeColor(0);
-        }
-        else if(other.tag == "RedBucket")
-        {
-            ChangeColor(1);
-        }
-        else if (other.tag == "YellowBucket")
-        {
-            ChangeColor(2);
-        }
-        else if (other.tag == "BlackBucket")
-        {
-            ChangeColor(3);
+            if (other.tag == "BlueBucket")
+            {
+                ChangeColor(0);
+            }
+            else if (other.tag == "RedBucket")
+            {
+                ChangeColor(1);
+            }
+            else if (other.tag == "YellowBucket")
+            {
+                ChangeColor(2);
+            }
+            else if (other.tag == "BlackBucket")
+            {
+                ChangeColor(3);
+            }
         }
     }
 }
