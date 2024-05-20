@@ -30,6 +30,12 @@ public class Ball : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 pos = transform.position;
+        if (pos.x < -14 || pos.x > 14 || pos.y < -5 || pos.y > 16 || pos.z < -3 || pos.z > 15)
+        {
+            Destroy(gameObject);
+        }
+
         if (Physics.Raycast(rigid.position, rigid.transform.forward, out _touch, 1f))
         {
             if (_touch.transform.CompareTag("Whiteboard"))
@@ -44,7 +50,7 @@ public class Ball : MonoBehaviour
                 var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (penSize / 2));
                 var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (penSize / 2));
 
-                if (y < 0 || y > _whiteboard.textureSize.y || x < 0 || x > _whiteboard.textureSize.x)
+                if (y < penSize * 4 || y > _whiteboard.textureSize.y - (penSize) * 4 || x < penSize || x > _whiteboard.textureSize.x - 2*(penSize))
                 {
                     return;
                 }

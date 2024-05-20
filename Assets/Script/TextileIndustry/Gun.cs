@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
     {
         // input 
 
-        if (Get(Button.PrimaryIndexTrigger) && Time.time > nextShoot)
+        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
         {
             nextShoot = Time.time + shootRate;
             Shoot();
