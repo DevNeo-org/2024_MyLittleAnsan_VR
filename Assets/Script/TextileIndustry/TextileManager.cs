@@ -16,6 +16,7 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] GameObject paintGun;
+    [SerializeField] GameObject Line;
     [SerializeField] private float delayTime = 30f;
 
     Timer timer;
@@ -31,6 +32,8 @@ public class TextileManager : MonoBehaviour
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
         Invoke("StartDelay", delayTime);
+        leftRayController.SetActive(false); 
+        rightRayController.SetActive(false);
     }
     void Update()
     {
@@ -96,6 +99,7 @@ public class TextileManager : MonoBehaviour
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         paintGun.gameObject.SetActive(true);
+        Line.gameObject.SetActive(true);
     }
     private void OpenMenu()
     {
@@ -104,6 +108,7 @@ public class TextileManager : MonoBehaviour
         isMenuOn = true;
         menu.SetActive(true);
         paintGun.gameObject.SetActive(false);
+        Line.gameObject.SetActive(false);
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
