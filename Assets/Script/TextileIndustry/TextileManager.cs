@@ -19,6 +19,7 @@ public class TextileManager : MonoBehaviour
     [SerializeField] GameObject Line;
     [SerializeField] private float delayTime = 30f;
     [SerializeField] private GameObject closeButton;
+    [SerializeField] private GameObject Timer;
 
     Timer timer;
     DataManager dataManager;
@@ -45,8 +46,10 @@ public class TextileManager : MonoBehaviour
             dataManager.SetClear();
             resultMenu.SetActive(true);
             closeButton.gameObject.SetActive(false);
+            Timer.gameObject.SetActive(false);
             OpenMenu();
             rightRayController.SetActive(true);
+
         }
         if (!isMenuOn)
         {
