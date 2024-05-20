@@ -45,8 +45,9 @@ public class BuildPosition : MonoBehaviour
                 {
                     //건물 모형 사용
                     PlayerPrefs.SetInt(buildingSamples[i], System.Convert.ToInt16(true));
+                    Vector3 buildPos = new Vector3(transform.position.x, transform.position.y - 0.02f, transform.position.z);
                     //건물 생성
-                    Instantiate(builidngPrefabs[i], transform.position, builidngPrefabs[i].transform.rotation);
+                    Instantiate(builidngPrefabs[i],buildPos, builidngPrefabs[i].transform.rotation);
                     //현재 구역 확인
                     string areaName = transform.parent.gameObject.name;
                     for (int j = 0; j < 3 ; j++){
@@ -78,10 +79,6 @@ public class BuildPosition : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
 
     public bool returnBuildComplete()
     {
@@ -95,7 +92,7 @@ public class BuildPosition : MonoBehaviour
         ParticleSystem instantEffect = buildEffectObject.GetComponent<ParticleSystem>();
         //파티클 생성 위치와 크기 설정
         buildEffect.transform.position = transform.position;
-        buildEffect.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+        //buildEffect.transform.localScale = new Vector3(0.056f, 0.056f, 0.056f);
         //파티클 재생
         buildEffect.Play();
     }
