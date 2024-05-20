@@ -11,6 +11,7 @@ public class BuildPosition : MonoBehaviour
 
     public GameObject gameManager;
     public GameObject dataManager;
+    public GameObject dialogManager;
 
     public ParticleSystem buildEffect;
     public GameObject buildEffectPrefab;
@@ -28,14 +29,17 @@ public class BuildPosition : MonoBehaviour
         //토큰이 있는지 확인
         if (Collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
-            
+            //효과음 재생
+            gameManager.GetComponent<AudioManager>().PlaySound(2);
             //건설 이펙트
             playBuildEffect();
             //햅틱 실행
             StartCoroutine(TriggerHaptics());
             //buildPosition에 빌딩 프리팹 생성
             string bulidingType = Collider.gameObject.name;
-            for(int i = 0; i<5; i++)
+            //버튼을 누르세요 UI 활성화
+            dialogManager.GetComponent<DialogManager>().ActiveUI();
+            for (int i = 0; i<5; i++)
             {
                 if (SampleNames[i] == bulidingType)
                 {
@@ -69,6 +73,7 @@ public class BuildPosition : MonoBehaviour
             {
                 gameManager.GetComponent<Lobby>().playCompleteEffect();
                 Debug.Log("게임 클리어");
+                dialogManager.GetComponent<DialogManager>().SetClearUI();
             }
         }
     }

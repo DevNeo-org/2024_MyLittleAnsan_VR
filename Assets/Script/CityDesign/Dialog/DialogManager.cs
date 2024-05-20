@@ -21,6 +21,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogText;
     //텍스트 출력 딜레이
     [SerializeField] float textDelay;
+    //안내 UI
+    [SerializeField] GameObject selectButtonUI_1;
+    [SerializeField] GameObject buildModUI;
+    [SerializeField] GameObject selectButtonUI_2;
+    [SerializeField] GameObject gameClearUI;
 
     Dialogue[] dialogues;
     bool isNext = false;
@@ -30,14 +35,6 @@ public class DialogManager : MonoBehaviour
     bool isDialogue = false;
     bool isTyping = false;
 
-
-    void Start()
-    {
-        //대화 내용 딕셔너리에 저장
-        
-            
-        
-    }
     void Awake()
     {
         DialogParser theParser = GetComponent<DialogParser>();
@@ -48,12 +45,19 @@ public class DialogManager : MonoBehaviour
         }
         isFinish = true;
 
+        //처음 시작일 때
         if (!System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
             int sceneNum = SceneManager.GetActiveScene().buildIndex;
             dialogUI.SetActive(true);
             isDialogue = true;
             ShowDialogue(GetDialogue(sceneNum));
+        }
+        else
+        {
+            int sceneNum = SceneManager.GetActiveScene().buildIndex;
+            if (sceneNum == 1)
+                buildModUI.SetActive(true);
         }
 
         
@@ -88,6 +92,7 @@ public class DialogManager : MonoBehaviour
                         {
                             //dialogText.text = "앞에 있는 버튼을 눌러보세요";
                             EndDialogue();
+                            ShowHowSelectButton();
                         }
                     }
                 }
@@ -141,6 +146,23 @@ public class DialogManager : MonoBehaviour
         isTyping = false;
 
         yield return null;
+    }
+
+    public void ShowHowSelectButton()
+    {
+        selectButtonUI_1.SetActive(true);
+    }
+
+    public void ActiveUI()
+    {
+        selectButtonUI_2.SetActive(true);
+        buildModUI.SetActive(false);
+    }
+    public void SetClearUI()
+    {
+        gameClearUI.SetActive(true);
+        buildModUI.SetActive(false);
+        selectButtonUI_2.SetActive(false);
     }
 
 }
