@@ -12,7 +12,7 @@ public class buildingGrapped : MonoBehaviour
     private void OnTriggerEnter(Collider Collider)
     {
         //땅과 충돌할 때 효과음 재생
-        if(Collider.gameObject.name == "Table")
-            gameManager.GetComponent<AudioManager>().PlaySound(3);
+        //if (Collider.gameObject.name == "Table")
+        //    gameManager.GetComponent<AudioManager>().PlaySound(3);
     }
 }

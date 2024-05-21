@@ -99,7 +99,7 @@ public class Lobby : MonoBehaviour
             {
                 buttonObjects[i].SetActive(false);
             }
-            //1. 구역에 건물이 건설되어있다면 구역오브젝트 비활성화
+            //1. 구역에 건물이 건설되어있다면 구역 오브젝트 비활성화
             //2. 해당 구역에 건설된 건물 프리팹 생성
             if (areaBuild[i] != 0)
             {
