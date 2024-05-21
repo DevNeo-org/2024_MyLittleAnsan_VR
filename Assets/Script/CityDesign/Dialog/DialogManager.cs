@@ -13,7 +13,6 @@ public class DialogManager : MonoBehaviour
 
     public static bool isFinish = false;
 
-
     [SerializeField] DialogueEvent dialogue;
     //대화창
     [SerializeField] GameObject dialogUI;
@@ -22,10 +21,12 @@ public class DialogManager : MonoBehaviour
     //텍스트 출력 딜레이
     [SerializeField] float textDelay;
     //안내 UI
-    [SerializeField] GameObject selectButtonUI_1;
-    [SerializeField] GameObject buildModUI;
-    [SerializeField] GameObject selectButtonUI_2;
-    [SerializeField] GameObject gameClearUI;
+    [SerializeField] GameObject ManualUI;
+    [SerializeField] GameObject buildManualUI;
+    [SerializeField] GameObject nextButton;
+    //ray컨트롤러
+    [SerializeField] GameObject leftRayController;
+    [SerializeField] GameObject rightRayController;
 
     Dialogue[] dialogues;
     bool isNext = false;
@@ -57,7 +58,7 @@ public class DialogManager : MonoBehaviour
         {
             int sceneNum = SceneManager.GetActiveScene().buildIndex;
             if (sceneNum == 1)
-                buildModUI.SetActive(true);
+                buildManualUI.SetActive(true);
         }
 
         
@@ -72,7 +73,6 @@ public class DialogManager : MonoBehaviour
             {
                 if (!isTyping)
                 {
-                    isTyping = true;
                     isNext = false;
                     //대화 텍스트 비우기
                     dialogText.text = "";
@@ -90,11 +90,11 @@ public class DialogManager : MonoBehaviour
                         }
                         else//대화가 모두 끝났을 경우
                         {
-                            //dialogText.text = "앞에 있는 버튼을 눌러보세요";
                             EndDialogue();
-                            ShowHowSelectButton();
+                            ShowManualUI();
                         }
                     }
+                
                 }
             }
         }
@@ -124,6 +124,10 @@ public class DialogManager : MonoBehaviour
 
     public void ShowDialogue(Dialogue[] p_dialogues)
     {
+        //rayInteraction 활성화
+        leftRayController.SetActive(true); 
+        rightRayController.SetActive(true);
+
         dialogText.text = "";
 
         dialogues = p_dialogues;
@@ -133,36 +137,52 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator TypeWriter()//텍스트를 출력하는 코루틴
     {
+        isTyping = true;
         string t_ReplaceText = dialogues[lineCount].contexts[contextCount];
-        //t_ReplaceText = t_ReplaceText.Replace("'", ","); //'을 ,로 치환
         for (int i = 0; i < t_ReplaceText.Length; i++)
         {
             dialogText.text += t_ReplaceText[i];
             //글자 출력 간 딜레이
             yield return new WaitForSeconds(textDelay);
         }
-        //대사가 끝나면 다음 대사로
-        isNext = true;
+        nextButton.SetActive(true);
         isTyping = false;
-
         yield return null;
     }
 
-    public void ShowHowSelectButton()
+    //버튼을 누르면 다음 대사로
+    public void skipLine()
     {
-        selectButtonUI_1.SetActive(true);
+        isNext = true;
+        nextButton.SetActive(false);
     }
 
-    public void ActiveUI()
+    public void ShowManualUI()
     {
-        selectButtonUI_2.SetActive(true);
-        buildModUI.SetActive(false);
+        ManualUI.SetActive(true);
+    }
+    public void CloseManualUI()
+    {
+        ManualUI.SetActive(false);
+        //rayInteraction 비활성화
+        leftRayController.SetActive(false);
+        rightRayController.SetActive(false);
+    }
+
+    public void ShowSelectButtonUI()
+    {
+        dialogUI.SetActive(true);
+        nextButton.SetActive(false);
+        dialogText.text = "버튼을 눌러 체험을 선택하세요";
+        buildManualUI.SetActive(false);
     }
     public void SetClearUI()
     {
-        gameClearUI.SetActive(true);
-        buildModUI.SetActive(false);
-        selectButtonUI_2.SetActive(false);
+        buildManualUI.SetActive(false);
+        dialogUI.SetActive(true);
+        nextButton.SetActive(false);
+        dialogText.text = "게임 클리어!";
     }
+    
 
 }
