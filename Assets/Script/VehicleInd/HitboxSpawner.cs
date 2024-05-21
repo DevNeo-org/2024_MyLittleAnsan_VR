@@ -6,6 +6,7 @@ public class HitboxSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] hitboxPrefab;
     [SerializeField] Transform[] points;
+    [SerializeField] GameObject finalPointObject;
     public Transform[] finalPoints;
     private float beat = 2f;
     private float timer = 0;
@@ -22,6 +23,7 @@ public class HitboxSpawner : MonoBehaviour
     void Update()
     {
         if (!leftWrenchOn || !rightWrenchOn) { return; }
+        finalPointObject.SetActive(true);
         timerText.GetComponent<Timer>().StartGame();
         if (timer > beat)
         {

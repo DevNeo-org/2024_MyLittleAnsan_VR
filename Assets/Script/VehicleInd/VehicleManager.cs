@@ -46,7 +46,17 @@ public class VehicleManager : MonoBehaviour
                 resultMenu.SetActive(true);
             }
             OpenMenu();
+            menu.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false); // 일시정지 메뉴의 CloseButton 제거
             rightRayController.SetActive(true);
+        }
+        else if (score >= 20) // 20점 획득 시 종료
+        {
+            dataManager.SetClear();
+            resultMenu.SetActive(true);
+            OpenMenu();
+            menu.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false); // 일시정지 메뉴의 CloseButton 제거
+            rightRayController.SetActive(true);
+            gameEnd = true;
         }
         if (!isMenuOn)
         {
