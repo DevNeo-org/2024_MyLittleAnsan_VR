@@ -47,7 +47,6 @@ public class Soldering : MonoBehaviour
     }
     IEnumerator TriggerHaptics()
     {
-        yield return new WaitForSeconds(1f);
         OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
         yield return new WaitForSeconds(1f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
