@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HitboxSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] hitboxPrefab;
-    [SerializeField] Transform[] points;
-    [SerializeField] GameObject finalPointObject;
-    public Transform[] finalPoints;
-    private float beat = 2f;
+    [SerializeField] GameObject hitboxPrefab; // 히트박스 적용
+    [SerializeField] Transform[] points; // 시작 위치
+    [SerializeField] GameObject finalPointObject; // 최종 위치 부모 오브젝트
+    public Transform[] finalPoints; // 최종 위치
+    private float beat = 2f; // 히트박스 소환 주기
     private float timer = 0;
     private VehicleManager vehicleManager;
     private GameObject timerText;
@@ -22,13 +22,13 @@ public class HitboxSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!leftWrenchOn || !rightWrenchOn) { return; }
+        if (!leftWrenchOn || !rightWrenchOn) { return; } // 렌치가 들려있지 않을 시 return
         finalPointObject.SetActive(true);
         timerText.GetComponent<Timer>().StartGame();
         if (timer > beat)
         {
-            int num = Random.Range(0, 4);
-            GameObject hitbox = Instantiate(hitboxPrefab[0], points[num]);
+            int num = Random.Range(0, 4); // 랜덤으로 스폰 위치 설정
+            GameObject hitbox = Instantiate(hitboxPrefab, points[num]);
             hitbox.transform.localPosition = Vector3.zero;
             hitbox.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
             hitbox.GetComponent<HitboxMovement>().SetFinalPoint(num);

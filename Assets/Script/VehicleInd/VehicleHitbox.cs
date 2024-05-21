@@ -27,7 +27,7 @@ public class VehicleHitbox : MonoBehaviour
             return 1;
         }
     }
-    private void CorrectEffectPlay()
+    private void CorrectEffectPlay() // Á¡¼ö È¹µæ ¼º°ø ÀÌÆåÆ®
     {
         finalPoint = transform.parent.GetComponent<HitboxMovement>().GetFinalPoint();
         //ÆÄÆ¼Å¬ÇÁ¸®ÆÕ »ý¼º
@@ -41,7 +41,7 @@ public class VehicleHitbox : MonoBehaviour
         instantEffect.Play();
         Destroy(instateEffectObj, 1f);
     }
-    private void WrongEffectPlay()
+    private void WrongEffectPlay() // Á¡¼ö È¹µæ ½ÇÆÐ ÀÌÆåÆ®
     {
         //ÆÄÆ¼Å¬ÇÁ¸®ÆÕ »ý¼º
         instateEffectObj = Instantiate(wrongEffectPrefab, transform.position, Quaternion.identity);

@@ -60,12 +60,12 @@ public class VehicleManager : MonoBehaviour
         }
         if (!isMenuOn)
         {
-            if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
+            if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two)) // 우측 컨트롤러의 A,B 버튼
             {
                 OpenMenu();
                 rightRayController.SetActive(true);
             }
-            else if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+            else if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four)) // 좌측 컨트롤러의 X,Y 버튼
             {
                 OpenMenu();
                 leftRayController.SetActive(true);
@@ -81,22 +81,22 @@ public class VehicleManager : MonoBehaviour
     {
         return score;
     }
-    public void LoadTitle()
+    public void LoadTitle() // 메인메뉴 로드
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
     }
-    public void LoadCityScene()
+    public void LoadCityScene() // 도시디자인 씬 로드
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("CityDesign");
     }
-    public void RestartScene()
+    public void RestartScene() // 씬 재시작
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("AutomobIndScene");
     }
-    public void EndGame()
+    public void EndGame() // 게임 종료
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -104,18 +104,18 @@ public class VehicleManager : MonoBehaviour
         Application.Quit(); // 어플리케이션 종료
 #endif
     }
-    public void CloseMenu()
+    public void CloseMenu() // 메뉴 닫기(일시정지 종료)
     {
         timerUI.SetActive(true);
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
-        if (spawner.leftWrenchOn)
+        if (spawner.leftWrenchOn) // 이전에 렌치가 활성화 되어있는지 (좌측)
         {
             leftWrench.gameObject.SetActive(true);
             controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         }
-        if(spawner.rightWrenchOn)
+        if(spawner.rightWrenchOn) // 이전에 렌치가 활성화 되어있는지 (우측)
         {
             rightWrench.gameObject.SetActive(true);
             controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
@@ -129,7 +129,7 @@ public class VehicleManager : MonoBehaviour
         menu.SetActive(true); 
         leftWrench.gameObject.SetActive(false);
         rightWrench.gameObject.SetActive(false);
-        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
+        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand; // 컨트롤러 그래픽 활성화
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
 }
