@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,11 @@ public class ElecManagement : MonoBehaviour
     private float rowposition = -0.19f;
     private float columnposition = 0.18f;
     private GameObject[] circles;
+   
     private Timer timer;
+    private float time = 3f;
+    int randomIndex = -1;
+    int prerandomIndex = -2;
     void Start()
     {
         timer = FindAnyObjectByType<Timer>();
@@ -37,19 +42,30 @@ public class ElecManagement : MonoBehaviour
             }
 
         }
-        InvokeRepeating("ToggleRandomCircle", 3, blinkInterval);
         
-        InvokeRepeating("ToggleRandomCircle", 30, blinkInterval);
-    }
-   
-
-    void ToggleRandomCircle()
-    {
-        int randomIndex = Random.Range(0, 9);
-        GameObject randomCircle = circles[randomIndex];
-        randomCircle.SetActive(true);
         timer.StartGame();
     }
+    private void Update()
+    {
+        
+        time += Time.deltaTime;
+        if (time >= 3f)
+        {
+            randomIndex = Random.Range(0, circles.Length);
+            while(randomIndex == prerandomIndex)
+            {
+                randomIndex = Random.Range(0, circles.Length);
+            }
+            circles[randomIndex].SetActive(true);
+           
+
+            time = 0f; // time 변수를 다시 초기화하여 다음 간격을 기다립니다.
+            prerandomIndex = randomIndex;
+        }
+
+    }
+    
+    
 
 
 
