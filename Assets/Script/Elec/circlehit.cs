@@ -5,23 +5,22 @@ using UnityEngine;
 public class circlehit : MonoBehaviour
 {
     private ElecMenuManagement menuManagement;
-
+    private GameObject[] Circles;
+    
     private void Start()
     {
         menuManagement = FindAnyObjectByType<ElecMenuManagement>();
+        
     }
     public int ObjectHit()
     {
-        StartCoroutine(DeactivateAfterDelay());
-        
+        Debug.Log(gameObject);
+        transform.parent.gameObject.SetActive(false);
+        menuManagement.ScorePlus();
+
         return 0;
     }
 
-    IEnumerator DeactivateAfterDelay()
-    {
-        yield return new WaitForSeconds(1f); // Wait for 1 second
-        gameObject.SetActive(false); // Deactivate the game object
-        menuManagement.ScorePlus();
-    }
+   
 }
 

@@ -12,43 +12,32 @@ public class Soldering : MonoBehaviour
     
     public GameObject particlePrefab;
     private Vector3 particleScale = new Vector3(0.1f, 0.05f, 0.1f);
+    private float enterTime = 0f;
+    private float duration;
+    private float exitTime;
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("circle"))
         {
-           
-            StartCoroutine(TriggerHaptics());
+            enterTime += Time.deltaTime;
+            Debug.Log("trigger time" + enterTime);
+            GameObject particleInstance = Instantiate(particlePrefab, other.transform.position, Quaternion.identity);
+            OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
             if (particlePrefab != null)
             {
-                GameObject particleInstance = Instantiate(particlePrefab, other.transform.position, Quaternion.identity);
                 particleInstance.transform.rotation = Quaternion.Euler(180f, 0f, 0f);
                 particleInstance.transform.localScale = particleScale;
-                
-                Destroy(particleInstance, 1f);
+                Destroy(particleInstance, 0.5f);
             }
-            other.gameObject.GetComponent<circlehit>().ObjectHit();
+            if (enterTime > 1f)
+            {
+                other.gameObject.GetComponent<circlehit>().ObjectHit();
+                OVRInput.SetControllerVibration(0f, 0f, controller);
+                enterTime = 0f;
+            }
         }
-       
     }
-    IEnumerator TriggerHaptics()
-    {
-        OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
-        yield return new WaitForSeconds(1f);
-        OVRInput.SetControllerVibration(0f, 0f, controller);
-    }
+
 }
