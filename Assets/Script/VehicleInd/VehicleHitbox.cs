@@ -12,6 +12,7 @@ public class VehicleHitbox : MonoBehaviour
     private Transform finalPoint;
     public int ObjectHit()
     {
+        transform.parent.GetComponent<HitboxMovement>().StopMovement();
         GetComponent<MeshCollider>().enabled = false;
         if (isCorrect)
         {

@@ -5,9 +5,11 @@ using UnityEngine;
 public class HitboxMovement : MonoBehaviour
 {
     [SerializeField] float force;
+    [SerializeField] private Material[] materials;
     int index; // 부품 그래픽 child 순서
     HitboxSpawner spawner;
     Transform finalPoint;
+    MeshRenderer meshRenderer;
     Vector3 direction;
     Rigidbody rb;
     float rotationSpeedX, rotationSpeedY, rotationSpeedZ;
@@ -30,12 +32,15 @@ public class HitboxMovement : MonoBehaviour
         if ((finalPoint.position - rb.position).magnitude < 0.05)
         {
             finalPoint.GetChild(0).GetChild(0).GetChild(1).GetChild(index).gameObject.SetActive(true); // Sub 오브젝트의 부품 그래픽 활성화
+            meshRenderer.material = materials[0]; // SubObjectColorTrue
             transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = true;
-            Destroy(gameObject, 1f);
+            finalPoint.GetChild(0).GetChild(0).GetComponent<HitPoint>().Deactivate(materials[1]);
+            StartCoroutine(DestroyObject());
         }
         else if ((finalPoint.position - rb.position).magnitude > 0.05)
         {
             finalPoint.GetChild(0).GetChild(0).GetChild(1).GetChild(index).gameObject.SetActive(false);
+            meshRenderer.material = materials[1]; // SubObjectColorFalse
             transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = false;
         }
     }
@@ -43,9 +48,20 @@ public class HitboxMovement : MonoBehaviour
     {
         spawner = FindAnyObjectByType<HitboxSpawner>();
         finalPoint = spawner.finalPoints[num];
+        finalPoint.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        meshRenderer = finalPoint.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+    }
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(1f); // 1초 대기
+        Destroy(gameObject);
     }
     public Transform GetFinalPoint()
     {
         return finalPoint;
+    }
+    public void StopMovement()
+    {
+        rb.velocity = Vector3.zero;
     }
 }

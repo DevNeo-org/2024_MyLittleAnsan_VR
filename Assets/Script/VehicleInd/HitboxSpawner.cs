@@ -14,6 +14,7 @@ public class HitboxSpawner : MonoBehaviour
     private GameObject timerText;
     public bool leftWrenchOn = false;
     public bool rightWrenchOn = false;
+    private int numPast;
     void Start()
     {
         vehicleManager = FindAnyObjectByType<VehicleManager>();
@@ -28,6 +29,11 @@ public class HitboxSpawner : MonoBehaviour
         if (timer > beat)
         {
             int num = Random.Range(0, 4); // 랜덤으로 스폰 위치 설정
+            while (numPast == num)
+            {
+                num = Random.Range(0, 4);
+            }
+            numPast = num;
             GameObject hitbox = Instantiate(hitboxPrefab, points[num]);
             hitbox.transform.localPosition = Vector3.zero;
             hitbox.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
