@@ -21,6 +21,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject board;
 
     [SerializeField] private GameObject ball;
+    public OVRInput.Controller controller;
+    [SerializeField] private float vibSize = 0.5f;
+
     private Ball ballCS;
     private Renderer ballRenderer;
     public float ballSpeed = 15f;
@@ -69,6 +72,7 @@ public class Gun : MonoBehaviour
     {
         if (!textileManager.IsMenuOn())
         {
+            StartCoroutine(ShootTriggerHaptics());
             GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
             paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
         }
@@ -91,20 +95,38 @@ public class Gun : MonoBehaviour
         {
             if (other.tag == "BlueBucket")
             {
+                StartCoroutine(TriggerHaptics());
                 ChangeColor(0);
             }
             else if (other.tag == "RedBucket")
             {
+                StartCoroutine(TriggerHaptics());
                 ChangeColor(1);
             }
             else if (other.tag == "YellowBucket")
             {
+                StartCoroutine(TriggerHaptics());
                 ChangeColor(2);
             }
             else if (other.tag == "BlackBucket")
             {
+                StartCoroutine(TriggerHaptics());
                 ChangeColor(3);
             }
         }
+    }
+
+    IEnumerator TriggerHaptics()
+    {
+        OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
+        yield return new WaitForSeconds(0.5f);
+        OVRInput.SetControllerVibration(0f, 0f, controller);
+    }
+
+    IEnumerator ShootTriggerHaptics()
+    {
+        OVRInput.SetControllerVibration(vibSize, vibSize, controller);
+        yield return new WaitForSeconds(0.3f);
+        OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }

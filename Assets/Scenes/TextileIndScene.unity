@@ -37014,6 +37014,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1119329400}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2029220684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8372784801918452974, guid: 7f541e3f625c90e43ae2dad524eabb1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 770887735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2033875487 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8083374275553239747, guid: bc242319e5f2bd842999ab7665ad2d78,
@@ -37702,11 +37708,16 @@ PrefabInstance:
         type: 3}
       propertyPath: board
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2029220684}
     - target: {fileID: 5509340777156719929, guid: f40972810da31404fae7e4a70994bf59,
         type: 3}
       propertyPath: shootRate
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509340777156719929, guid: f40972810da31404fae7e4a70994bf59,
+        type: 3}
+      propertyPath: controller
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5509340777156719929, guid: f40972810da31404fae7e4a70994bf59,
         type: 3}
