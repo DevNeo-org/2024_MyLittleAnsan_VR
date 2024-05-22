@@ -38,7 +38,7 @@ public class BuildPosition : MonoBehaviour
             //buildPosition에 빌딩 프리팹 생성
             string bulidingType = Collider.gameObject.name;
             //버튼을 누르세요 UI 활성화
-            dialogManager.GetComponent<DialogManager>().ActiveUI();
+            dialogManager.GetComponent<DialogManager>().ShowSelectButtonUI();
             for (int i = 0; i<5; i++)
             {
                 if (SampleNames[i] == bulidingType)
@@ -92,7 +92,7 @@ public class BuildPosition : MonoBehaviour
         ParticleSystem instantEffect = buildEffectObject.GetComponent<ParticleSystem>();
         //파티클 생성 위치와 크기 설정
         buildEffect.transform.position = transform.position;
-        //buildEffect.transform.localScale = new Vector3(0.056f, 0.056f, 0.056f);
+        buildEffect.transform.localScale = new Vector3(0.056f, 0.056f, 0.056f);
         //파티클 재생
         buildEffect.Play();
     }
