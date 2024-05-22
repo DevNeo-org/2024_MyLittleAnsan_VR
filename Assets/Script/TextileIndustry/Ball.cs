@@ -21,6 +21,9 @@ public class Ball : MonoBehaviour
     [SerializeField] Gun gun;
     [SerializeField] Material[] colorMaterial;
 
+    [SerializeField] private int paintSizeRange = 2;
+    [SerializeField] private int paintSize = 2;
+
     void Awake()
     {
         particleManager = particleManage.GetComponent<ParticleManager>();
@@ -50,22 +53,24 @@ public class Ball : MonoBehaviour
                 var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (penSize / 2));
                 var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (penSize / 2));
 
-                if (y < penSize * 4 || y > _whiteboard.textureSize.y - (penSize) * 4 || x < penSize || x > _whiteboard.textureSize.x - 2*(penSize))
+                if (y < penSize * (paintSizeRange + 2) 
+                    || y > _whiteboard.textureSize.y - (penSize) * (paintSizeRange + 2) 
+                    || x < penSize * (paintSizeRange + 2)
+                    || x > _whiteboard.textureSize.x - (penSize) * (paintSizeRange+2))
                 {
                     return;
                 }
 
-                for (int i = -1; i <= 1; i++)
+                for (int i = (-1)*paintSize; i <= paintSize; i++)
                 {
-                    for (int j = -2; j <= 2; j++)
+                    for (int j = (-1) * paintSize; j <= paintSize; j++)
                     {
-                        _whiteboard.texture.SetPixels(x + i * (penSize), y + j * (penSize), penSize, penSize, _color);
+                        if (i * i + j * j <= paintSizeRange*paintSizeRange)
+                        {
+                            _whiteboard.texture.SetPixels(x + i * (penSize), y + j * (penSize), penSize, penSize, _color);
+                        }
                     }
                 }
-                _whiteboard.texture.SetPixels(x + (penSize) / 2, y + 3 * (penSize), penSize, penSize, _color);
-                _whiteboard.texture.SetPixels(x - (penSize) / 2, y + 3 * (penSize), penSize, penSize, _color);
-                _whiteboard.texture.SetPixels(x + (penSize) / 2, y - 3 * (penSize), penSize, penSize, _color);
-                _whiteboard.texture.SetPixels(x - (penSize) / 2, y - 3 * (penSize), penSize, penSize, _color);
 
                 _whiteboard.texture.Apply();
 

@@ -20,9 +20,13 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private float delayTime = 30f;
     [SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject Timer;
+    [SerializeField] ParticleSystem shine;
+    [SerializeField] private GameObject[] celebrates;
+    [SerializeField] private GameObject[] buckets;
 
     Timer timer;
     DataManager dataManager;
+    Clothes clothes;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
 
@@ -30,6 +34,7 @@ public class TextileManager : MonoBehaviour
     private void Start()
     {
         dataManager = FindAnyObjectByType<DataManager>();
+        clothes = FindAnyObjectByType<Clothes>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
@@ -43,13 +48,24 @@ public class TextileManager : MonoBehaviour
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            for (int i=0; i < celebrates.Length; i++)
+            {
+                ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
+                p.Play();
+            }
+            for (int i=0; buckets.Length > i; i++)
+            {
+                Animator anim = buckets[i].GetComponent<Animator>();
+                anim.SetBool("isClear", true);
+            }
             dataManager.SetClear();
             resultMenu.SetActive(true);
             closeButton.gameObject.SetActive(false);
             Timer.gameObject.SetActive(false);
+            shine.Stop();
             OpenMenu();
             rightRayController.SetActive(true);
-
+            clothes.PlayAnim();
         }
         if (!isMenuOn)
         {
