@@ -12,6 +12,6 @@ public class Whiteboard : MonoBehaviour
         var r = GetComponent<Renderer>();
         texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
         r.material.mainTexture = texture;
-        r.material.color = new Color (195/(float)256, 201 / (float)256, 213 / (float)256, 78 / (float)256);
+        r.material.color = new Color (236/(float)255, 243 / (float)255, 255 / (float)255, 60 / (float)255);
     }
 }
