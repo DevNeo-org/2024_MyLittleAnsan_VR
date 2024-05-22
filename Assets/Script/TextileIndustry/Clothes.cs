@@ -14,11 +14,12 @@ public class Clothes : MonoBehaviour
     {
         Time.timeScale = 1;
         anim.SetBool("isClear", true);
-        Invoke("PauseGame", 3f);
+        Invoke("PauseGame", 5f);
     }
 
     private void PauseGame()
     {
         Time.timeScale = 0;
     }
+
 }

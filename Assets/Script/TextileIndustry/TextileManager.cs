@@ -21,6 +21,8 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject Timer;
     [SerializeField] ParticleSystem shine;
+    [SerializeField] private GameObject[] celebrates;
+    [SerializeField] private GameObject[] buckets;
 
     Timer timer;
     DataManager dataManager;
@@ -46,6 +48,16 @@ public class TextileManager : MonoBehaviour
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            for (int i=0; i < celebrates.Length; i++)
+            {
+                ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
+                p.Play();
+            }
+            for (int i=0; buckets.Length > i; i++)
+            {
+                Animator anim = buckets[i].GetComponent<Animator>();
+                anim.SetBool("isClear", true);
+            }
             dataManager.SetClear();
             resultMenu.SetActive(true);
             closeButton.gameObject.SetActive(false);

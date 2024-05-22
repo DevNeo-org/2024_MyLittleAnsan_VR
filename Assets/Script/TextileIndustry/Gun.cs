@@ -22,7 +22,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private GameObject ball;
     public OVRInput.Controller controller;
-    [SerializeField] private float vibSize = 0.5f;
+    [SerializeField] private float vibSize = 0.2f;
 
     private Ball ballCS;
     private Renderer ballRenderer;
@@ -126,7 +126,7 @@ public class Gun : MonoBehaviour
     IEnumerator ShootTriggerHaptics()
     {
         OVRInput.SetControllerVibration(vibSize, vibSize, controller);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }
