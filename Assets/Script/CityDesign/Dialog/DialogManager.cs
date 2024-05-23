@@ -35,6 +35,7 @@ public class DialogManager : MonoBehaviour
     public GameObject dialog;
     bool isDialogue = false;
     bool isTyping = false;
+    private bool gamestart = false;
 
     void Awake()
     {
@@ -120,6 +121,7 @@ public class DialogManager : MonoBehaviour
         lineCount = 0;
         dialogues = null;
         isNext = false;
+        gamestart = true;
     }
 
     public void ShowDialogue(Dialogue[] p_dialogues)
@@ -156,6 +158,11 @@ public class DialogManager : MonoBehaviour
         isNext = true;
         nextButton.SetActive(false);
     }
+    public bool SendOnDialog()
+    {
+        return isDialogue;
+    }
+
 
     public void ShowManualUI()
     {
@@ -183,6 +190,9 @@ public class DialogManager : MonoBehaviour
         nextButton.SetActive(false);
         dialogText.text = "게임 클리어!";
     }
-    
+    public bool SendStart()
+    {
+        return gamestart;
+    }
 
 }

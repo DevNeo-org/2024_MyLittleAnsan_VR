@@ -12,14 +12,16 @@ public class ElecManagement : MonoBehaviour
     private float rowposition = -0.19f;
     private float columnposition = 0.18f;
     private GameObject[] circles;
-   
+    private DialogManager dialogManager;
     private Timer timer;
     private float time = 3f;
     int randomIndex = -1;
     int prerandomIndex = -2;
+    bool startgame;
     void Start()
     {
         timer = FindAnyObjectByType<Timer>();
+        dialogManager = FindAnyObjectByType<DialogManager>();
         circles = new GameObject[9];
         for (int i = 0; i < 9; i++)
         {
@@ -43,26 +45,29 @@ public class ElecManagement : MonoBehaviour
 
         }
         
-        timer.StartGame();
     }
     private void Update()
     {
-        
-        time += Time.deltaTime;
-        if (time >= 3f)
+        startgame = dialogManager.SendStart();
+       
+        if (startgame)
         {
-            randomIndex = Random.Range(0, circles.Length);
-            while(randomIndex == prerandomIndex)
+            timer.StartGame();
+            time += Time.deltaTime;
+            if (time >= 3f)
             {
                 randomIndex = Random.Range(0, circles.Length);
+                while (randomIndex == prerandomIndex)
+                {
+                    randomIndex = Random.Range(0, circles.Length);
+                }
+                circles[randomIndex].SetActive(true);
+
+
+                time = 0f; // time 변수를 다시 초기화하여 다음 간격을 기다립니다.
+                prerandomIndex = randomIndex;
             }
-            circles[randomIndex].SetActive(true);
-           
-
-            time = 0f; // time 변수를 다시 초기화하여 다음 간격을 기다립니다.
-            prerandomIndex = randomIndex;
         }
-
     }
     
     
