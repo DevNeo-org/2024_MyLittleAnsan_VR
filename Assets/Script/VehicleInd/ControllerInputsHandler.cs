@@ -13,10 +13,11 @@ public class ControllerInputsHandler : MonoBehaviour // 렌치 그랩 스크립트
     [SerializeField] private bool isLeft;
     private GrabInteractable grabInteractable;
     private HitboxSpawner hitboxSpawner;
-    
+    private VehicleManager vehicleManager;
     private void Start()
     {
         hitboxSpawner = FindAnyObjectByType<HitboxSpawner>();
+        vehicleManager = FindAnyObjectByType<VehicleManager>();
     }
     private void Update()
     {
@@ -27,7 +28,7 @@ public class ControllerInputsHandler : MonoBehaviour // 렌치 그랩 스크립트
         }
         if (grabInteractable == null) // 그랩했을 경우(렌치)
         {
-            if (Time.timeScale == 0) { return; } // 일시정지 상태일 경우 그랩 비활성
+            if (vehicleManager.IsRayControllerOn()) { return; } // 레이 컨트롤러 켜져 있을 경우 그랩 비활성화
             wrench.gameObject.SetActive(true);
             hitboxSpawner.PickUp(isLeft);
             controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand; // 컨트롤러 그래픽 비활성화

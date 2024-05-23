@@ -51,12 +51,8 @@ public class VehicleManager : MonoBehaviour
         }
         else if (score >= 20) // 20점 획득 시 종료
         {
-            dataManager.SetClear();
-            resultMenu.SetActive(true);
-            OpenMenu();
-            menu.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false); // 일시정지 메뉴의 CloseButton 제거
-            rightRayController.SetActive(true);
             gameEnd = true;
+            Invoke("GameClear", 1f);
         }
         if (!isMenuOn)
         {
@@ -131,5 +127,17 @@ public class VehicleManager : MonoBehaviour
         rightWrench.gameObject.SetActive(false);
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand; // 컨트롤러 그래픽 활성화
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
+    }
+    private void GameClear()
+    {
+        dataManager.SetClear();
+        resultMenu.SetActive(true);
+        OpenMenu();
+        menu.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false); // 일시정지 메뉴의 CloseButton 제거
+        rightRayController.SetActive(true);
+    }
+    public bool IsRayControllerOn()
+    {
+        return leftRayController.activeSelf || rightRayController.activeSelf;
     }
 }
