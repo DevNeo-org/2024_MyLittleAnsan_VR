@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         // 시간을 분과 초로 변환
         
         int seconds = Mathf.FloorToInt(timeInSeconds % 60);
-        if (seconds < 0)
+        if (seconds <= 0)
         {
             TimeOver();
             return;
@@ -46,9 +46,6 @@ public class Timer : MonoBehaviour
     {
         return timeOver;
     }
-    public bool SendStartGame()
-    {
-        return gameStart;
-    }
+    
 }
 
