@@ -69,6 +69,10 @@ public class DialogManager : MonoBehaviour
         //대화 중인지 확인
         if (isDialogue)
         {
+            //rayInteraction 활성화
+            leftRayController.SetActive(true);
+            rightRayController.SetActive(true);
+
             //다음 대사로 넘어갈 경우
             if (isNext)
             {
@@ -126,10 +130,6 @@ public class DialogManager : MonoBehaviour
 
     public void ShowDialogue(Dialogue[] p_dialogues)
     {
-        //rayInteraction 활성화
-        leftRayController.SetActive(true); 
-        rightRayController.SetActive(true);
-
         dialogText.text = "";
 
         dialogues = p_dialogues;

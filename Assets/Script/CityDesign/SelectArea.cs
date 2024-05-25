@@ -20,6 +20,14 @@ public class selectArea : MonoBehaviour
         
     }
 
+    void OnTriggerStay(Collider collider)
+    {
+        if (collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
+        {
+            OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
+        }
+    }
+
     //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 없을 때
     private void OnTriggerExit(Collider collider)
     {
@@ -28,6 +36,7 @@ public class selectArea : MonoBehaviour
             //선택 효과 파티클 정지 및 삭제
             effect.Stop();
             Destroy(instateEffectObj);
+            OVRInput.SetControllerVibration(0f, 0f, controller);
         }
           
     }
@@ -39,11 +48,11 @@ public class selectArea : MonoBehaviour
         ParticleSystem instantEffect = instateEffectObj.GetComponent<ParticleSystem>();
         //파티클 생성 위치와 크기 설정
         effect.transform.position = transform.position;
-        effect.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+        effect.transform.localScale = new Vector3(0.056f, 0.056f, 0.056f);
         //파티클 재생
         effect.Play();
         //햅틱 실행
-        StartCoroutine(TriggerHaptics());
+        //StartCoroutine(TriggerHaptics());
     }
 
     //햅틱
