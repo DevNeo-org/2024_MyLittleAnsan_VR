@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MainCarObject : MonoBehaviour
 {
-    [SerializeField] int scoreIndex; // 0 또는 10으로 설정
+    [SerializeField] int scoreIndex; // 0 또는 10으로 설정, 0이면 좌측으로 이동하는 애니메이션, 10이면 우측
     VehicleManager vehicleManager;
     int score = 0;
     private Animation anim;
@@ -18,11 +18,10 @@ public class MainCarObject : MonoBehaviour
         vehicleManager = FindAnyObjectByType<VehicleManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         int tmpScore = vehicleManager.GetScore();
-        if (score != tmpScore)
+        if (score != tmpScore) // 점수 변동이 있을 경우
         {
             score = tmpScore;
             if (scoreIndex < score && score - scoreIndex < 9)
