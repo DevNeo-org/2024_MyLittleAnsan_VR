@@ -63,8 +63,8 @@ MonoBehaviour:
     dialogues: []
   dialogUI: {fileID: 0}
   dialogText: {fileID: 0}
-  textDelay: 0.1
-  ManualUI: {fileID: 6443446778450814019}
+  textDelay: 0.05
+  ManualUI: {fileID: 0}
   buildManualUI: {fileID: 0}
   nextButton: {fileID: 0}
   leftRayController: {fileID: 0}
