@@ -18,32 +18,37 @@ public class ElecMenuManagement : MonoBehaviour
     [SerializeField] TextMeshPro scoreText;
 
     Timer timer;
-   
+    DialogManager dialogManager;
     private int score;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager datamanager;
-    private bool gameStart = false;
-
+    
+    private bool dialogOn = true;
     void Start()
     {
         score = 0;
         datamanager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
-       
+        dialogManager = FindAnyObjectByType<DialogManager>();
         timer = FindAnyObjectByType<Timer>();
-        gameStart = timer.SendStartGame();
+       
         
     }
     void Update()
     {
+        dialogOn = dialogManager.SendOnDialog();
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            if (score >= 10)
+            {
+                datamanager.SetClear();
+                resultMenu.SetActive(true);
+            }
             OpenMenu();
-            resultMenu.SetActive(true);
             rightRayController.SetActive(true);
         }
         if (!isMenuOn)
@@ -59,11 +64,7 @@ public class ElecMenuManagement : MonoBehaviour
                 leftRayController.SetActive(true);
             }
         }
-        if (score > 10)
-        {
-            datamanager.SetClear();
-
-        }
+        
     }
     public void ScorePlus()
     {
@@ -102,15 +103,15 @@ public class ElecMenuManagement : MonoBehaviour
         timerUI.SetActive(true);
         Time.timeScale = 1;
         isMenuOn = false;
-        menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
-        if (gameStart)
+        menu.SetActive(false);
+        if (!dialogOn)
         {
-            leftSolder.gameObject.SetActive(true);
-            controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-        
-            rightSolder.gameObject.SetActive(true);
-            controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            leftRayController.SetActive(false);
+            rightRayController.SetActive(false);
         }
+        leftSolder.gameObject.SetActive(true);
+        rightSolder.gameObject.SetActive(true);
+        
     }
     private void OpenMenu()
     {
@@ -120,8 +121,7 @@ public class ElecMenuManagement : MonoBehaviour
         menu.SetActive(true);
         leftSolder.gameObject.SetActive(false);
         rightSolder.gameObject.SetActive(false);
-        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
-        controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
+       
     }
 
    

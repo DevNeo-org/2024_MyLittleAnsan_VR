@@ -29,7 +29,7 @@ public class Soldering : MonoBehaviour
             {
                 particleInstance.transform.rotation = Quaternion.Euler(180f, 0f, 0f);
                 particleInstance.transform.localScale = particleScale;
-                Destroy(particleInstance, 0.5f);
+                Destroy(particleInstance, 0.3f);
             }
             if (enterTime > 1f)
             {
@@ -38,6 +38,15 @@ public class Soldering : MonoBehaviour
                 enterTime = 0f;
             }
         }
+        else
+        {
+            OVRInput.SetControllerVibration(0f, 0f, controller);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        OVRInput.SetControllerVibration(0f, 0f, controller);
+        enterTime = 0f;
     }
 
 }
