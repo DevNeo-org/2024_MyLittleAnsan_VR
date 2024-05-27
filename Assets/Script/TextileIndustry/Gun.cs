@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject ball;
     public OVRInput.Controller controller;
     [SerializeField] private float vibSize = 0.2f;
+    [SerializeField] private GameObject changeSound;
 
     private Ball ballCS;
     private Renderer ballRenderer;
@@ -56,6 +57,7 @@ public class Gun : MonoBehaviour
         if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
         {
             nextShoot = Time.time + shootRate;
+            GetComponent<AudioSource>().Play();
             Shoot();
         }
 
@@ -95,21 +97,25 @@ public class Gun : MonoBehaviour
         {
             if (other.tag == "BlueBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(0);
             }
             else if (other.tag == "RedBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(1);
             }
             else if (other.tag == "YellowBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(2);
             }
             else if (other.tag == "BlackBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(3);
             }

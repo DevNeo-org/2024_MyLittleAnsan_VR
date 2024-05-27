@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b961b3b0e33a9fc4cb8bcc642f9bcd98, type: 2}
+  - {fileID: 2100000, guid: 1c2d3e3a9f74b1048a4a2987c08e1fc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   penSize: 20
   particleManage: {fileID: 64753650978176026, guid: 3dd4eb7c1a0ac824084f516506fc7602,
     type: 3}
-  colorCode: 0
+  colorCode: 1
   ballSpeed: 10
   gun: {fileID: 5509340777156719929, guid: f40972810da31404fae7e4a70994bf59, type: 3}
   colorMaterial:
