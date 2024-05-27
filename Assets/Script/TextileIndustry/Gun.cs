@@ -34,11 +34,13 @@ public class Gun : MonoBehaviour
     public int colorCode;
 
     private TextileManager textileManager;
+    DialogManager dialogManager;
 
 
     void Start()
     {
         textileManager = FindAnyObjectByType<TextileManager>();
+        dialogManager = FindAnyObjectByType<DialogManager>();
 
         gunRenderer = gunObject.GetComponent<Renderer>();
         ballRenderer = ball.GetComponent<Renderer>();
@@ -72,7 +74,7 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        if (!textileManager.IsMenuOn())
+        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
         {
             StartCoroutine(ShootTriggerHaptics());
             GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
@@ -93,7 +95,7 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if (!textileManager.IsMenuOn())
+        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
         {
             if (other.tag == "BlueBucket")
             {
