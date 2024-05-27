@@ -22,6 +22,36 @@
       
 # ⚙설치 및 실행 방법
 # 📁프로젝트 구조
+```
+📂Assets // 추후 수정 예정
+ ┣ 📂Audio
+ ┣ 📂Image
+ ┣ 📂License Free Assets
+ ┣ 📂Oculus
+ ┣ 📂Plugins
+ ┣ 📂Prefab
+ ┣ 📂Resources
+ ┣ 📂Samples
+ ┣ 📂Scenes
+ ┃ ┣ 📂AutomobIndScene
+ ┃ ┣ 📂CityDesign
+ ┃ ┣ 📂Electronic
+ ┃ ┣ 📂TextileIndScene
+ ┃ ┗ 📂Title
+ ┣ 📂Script
+ ┣ 📂Settings
+ ┣ 📂Skybox
+ ┣ 📂TextMesh Pro
+ ┣ 📂Tree 1_Textures
+ ┣ 📂Tree 1_Textures
+ ┣ 📂Tree_Textures
+ ┣ 📂UnityFactorySceneHDRP
+ ┣ 📂XR
+ ┗ 📂XRI
+📂Documents
+📂Packages
+📂ProjectSettings
+```
 # 📄문서
 > 🔗[동작시나리오](https://drive.google.com/file/d/1-t_zbweEWNYh9zIoSPi7PHAw1hgHfJox/view?usp=sharing)
 > 

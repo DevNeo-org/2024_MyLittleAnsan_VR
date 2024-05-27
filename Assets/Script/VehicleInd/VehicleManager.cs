@@ -16,12 +16,15 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private GameObject leftWrench;
     [SerializeField] private GameObject rightWrench;
     [SerializeField] TextMeshPro scoreText;
+    [SerializeField] GameObject wrenchObjects;
+
 
     Timer timer;
     HitboxSpawner spawner;
     private int score;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
+    private bool isDialogEnd = false; // 다이얼로그 종료 여부 확인
     DataManager dataManager;
     void Start()
     {
@@ -106,6 +109,7 @@ public class VehicleManager : MonoBehaviour
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
+        if (!isDialogEnd) { leftRayController.SetActive(true); rightRayController.SetActive(true); } // 다이얼로그 종료 전에는 레이컨트롤러 유지
         if (spawner.leftWrenchOn) // 이전에 렌치가 활성화 되어있는지 (좌측)
         {
             leftWrench.gameObject.SetActive(true);
@@ -139,5 +143,10 @@ public class VehicleManager : MonoBehaviour
     public bool IsRayControllerOn()
     {
         return leftRayController.activeSelf || rightRayController.activeSelf;
+    }
+    public void DialogEnd()
+    {
+        isDialogEnd = true;
+        wrenchObjects.SetActive(true);
     }
 }
