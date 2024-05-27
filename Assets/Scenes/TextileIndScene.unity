@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7c7be119222fece4caff012ef9ad74ef, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerRef: {fileID: 1960185073}
   _grabInteractor: {fileID: 1960185070}
+  _grabInteractable: {fileID: 0}
 --- !u!43 &132581377
 Mesh:
   m_ObjectHideFlags: 0
@@ -14850,6 +14851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerRef: {fileID: 2033875490}
   _grabInteractor: {fileID: 2033875487}
+  _grabInteractable: {fileID: 0}
 --- !u!1 &359941233
 GameObject:
   m_ObjectHideFlags: 0
@@ -36221,7 +36223,7 @@ MonoBehaviour:
   controllerHelperLeft: {fileID: 1696476529}
   controllerHelperRight: {fileID: 435077825}
   paintGun: {fileID: 599284124}
-  Line: {fileID: 1988049380}
+  line: {fileID: 0}
   closeButton: {fileID: 1017222368}
   Timer: {fileID: 1116081830}
   shine: {fileID: 1617116932}
@@ -37478,12 +37480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3673df66324d8f34d9433049c54de631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1988049380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1285555485758626901, guid: f40972810da31404fae7e4a70994bf59,
-    type: 3}
-  m_PrefabInstance: {fileID: 9063424403166134208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2013421852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38055,6 +38051,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7018826814849805076, guid: 3ecfe2aac29a39a45821ea5a2143b23a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7018826814849805076, guid: 3ecfe2aac29a39a45821ea5a2143b23a,
         type: 3}
       propertyPath: GravityModifier

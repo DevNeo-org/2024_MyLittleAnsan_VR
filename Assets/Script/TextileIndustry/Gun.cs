@@ -34,7 +34,6 @@ public class Gun : MonoBehaviour
     public int colorCode;
 
     private TextileManager textileManager;
-    DialogManager dialogManager;
 
     private bool isStart;
 
@@ -42,7 +41,6 @@ public class Gun : MonoBehaviour
     void Start()
     {
         textileManager = FindAnyObjectByType<TextileManager>();
-        dialogManager = FindAnyObjectByType<DialogManager>();
 
         gunRenderer = gunObject.GetComponent<Renderer>();
         ballRenderer = ball.GetComponent<Renderer>();
@@ -58,7 +56,7 @@ public class Gun : MonoBehaviour
     {
         // input 
 
-        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
+        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot && isStart && !textileManager.IsMenuOn())
         {
             nextShoot = Time.time + shootRate;
             Shoot();
@@ -75,13 +73,10 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        if (!textileManager.IsMenuOn() && isStart)
-        {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(ShootTriggerHaptics());
-            GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
-            paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
-        }
+        GetComponent<AudioSource>().Play();
+        StartCoroutine(ShootTriggerHaptics());
+        GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
+        paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
     }
 
     // change color of paint and gun

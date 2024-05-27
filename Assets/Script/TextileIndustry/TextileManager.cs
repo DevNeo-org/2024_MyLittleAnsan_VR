@@ -16,7 +16,7 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] GameObject paintGun;
-    [SerializeField] GameObject Line;
+    [SerializeField] GameObject line;
     [SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject Timer;
     [SerializeField] ParticleSystem shine;
@@ -42,11 +42,15 @@ public class TextileManager : MonoBehaviour
         timer = FindAnyObjectByType<Timer>();
         leftRayController.SetActive(false); 
         rightRayController.SetActive(false);
+        paintGun.gameObject.SetActive(false);
+        line.gameObject.SetActive(false);
     }
     void Update()
     {
         if (!startOn && dialogManager.SendStart())
         {
+            paintGun.gameObject.SetActive(true);
+            line.gameObject.SetActive(true);
             timer.StartGame();
             startOn = true;
         }
@@ -125,7 +129,7 @@ public class TextileManager : MonoBehaviour
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         paintGun.gameObject.SetActive(true);
-        Line.gameObject.SetActive(true);
+        line.gameObject.SetActive(true);
     }
     private void OpenMenu()
     {
@@ -134,7 +138,7 @@ public class TextileManager : MonoBehaviour
         isMenuOn = true;
         menu.SetActive(true);
         paintGun.gameObject.SetActive(false);
-        Line.gameObject.SetActive(false);
+        line.gameObject.SetActive(false);
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
