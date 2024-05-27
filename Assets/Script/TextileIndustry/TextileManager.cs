@@ -58,6 +58,7 @@ public class TextileManager : MonoBehaviour
                 Animator anim = buckets[i].GetComponent<Animator>();
                 anim.SetBool("isClear", true);
             }
+            GetComponent<AudioSource>().Play();
             dataManager.SetClear();
             resultMenu.SetActive(true);
             closeButton.gameObject.SetActive(false);

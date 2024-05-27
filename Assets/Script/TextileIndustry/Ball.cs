@@ -53,6 +53,7 @@ public class Ball : MonoBehaviour
                 var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (penSize / 2));
                 var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (penSize / 2));
 
+                /*
                 if (y < penSize * (paintSizeRange + 2) 
                     || y > _whiteboard.textureSize.y - (penSize) * (paintSizeRange + 2) 
                     || x < penSize * (paintSizeRange + 2)
@@ -60,6 +61,7 @@ public class Ball : MonoBehaviour
                 {
                     return;
                 }
+                */
 
                 for (int i = (-1)*paintSize; i <= paintSize; i++)
                 {
@@ -67,7 +69,13 @@ public class Ball : MonoBehaviour
                     {
                         if (i * i + j * j <= paintSizeRange*paintSizeRange)
                         {
-                            _whiteboard.texture.SetPixels(x + i * (penSize), y + j * (penSize), penSize, penSize, _color);
+                            if (x + i * (penSize) > penSize
+                                && x + i * (penSize) < _whiteboard.textureSize.x - penSize
+                                && y + j * (penSize) > penSize
+                                && y + j * (penSize) < _whiteboard.textureSize.y - penSize)
+                            {
+                                _whiteboard.texture.SetPixels(x + i * (penSize), y + j * (penSize), penSize, penSize, _color);
+                            }
                         }
                     }
                 }
