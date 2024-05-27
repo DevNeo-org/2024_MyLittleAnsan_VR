@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject ball;
     public OVRInput.Controller controller;
     [SerializeField] private float vibSize = 0.2f;
+    [SerializeField] private GameObject changeSound;
 
     private Ball ballCS;
     private Renderer ballRenderer;
@@ -33,11 +34,13 @@ public class Gun : MonoBehaviour
     public int colorCode;
 
     private TextileManager textileManager;
+    DialogManager dialogManager;
 
 
     void Start()
     {
         textileManager = FindAnyObjectByType<TextileManager>();
+        dialogManager = FindAnyObjectByType<DialogManager>();
 
         gunRenderer = gunObject.GetComponent<Renderer>();
         ballRenderer = ball.GetComponent<Renderer>();
@@ -56,6 +59,7 @@ public class Gun : MonoBehaviour
         if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
         {
             nextShoot = Time.time + shootRate;
+            GetComponent<AudioSource>().Play();
             Shoot();
         }
 
@@ -70,7 +74,7 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        if (!textileManager.IsMenuOn())
+        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
         {
             StartCoroutine(ShootTriggerHaptics());
             GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
@@ -91,25 +95,29 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if (!textileManager.IsMenuOn())
+        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
         {
             if (other.tag == "BlueBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(0);
             }
             else if (other.tag == "RedBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(1);
             }
             else if (other.tag == "YellowBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(2);
             }
             else if (other.tag == "BlackBucket")
             {
+                changeSound.GetComponent<AudioSource>().Play();
                 StartCoroutine(TriggerHaptics());
                 ChangeColor(3);
             }
