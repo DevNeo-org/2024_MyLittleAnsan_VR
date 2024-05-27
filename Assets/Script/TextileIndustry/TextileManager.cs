@@ -17,7 +17,6 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] GameObject paintGun;
     [SerializeField] GameObject Line;
-    [SerializeField] private float delayTime = 30f;
     [SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject Timer;
     [SerializeField] ParticleSystem shine;
@@ -26,28 +25,36 @@ public class TextileManager : MonoBehaviour
 
     Timer timer;
     DataManager dataManager;
+    DialogManager dialogManager;
     Clothes clothes;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
+    private bool startOn = false;
 
 
     private void Start()
     {
         dataManager = FindAnyObjectByType<DataManager>();
         clothes = FindAnyObjectByType<Clothes>();
+        dialogManager = FindAnyObjectByType<DialogManager>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
-        Invoke("StartDelay", delayTime);
         leftRayController.SetActive(false); 
         rightRayController.SetActive(false);
     }
     void Update()
     {
+        if (!startOn && dialogManager.SendStart())
+        {
+            timer.StartGame();
+            startOn = true;
+        }
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            dataManager.SetClear();
             for (int i=0; i < celebrates.Length; i++)
             {
                 ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
@@ -58,15 +65,15 @@ public class TextileManager : MonoBehaviour
                 Animator anim = buckets[i].GetComponent<Animator>();
                 anim.SetBool("isClear", true);
             }
-            GetComponent<AudioSource>().Play();
-            dataManager.SetClear();
-            resultMenu.SetActive(true);
-            closeButton.gameObject.SetActive(false);
-            Timer.gameObject.SetActive(false);
-            shine.Stop();
-            OpenMenu();
-            rightRayController.SetActive(true);
             clothes.PlayAnim();
+            GetComponent<AudioSource>().Play();
+            resultMenu.SetActive(true);
+            Timer.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+            shine.Stop();
+
+            rightRayController.SetActive(false);
+            Invoke("OpenMenu", 3f);
         }
         if (!isMenuOn)
         {
@@ -83,10 +90,6 @@ public class TextileManager : MonoBehaviour
         }
     }
 
-    private void StartDelay()
-    {
-        timer.StartGame();
-    }
 
     public void LoadTitle()
     {
@@ -116,7 +119,8 @@ public class TextileManager : MonoBehaviour
     {
         Time.timeScale = 1;
         isMenuOn = false;
-        menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
+        menu.SetActive(false); 
+        leftRayController.SetActive(false); rightRayController.SetActive(false);
 
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;

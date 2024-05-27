@@ -36,6 +36,8 @@ public class Gun : MonoBehaviour
     private TextileManager textileManager;
     DialogManager dialogManager;
 
+    private bool isStart;
+
 
     void Start()
     {
@@ -59,7 +61,6 @@ public class Gun : MonoBehaviour
         if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
         {
             nextShoot = Time.time + shootRate;
-            GetComponent<AudioSource>().Play();
             Shoot();
         }
 
@@ -74,8 +75,9 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
+        if (!textileManager.IsMenuOn() && isStart)
         {
+            GetComponent<AudioSource>().Play();
             StartCoroutine(ShootTriggerHaptics());
             GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
             paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
@@ -95,7 +97,7 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
+        if (!textileManager.IsMenuOn() && isStart)
         {
             if (other.tag == "BlueBucket")
             {
@@ -136,5 +138,10 @@ public class Gun : MonoBehaviour
         OVRInput.SetControllerVibration(vibSize, vibSize, controller);
         yield return new WaitForSeconds(0.2f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
+    }
+
+    public void StartGame()
+    {
+        isStart = true;
     }
 }
