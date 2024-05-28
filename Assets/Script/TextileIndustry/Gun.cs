@@ -36,6 +36,7 @@ public class Gun : MonoBehaviour
     private TextileManager textileManager;
 
     private bool isStart = false;
+    private bool isEnd = false;
 
 
     void Start()
@@ -56,7 +57,7 @@ public class Gun : MonoBehaviour
     {
         // input 
 
-        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot && isStart && !textileManager.IsMenuOn())
+        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot && isStart && !textileManager.IsMenuOn() && !isEnd)
         {
             nextShoot = Time.time + shootRate;
             Shoot();
@@ -92,7 +93,7 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if (!textileManager.IsMenuOn() && isStart)
+        if (!textileManager.IsMenuOn() && isStart && !isEnd)
         {
             if (other.tag == "BlueBucket")
             {
@@ -138,5 +139,10 @@ public class Gun : MonoBehaviour
     public void StartGame()
     {
         isStart = true;
+    }
+
+    public void EndGame()
+    {
+        isEnd = true;
     }
 }

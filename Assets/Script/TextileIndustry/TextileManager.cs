@@ -29,6 +29,7 @@ public class TextileManager : MonoBehaviour
     Clothes clothes;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
+    private bool isMenualClosed = false;
 
 
     private void Start()
@@ -51,6 +52,7 @@ public class TextileManager : MonoBehaviour
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
             dataManager.SetClear();
+            gun.EndGame();
             for (int i=0; i < celebrates.Length; i++)
             {
                 ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
@@ -67,9 +69,9 @@ public class TextileManager : MonoBehaviour
             Timer.gameObject.SetActive(false);
             closeButton.gameObject.SetActive(false);
             shine.Stop();
-
-            rightRayController.SetActive(false);
-            Invoke("OpenMenu", 3f);
+            OpenMenu();
+            rightRayController.SetActive(true);
+            Invoke("OpenResultMenu", 3f);
         }
         if (!isMenuOn)
         {
@@ -116,12 +118,15 @@ public class TextileManager : MonoBehaviour
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false); 
-        leftRayController.SetActive(false); rightRayController.SetActive(false);
-
-        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-        controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-        paintGun.gameObject.SetActive(true);
-        line.gameObject.SetActive(true);
+        if (isMenualClosed)
+        {
+            leftRayController.SetActive(false);
+            rightRayController.SetActive(false);
+            controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            paintGun.gameObject.SetActive(true);
+            line.gameObject.SetActive(true);
+        }
     }
     private void OpenMenu()
     {
@@ -135,6 +140,12 @@ public class TextileManager : MonoBehaviour
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
 
+    private void OpenResultMenu()
+    {
+        resultMenu.SetActive(true);
+    }
+
+
     public bool IsMenuOn()
     {
         return isMenuOn;
@@ -142,6 +153,7 @@ public class TextileManager : MonoBehaviour
 
     public void EndManual()
     {
+        isMenualClosed = true;
         paintGun.gameObject.SetActive(true);
         line.gameObject.SetActive(true);
         timer.StartGame();
