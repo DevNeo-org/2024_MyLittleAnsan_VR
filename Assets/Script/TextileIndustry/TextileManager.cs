@@ -25,18 +25,17 @@ public class TextileManager : MonoBehaviour
 
     Timer timer;
     DataManager dataManager;
-    DialogManager dialogManager;
+    Gun gun;
     Clothes clothes;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
-    private bool startOn = false;
 
 
     private void Start()
     {
         dataManager = FindAnyObjectByType<DataManager>();
         clothes = FindAnyObjectByType<Clothes>();
-        dialogManager = FindAnyObjectByType<DialogManager>();
+        gun = FindAnyObjectByType<Gun>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
@@ -47,13 +46,6 @@ public class TextileManager : MonoBehaviour
     }
     void Update()
     {
-        if (!startOn && dialogManager.SendStart())
-        {
-            paintGun.gameObject.SetActive(true);
-            line.gameObject.SetActive(true);
-            timer.StartGame();
-            startOn = true;
-        }
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
@@ -146,5 +138,13 @@ public class TextileManager : MonoBehaviour
     public bool IsMenuOn()
     {
         return isMenuOn;
+    }
+
+    public void EndManual()
+    {
+        paintGun.gameObject.SetActive(true);
+        line.gameObject.SetActive(true);
+        timer.StartGame();
+        gun.StartGame();
     }
 }

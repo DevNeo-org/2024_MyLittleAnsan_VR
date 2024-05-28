@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
 
     private TextileManager textileManager;
 
-    private bool isStart;
+    private bool isStart = false;
 
 
     void Start()
