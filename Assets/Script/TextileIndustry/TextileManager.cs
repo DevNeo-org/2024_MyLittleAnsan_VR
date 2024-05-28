@@ -16,31 +16,34 @@ public class TextileManager : MonoBehaviour
     [SerializeField] private OVRControllerHelper controllerHelperLeft;
     [SerializeField] private OVRControllerHelper controllerHelperRight;
     [SerializeField] GameObject paintGun;
-    [SerializeField] GameObject Line;
-    [SerializeField] private float delayTime = 30f;
+    [SerializeField] GameObject line;
     [SerializeField] private GameObject closeButton;
-    [SerializeField] private GameObject Timer;
+    [SerializeField] private GameObject timerUI;
     [SerializeField] ParticleSystem shine;
     [SerializeField] private GameObject[] celebrates;
     [SerializeField] private GameObject[] buckets;
 
     Timer timer;
     DataManager dataManager;
+    Gun gun;
     Clothes clothes;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
+    private bool isMenualClosed = false;
 
 
     private void Start()
     {
         dataManager = FindAnyObjectByType<DataManager>();
         clothes = FindAnyObjectByType<Clothes>();
+        gun = FindAnyObjectByType<Gun>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
-        Invoke("StartDelay", delayTime);
         leftRayController.SetActive(false); 
         rightRayController.SetActive(false);
+        paintGun.gameObject.SetActive(false);
+        line.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -48,6 +51,8 @@ public class TextileManager : MonoBehaviour
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
+            dataManager.SetClear();
+            gun.EndGame();
             for (int i=0; i < celebrates.Length; i++)
             {
                 ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
@@ -58,15 +63,14 @@ public class TextileManager : MonoBehaviour
                 Animator anim = buckets[i].GetComponent<Animator>();
                 anim.SetBool("isClear", true);
             }
-            GetComponent<AudioSource>().Play();
-            dataManager.SetClear();
-            resultMenu.SetActive(true);
-            closeButton.gameObject.SetActive(false);
-            Timer.gameObject.SetActive(false);
-            shine.Stop();
-            OpenMenu();
-            rightRayController.SetActive(true);
             clothes.PlayAnim();
+            GetComponent<AudioSource>().Play();
+            timerUI.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+            shine.Stop();
+            rightRayController.SetActive(true);
+            Invoke("OpenResultMenu", 3f);
+            Invoke("OpenMenu", 3f);
         }
         if (!isMenuOn)
         {
@@ -83,10 +87,6 @@ public class TextileManager : MonoBehaviour
         }
     }
 
-    private void StartDelay()
-    {
-        timer.StartGame();
-    }
 
     public void LoadTitle()
     {
@@ -116,27 +116,45 @@ public class TextileManager : MonoBehaviour
     {
         Time.timeScale = 1;
         isMenuOn = false;
-        menu.SetActive(false); leftRayController.SetActive(false); rightRayController.SetActive(false);
-
-        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-        controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
-        paintGun.gameObject.SetActive(true);
-        Line.gameObject.SetActive(true);
+        menu.SetActive(false); 
+        if (isMenualClosed)
+        {
+            leftRayController.SetActive(false);
+            rightRayController.SetActive(false);
+            controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+            paintGun.gameObject.SetActive(true);
+            line.gameObject.SetActive(true);
+        }
     }
     private void OpenMenu()
     {
-        timeText.text = "일시 정지";
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true);
         paintGun.gameObject.SetActive(false);
-        Line.gameObject.SetActive(false);
+        line.gameObject.SetActive(false);
         controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
 
+    private void OpenResultMenu()
+    {
+        resultMenu.SetActive(true);
+    }
+
+
     public bool IsMenuOn()
     {
         return isMenuOn;
+    }
+
+    public void EndManual()
+    {
+        isMenualClosed = true;
+        paintGun.gameObject.SetActive(true);
+        line.gameObject.SetActive(true);
+        timer.StartGame();
+        gun.StartGame();
     }
 }

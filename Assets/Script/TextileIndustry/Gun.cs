@@ -34,13 +34,14 @@ public class Gun : MonoBehaviour
     public int colorCode;
 
     private TextileManager textileManager;
-    DialogManager dialogManager;
+
+    private bool isStart = false;
+    private bool isEnd = false;
 
 
     void Start()
     {
         textileManager = FindAnyObjectByType<TextileManager>();
-        dialogManager = FindAnyObjectByType<DialogManager>();
 
         gunRenderer = gunObject.GetComponent<Renderer>();
         ballRenderer = ball.GetComponent<Renderer>();
@@ -56,10 +57,9 @@ public class Gun : MonoBehaviour
     {
         // input 
 
-        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot)
+        if (Get(Button.SecondaryIndexTrigger) && Time.time > nextShoot && isStart && !textileManager.IsMenuOn() && !isEnd)
         {
             nextShoot = Time.time + shootRate;
-            GetComponent<AudioSource>().Play();
             Shoot();
         }
 
@@ -74,12 +74,10 @@ public class Gun : MonoBehaviour
     // shoot paint ball
     private void Shoot()
     {
-        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
-        {
-            StartCoroutine(ShootTriggerHaptics());
-            GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
-            paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
-        }
+        GetComponent<AudioSource>().Play();
+        StartCoroutine(ShootTriggerHaptics());
+        GameObject paintBall = Instantiate(ball, gunObject.transform.position, gunObject.transform.rotation);
+        paintBall.GetComponent<Rigidbody>().velocity = paintBall.transform.forward * ballSpeed;
     }
 
     // change color of paint and gun
@@ -95,7 +93,7 @@ public class Gun : MonoBehaviour
     // check Trigger with paint bucket
     private void OnTriggerEnter(Collider other)
     {
-        if (!textileManager.IsMenuOn() && !dialogManager.SendStart())
+        if (!textileManager.IsMenuOn() && isStart && !isEnd)
         {
             if (other.tag == "BlueBucket")
             {
@@ -136,5 +134,15 @@ public class Gun : MonoBehaviour
         OVRInput.SetControllerVibration(vibSize, vibSize, controller);
         yield return new WaitForSeconds(0.2f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
+    }
+
+    public void StartGame()
+    {
+        isStart = true;
+    }
+
+    public void EndGame()
+    {
+        isEnd = true;
     }
 }
