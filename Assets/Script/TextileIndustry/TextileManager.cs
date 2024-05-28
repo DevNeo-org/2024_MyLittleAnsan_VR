@@ -18,7 +18,7 @@ public class TextileManager : MonoBehaviour
     [SerializeField] GameObject paintGun;
     [SerializeField] GameObject line;
     [SerializeField] private GameObject closeButton;
-    [SerializeField] private GameObject Timer;
+    [SerializeField] private GameObject timerUI;
     [SerializeField] ParticleSystem shine;
     [SerializeField] private GameObject[] celebrates;
     [SerializeField] private GameObject[] buckets;
@@ -66,12 +66,12 @@ public class TextileManager : MonoBehaviour
             clothes.PlayAnim();
             GetComponent<AudioSource>().Play();
             resultMenu.SetActive(true);
-            Timer.gameObject.SetActive(false);
+            timer.gameObject.SetActive(false);
             closeButton.gameObject.SetActive(false);
             shine.Stop();
-            OpenMenu();
             rightRayController.SetActive(true);
             Invoke("OpenResultMenu", 3f);
+            Invoke("OpenMenu", 3f);
         }
         if (!isMenuOn)
         {
