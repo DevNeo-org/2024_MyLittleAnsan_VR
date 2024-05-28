@@ -65,8 +65,7 @@ public class TextileManager : MonoBehaviour
             }
             clothes.PlayAnim();
             GetComponent<AudioSource>().Play();
-            resultMenu.SetActive(true);
-            timer.gameObject.SetActive(false);
+            timerUI.gameObject.SetActive(false);
             closeButton.gameObject.SetActive(false);
             shine.Stop();
             rightRayController.SetActive(true);
