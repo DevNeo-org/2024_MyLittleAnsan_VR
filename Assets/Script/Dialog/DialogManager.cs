@@ -60,6 +60,12 @@ public class DialogManager : MonoBehaviour
             int sceneNum = SceneManager.GetActiveScene().buildIndex;
             if (sceneNum == 1)
                 buildManualUI.SetActive(true);
+            else
+            {
+                dialogUI.SetActive(true);
+                isDialogue = true;
+                ShowDialogue(GetDialogue(sceneNum));
+            }
         }
 
         
