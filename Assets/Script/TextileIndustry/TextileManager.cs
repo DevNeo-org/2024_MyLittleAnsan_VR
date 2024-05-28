@@ -130,7 +130,6 @@ public class TextileManager : MonoBehaviour
     }
     private void OpenMenu()
     {
-        timeText.text = "일시 정지";
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true);
