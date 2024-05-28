@@ -36225,7 +36225,7 @@ MonoBehaviour:
   paintGun: {fileID: 599284124}
   line: {fileID: 1302358277}
   closeButton: {fileID: 1017222368}
-  timerUI: {fileID: 0}
+  timerUI: {fileID: 1116081830}
   shine: {fileID: 1617116932}
   celebrates:
   - {fileID: 227463517}
