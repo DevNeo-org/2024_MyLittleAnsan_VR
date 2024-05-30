@@ -31,7 +31,9 @@ public class ElecMenuManagement : MonoBehaviour
         datamanager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
+        scoreText.text = "";
         timer = FindAnyObjectByType<Timer>();
+        
     }
     void Update()
     {
