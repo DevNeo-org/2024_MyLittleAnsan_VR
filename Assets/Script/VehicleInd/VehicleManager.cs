@@ -17,7 +17,7 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private GameObject rightWrench;
     [SerializeField] TextMeshPro scoreText;
     [SerializeField] GameObject wrenchObjects;
-
+    [SerializeField] GameObject celebrate;
 
     Timer timer;
     HitboxSpawner spawner;
@@ -45,7 +45,7 @@ public class VehicleManager : MonoBehaviour
         {
             if (score >= 10)
             {
-                dataManager.SetClear();
+                dataManager.SetClear(); // 결과 완료 시 토큰 완료 설정
                 resultMenu.SetActive(true);
             }
             OpenMenu();
@@ -55,6 +55,8 @@ public class VehicleManager : MonoBehaviour
         else if (score >= 20) // 20점 획득 시 종료
         {
             gameEnd = true;
+            celebrate.GetComponent<ParticleSystem>().Play(); // 결과창 직전 실행
+            GetComponent<AudioSource>().Play();
             Invoke("GameClear", 1f);
         }
         if (!isMenuOn)
@@ -134,6 +136,7 @@ public class VehicleManager : MonoBehaviour
     }
     private void GameClear()
     {
+        celebrate.gameObject.SetActive(false);
         dataManager.SetClear();
         resultMenu.SetActive(true);
         OpenMenu();
@@ -148,5 +151,9 @@ public class VehicleManager : MonoBehaviour
     {
         isDialogEnd = true;
         wrenchObjects.SetActive(true);
+    }
+    public void PlayConfetti()
+    {
+        celebrate.GetComponent<ParticleSystem>().Play(); // 결과창 직전 실행
     }
 }
