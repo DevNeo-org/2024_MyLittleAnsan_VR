@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Circle
       objectReference: {fileID: 0}
+    - target: {fileID: 8892792642781244369, guid: 53dd9fbd799c64a4187c6c88aaad1568,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6095603632486917881, guid: 53dd9fbd799c64a4187c6c88aaad1568, type: 3}
     m_RemovedGameObjects:
@@ -1424,6 +1429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1416608451}
@@ -1434,7 +1444,17 @@ PrefabInstance:
       objectReference: {fileID: 1160981594}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 667284898}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
@@ -1449,6 +1469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DialogManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1459,12 +1484,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ElecMenuManagement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049963502092731534, guid: 38fd4911e0c0b6249ac0d0e5a1c8ef4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1757,12 +1792,12 @@ PrefabInstance:
     - target: {fileID: 2780341150545899269, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.154
+      value: -0.043
       objectReference: {fileID: 0}
     - target: {fileID: 2780341150545899269, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.36
+      value: -0.595
       objectReference: {fileID: 0}
     - target: {fileID: 2780341150545899269, guid: 4953d8edfb7665f47b786f2fbffcacc3,
         type: 3}
