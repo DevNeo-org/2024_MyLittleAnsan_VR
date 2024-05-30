@@ -100,6 +100,8 @@ public class TextileManager : MonoBehaviour
     }
     public void RestartScene()
     {
+        //토큰 초기화
+        PlayerPrefs.SetInt("Token", System.Convert.ToInt16(false));
         Time.timeScale = 1;
         SceneManager.LoadScene("TextileIndScene");
     }
