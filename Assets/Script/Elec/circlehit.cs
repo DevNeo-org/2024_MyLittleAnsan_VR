@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class circlehit : MonoBehaviour
+public class Circlehit : MonoBehaviour
 {
     private ElecMenuManagement menuManagement;
-    private GameObject[] Circles;
     
     private void Start()
     {

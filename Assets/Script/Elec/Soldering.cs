@@ -13,13 +13,12 @@ public class Soldering : MonoBehaviour
     public GameObject particlePrefab;
     private Vector3 particleScale = new Vector3(0.1f, 0.05f, 0.1f);
     private float enterTime = 0f;
-    private float duration;
-    private float exitTime;
+    
 
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("circle"))
+        if (other.gameObject.CompareTag("Circle"))
         {
             enterTime += Time.deltaTime;
             Debug.Log("trigger time" + enterTime);
@@ -33,7 +32,7 @@ public class Soldering : MonoBehaviour
             }
             if (enterTime > 1f)
             {
-                other.gameObject.GetComponent<circlehit>().ObjectHit();
+                other.gameObject.GetComponent<Circlehit>().ObjectHit();
                 OVRInput.SetControllerVibration(0f, 0f, controller);
                 enterTime = 0f;
             }
@@ -42,6 +41,11 @@ public class Soldering : MonoBehaviour
         {
             OVRInput.SetControllerVibration(0f, 0f, controller);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        OVRInput.SetControllerVibration(0f, 0f, controller);
+        enterTime = 0f;
     }
     private void OnTriggerExit(Collider other)
     {

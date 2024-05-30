@@ -12,7 +12,7 @@ public class ElecManagement : MonoBehaviour
     private float rowposition = -0.19f;
     private float columnposition = 0.18f;
     private GameObject[] circles;
-    private DialogManager dialogManager;
+    
     private Timer timer;
     private float time = 3f;
     int randomIndex = -1;
@@ -21,7 +21,6 @@ public class ElecManagement : MonoBehaviour
     void Start()
     {
         timer = FindAnyObjectByType<Timer>();
-        dialogManager = FindAnyObjectByType<DialogManager>();
         circles = new GameObject[9];
         for (int i = 0; i < 9; i++)
         {
@@ -48,8 +47,6 @@ public class ElecManagement : MonoBehaviour
     }
     private void Update()
     {
-        startgame = dialogManager.SendStart();
-       
         if (startgame)
         {
             timer.StartGame();
@@ -70,7 +67,10 @@ public class ElecManagement : MonoBehaviour
         }
     }
     
-    
+    public void StartGame()
+    {
+        startgame = true;
+    }
 
 
 
