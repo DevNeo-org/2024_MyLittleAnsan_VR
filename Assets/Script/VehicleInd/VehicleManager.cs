@@ -94,8 +94,6 @@ public class VehicleManager : MonoBehaviour
     }
     public void RestartScene() // 씬 재시작
     {
-        //토큰 초기화
-        PlayerPrefs.SetInt("Token", System.Convert.ToInt16(false));
         Time.timeScale = 1;
         SceneManager.LoadScene("AutomobIndScene");
     }
