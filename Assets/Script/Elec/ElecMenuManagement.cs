@@ -18,27 +18,26 @@ public class ElecMenuManagement : MonoBehaviour
     [SerializeField] TextMeshPro scoreText;
 
     Timer timer;
-    DialogManager dialogManager;
     private int score;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager datamanager;
     
-    private bool dialogOn = true;
+   
+    bool startgame = false;
     void Start()
     {
         score = 0;
         datamanager = FindAnyObjectByType<DataManager>();
         menu.SetActive(false);
         resultMenu.SetActive(false);
-        dialogManager = FindAnyObjectByType<DialogManager>();
+        scoreText.text = "";
         timer = FindAnyObjectByType<Timer>();
-       
         
     }
     void Update()
     {
-        dialogOn = dialogManager.SendOnDialog();
+       
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
@@ -49,7 +48,7 @@ public class ElecMenuManagement : MonoBehaviour
                 resultMenu.SetActive(true);
             }
             OpenMenu();
-            rightRayController.SetActive(true);
+            
         }
         if (!isMenuOn)
         {
@@ -104,7 +103,7 @@ public class ElecMenuManagement : MonoBehaviour
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false);
-        if (!dialogOn)
+        if (startgame)
         {
             leftRayController.SetActive(false);
             rightRayController.SetActive(false);
@@ -124,7 +123,10 @@ public class ElecMenuManagement : MonoBehaviour
        
     }
 
-   
+    public void StartGame()
+    {
+        startgame = true;
+    }
 
 
 
