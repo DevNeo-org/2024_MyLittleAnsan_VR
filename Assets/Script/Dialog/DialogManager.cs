@@ -35,7 +35,9 @@ public class DialogManager : MonoBehaviour
     public GameObject dialog;
     bool isDialogue = false;
     bool isTyping = false;
-    
+    bool skip = false;
+
+    private bool gamestart = false;
 
     void Awake()
     {
@@ -57,9 +59,11 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
+            //토큰이 존재하고, 도시디자인 신이면 건설 매뉴얼 활성화
             int sceneNum = SceneManager.GetActiveScene().buildIndex;
             if (sceneNum == 1)
                 buildManualUI.SetActive(true);
+            //체험 클리어 후 재시작 시 대사 출력
             else
             {
                 dialogUI.SetActive(true);
@@ -68,7 +72,7 @@ public class DialogManager : MonoBehaviour
             }
         }
 
-        
+
     }
     void Update()
     {
@@ -79,11 +83,15 @@ public class DialogManager : MonoBehaviour
             leftRayController.SetActive(true);
             rightRayController.SetActive(true);
 
+            nextButton.SetActive(true);
+
             //다음 대사로 넘어갈 경우
             if (isNext)
             {
-                if (!isTyping)
+                //대사 넘기기 버튼 눌렀을 경우
+                if (skip)
                 {
+                    skip = false;
                     isNext = false;
                     //대화 텍스트 비우기
                     dialogText.text = "";
@@ -105,7 +113,7 @@ public class DialogManager : MonoBehaviour
                             ShowManualUI();
                         }
                     }
-                
+
                 }
             }
         }
@@ -131,6 +139,8 @@ public class DialogManager : MonoBehaviour
         lineCount = 0;
         dialogues = null;
         isNext = false;
+        gamestart = true;
+        nextButton.SetActive(false);
     }
 
     public void ShowDialogue(Dialogue[] p_dialogues)
@@ -144,25 +154,27 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator TypeWriter()//텍스트를 출력하는 코루틴
     {
-        isTyping = true;
         string t_ReplaceText = dialogues[lineCount].contexts[contextCount];
         for (int i = 0; i < t_ReplaceText.Length; i++)
         {
+            //스킵 버튼 누를 시 다음 대사로
+            if (skip) break;
+
             dialogText.text += t_ReplaceText[i];
             //글자 출력 간 딜레이
             yield return new WaitForSeconds(textDelay);
         }
-        nextButton.SetActive(true);
-        isTyping = false;
+        isNext = true;
         yield return null;
     }
 
     //버튼을 누르면 다음 대사로
     public void skipLine()
     {
-        isNext = true;
-        nextButton.SetActive(false);
+        skip = true;
+        dialogText.text = "";
     }
+
     public bool SendOnDialog()
     {
         return isDialogue;
@@ -173,6 +185,7 @@ public class DialogManager : MonoBehaviour
     {
         ManualUI.SetActive(true);
     }
+
     public void CloseManualUI()
     {
         ManualUI.SetActive(false);
@@ -195,6 +208,9 @@ public class DialogManager : MonoBehaviour
         nextButton.SetActive(false);
         dialogText.text = "게임 클리어!";
     }
-   
+    public bool SendStart()
+    {
+        return gamestart;
+    }
 
 }

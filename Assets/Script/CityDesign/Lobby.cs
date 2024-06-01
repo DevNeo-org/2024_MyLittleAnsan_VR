@@ -29,7 +29,7 @@ public class Lobby : MonoBehaviour
     public GameObject completeEffectPrefab;
     GameObject completeEffectObject;
 
-
+    GameObject buildingPrefab;
     GameObject area;
 
     void Start()
@@ -80,6 +80,36 @@ public class Lobby : MonoBehaviour
         makePrefab();
     }
     
+    void Update()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            switch (i)
+            {
+                case 0: 
+                    buildingPrefab = GameObject.Find("BuildingSample1(Clone)");
+                    break;
+                case 1:
+                    buildingPrefab = GameObject.Find("BuildingSample2(Clone)");
+                    break;
+                case 2:
+                    buildingPrefab = GameObject.Find("BuildingSample3(Clone)");
+                    break;
+                case 3:
+                    buildingPrefab = GameObject.Find("BuildingSample4(Clone)");
+                    break;
+                case 4:
+                    buildingPrefab = GameObject.Find("BuildingSample5(Clone)");
+                    break;
+            }
+            //건물 샘플이 아래로 떨어지면 삭제 및 재생성
+            if (!sampleDestroyed[i] && buildingPrefab.transform.position.y < -5)
+            {
+                Destroy(buildingPrefab);
+                Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
+            }
+        }
+    }
 
     void makePrefab()
     {
