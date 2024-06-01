@@ -73,7 +73,7 @@ public class BuildPosition : MonoBehaviour
             //게임 완료
             if (PlayerPrefs.GetInt(areas[0]) != 0 && PlayerPrefs.GetInt(areas[1]) != 0 && PlayerPrefs.GetInt(areas[2]) != 0)
             {
-                gameManager.GetComponent<Lobby>().SetGameComplete();
+                dataManager.GetComponent<DataManager>().SetGameClear();
                 gameManager.GetComponent<Lobby>().playCompleteEffect();
                 dialogManager.GetComponent<DialogManager>().SetClearUI();
             }

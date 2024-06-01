@@ -66,4 +66,9 @@ public class DataManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(areas[areaNum]);
     }
+    //게임 전체 클리어 여부 설정
+    public void SetGameClear()
+    {
+        PlayerPrefs.SetInt("GameClear", System.Convert.ToInt16(true));
+    }
 }

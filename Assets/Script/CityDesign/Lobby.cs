@@ -34,7 +34,6 @@ public class Lobby : MonoBehaviour
     GameObject area;
 
     bool isDialog;
-    public bool isGameComplete = false;
 
     void Start()
     {
@@ -122,8 +121,8 @@ public class Lobby : MonoBehaviour
         
 
         isDialog = DialogManager.GetComponent<DialogManager>().SendOnDialog();
-        //대화중  OR 게임 완료  => 구역 화살표 비활성화, 버튼 화살표 비활성화
-        if (isDialog || isGameComplete)
+        //대화중 OR 게임 완료  => 구역 화살표 비활성화, 버튼 화살표 비활성화
+        if (isDialog || System.Convert.ToBoolean(PlayerPrefs.GetInt("GameClear")))
         {
             if (System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
             {
@@ -186,7 +185,6 @@ public class Lobby : MonoBehaviour
                 }
             }
         }
-
     }
 
     void makePrefab()
@@ -227,11 +225,6 @@ public class Lobby : MonoBehaviour
         completeEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         //파티클 재생
         completeEffect.Play();
-    }
-
-    public void SetGameComplete()
-    {
-        isGameComplete = true;
     }
 
 }
