@@ -39,6 +39,7 @@ public class BuildPosition : MonoBehaviour
             string bulidingType = Collider.gameObject.name;
             //버튼을 누르세요 UI 활성화
             dialogManager.GetComponent<DialogManager>().ShowSelectButtonUI();
+
             for (int i = 0; i<5; i++)
             {
                 if (SampleNames[i] == bulidingType)
@@ -69,16 +70,15 @@ public class BuildPosition : MonoBehaviour
             //선택 이펙트 삭제
             selctEffect = GameObject.Find("Area_circles_blue(Clone)");
             Destroy(selctEffect);
-
+            //게임 완료
             if (PlayerPrefs.GetInt(areas[0]) != 0 && PlayerPrefs.GetInt(areas[1]) != 0 && PlayerPrefs.GetInt(areas[2]) != 0)
             {
+                gameManager.GetComponent<Lobby>().SetGameComplete();
                 gameManager.GetComponent<Lobby>().playCompleteEffect();
-                Debug.Log("게임 클리어");
                 dialogManager.GetComponent<DialogManager>().SetClearUI();
             }
         }
     }
-
 
     public bool returnBuildComplete()
     {
