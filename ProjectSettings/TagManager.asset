@@ -11,6 +11,7 @@ TagManager:
   - RedBucket
   - YellowBucket
   - BlackBucket
+  - Circle
   layers:
   - Default
   - TransparentFX

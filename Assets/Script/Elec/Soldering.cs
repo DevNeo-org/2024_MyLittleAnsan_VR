@@ -13,18 +13,18 @@ public class Soldering : MonoBehaviour
     public GameObject particlePrefab;
     private Vector3 particleScale = new Vector3(0.1f, 0.05f, 0.1f);
     private float enterTime = 0f;
-    private float duration;
-    private float exitTime;
+    public AudioSource effectsound;
 
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("circle"))
+        if (other.gameObject.CompareTag("Circle"))
         {
             enterTime += Time.deltaTime;
-            Debug.Log("trigger time" + enterTime);
+            
             GameObject particleInstance = Instantiate(particlePrefab, other.transform.position, Quaternion.identity);
             OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
+            
             if (particlePrefab != null)
             {
                 particleInstance.transform.rotation = Quaternion.Euler(180f, 0f, 0f);
@@ -33,7 +33,8 @@ public class Soldering : MonoBehaviour
             }
             if (enterTime > 1f)
             {
-                other.gameObject.GetComponent<circlehit>().ObjectHit();
+                other.gameObject.GetComponent<Circlehit>().ObjectHit();
+                effectsound.Pause();
                 OVRInput.SetControllerVibration(0f, 0f, controller);
                 enterTime = 0f;
             }
@@ -43,9 +44,19 @@ public class Soldering : MonoBehaviour
             OVRInput.SetControllerVibration(0f, 0f, controller);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Circle"))
+        {
+            effectsound.Play();
+        }
+        OVRInput.SetControllerVibration(0f, 0f, controller);
+        enterTime = 0f;
+    }
     private void OnTriggerExit(Collider other)
     {
         OVRInput.SetControllerVibration(0f, 0f, controller);
+        effectsound.Pause();
         enterTime = 0f;
     }
 

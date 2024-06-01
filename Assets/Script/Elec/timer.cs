@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     {
         // TextMeshProUGUI 컴포넌트를 찾아서 초기화합니다.
         timeText = GetComponent<TextMeshPro>();
+        timeText.text = "";
     }
 
     void Update()
