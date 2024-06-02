@@ -34,7 +34,6 @@ public class DialogManager : MonoBehaviour
     int contextCount = 0; //대사 카운트
     public GameObject dialog;
     bool isDialogue = false;
-    bool isTyping = false;
     bool skip = false;
 
     private bool gamestart = false;

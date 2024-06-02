@@ -27,10 +27,13 @@ public class Lobby : MonoBehaviour
 
     public ParticleSystem completeEffect;
     public GameObject completeEffectPrefab;
+    public GameObject DialogManager;
     GameObject completeEffectObject;
 
     GameObject buildingPrefab;
     GameObject area;
+
+    bool isDialog;
 
     void Start()
     {
@@ -82,31 +85,104 @@ public class Lobby : MonoBehaviour
     
     void Update()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            switch (i)
-            {
-                case 0: 
-                    buildingPrefab = GameObject.Find("BuildingSample1(Clone)");
-                    break;
-                case 1:
-                    buildingPrefab = GameObject.Find("BuildingSample2(Clone)");
-                    break;
-                case 2:
-                    buildingPrefab = GameObject.Find("BuildingSample3(Clone)");
-                    break;
-                case 3:
-                    buildingPrefab = GameObject.Find("BuildingSample4(Clone)");
-                    break;
-                case 4:
-                    buildingPrefab = GameObject.Find("BuildingSample5(Clone)");
-                    break;
-            }
             //건물 샘플이 아래로 떨어지면 삭제 및 재생성
-            if (!sampleDestroyed[i] && buildingPrefab.transform.position.y < -5)
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!sampleDestroyed[i])
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                buildingPrefab = GameObject.Find("BuildingSample1(Clone)");
+                                break;
+                            case 1:
+                                buildingPrefab = GameObject.Find("BuildingSample2(Clone)");
+                                break;
+                            case 2:
+                                buildingPrefab = GameObject.Find("BuildingSample3(Clone)");
+                                break;
+                            case 3:
+                                buildingPrefab = GameObject.Find("BuildingSample4(Clone)");
+                                break;
+                            case 4:
+                                buildingPrefab = GameObject.Find("BuildingSample5(Clone)");
+                                break;
+                        }
+                    }
+                    if(buildingPrefab != null)
+                    {
+                        if (buildingPrefab.transform.position.y < -5)
+                        {
+                            Destroy(buildingPrefab);
+                            Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
+                        }
+                    }
+                }
+        
+
+        isDialog = DialogManager.GetComponent<DialogManager>().SendOnDialog();
+        //대화중 OR 게임 완료  => 구역 화살표 비활성화, 버튼 화살표 비활성화
+        if (isDialog || System.Convert.ToBoolean(PlayerPrefs.GetInt("GameClear")))
+        {
+            if (System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
             {
-                Destroy(buildingPrefab);
-                Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
+                for (int i = 0; i < 3; i++)
+                {
+                    if (AreaObjects[i] != null)
+                    {
+                        AreaObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    if (!isClear[i])
+                    {
+                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        //대화중 X, 토큰 O => 구역 화살표 활성화, 버튼 화살표 비활성화
+        if (!isDialog)
+        {
+            if (System.Convert.ToBoolean(PlayerPrefs.GetInt("Token"))){
+                for (int i = 0; i < 3; i++)
+                {
+                    if (AreaObjects[i] != null)
+                    {
+                        AreaObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                    if (!isClear[i])
+                    {
+                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                }
+            }
+            //대화중 X, 토큰 X => 구역 화살표 비활성화, 버튼 화살표 활성화
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (AreaObjects[i] != null)
+                    {
+                        AreaObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    if (!isClear[i])
+                    {
+                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (AreaObjects[i] != null)
+                {
+                    AreaObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                }
+                if (!isClear[i])
+                {
+                    buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -150,6 +226,5 @@ public class Lobby : MonoBehaviour
         //파티클 재생
         completeEffect.Play();
     }
-
 
 }

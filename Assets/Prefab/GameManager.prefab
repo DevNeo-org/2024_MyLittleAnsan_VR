@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5117385827547022286}
   - component: {fileID: 8430168477294662494}
   - component: {fileID: 5684988940709382195}
+  - component: {fileID: 7163248442296644386}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -84,6 +85,8 @@ MonoBehaviour:
     type: 3}
   completeEffectPrefab: {fileID: 5700784828077083704, guid: ed962e35f7fa6f34f8d27aa6d19ea293,
     type: 3}
+  DialogManager: {fileID: 0}
+  isGameComplete: 0
 --- !u!114 &5684988940709382195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c148f1e77a75c4883fe96b39f88d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNum: 0
+--- !u!114 &7163248442296644386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418703509189968089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c936d028948676b45a223a4966bd1614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  leftRayController: {fileID: 0}
+  rightRayController: {fileID: 0}
+  controllerHelperLeft: {fileID: 0}
+  controllerHelperRight: {fileID: 0}
