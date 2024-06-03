@@ -154,6 +154,8 @@ public class TextileManager : MonoBehaviour
         isMenualClosed = true;
         paintGun.gameObject.SetActive(true);
         line.gameObject.SetActive(true);
+        controllerHelperLeft.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
+        controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand;
         timer.StartGame();
         gun.StartGame();
     }
