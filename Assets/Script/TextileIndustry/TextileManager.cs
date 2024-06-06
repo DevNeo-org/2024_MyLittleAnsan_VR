@@ -10,18 +10,18 @@ public class TextileManager : MonoBehaviour
 {
     [SerializeField] GameObject menu; // 일시정지 메뉴
     [SerializeField] GameObject resultMenu; // 결과창
-    [SerializeField] TextMeshPro timeText;
-    [SerializeField] GameObject leftRayController;
-    [SerializeField] GameObject rightRayController;
-    [SerializeField] private OVRControllerHelper controllerHelperLeft;
-    [SerializeField] private OVRControllerHelper controllerHelperRight;
-    [SerializeField] GameObject paintGun;
-    [SerializeField] GameObject line;
-    [SerializeField] private GameObject closeButton;
-    [SerializeField] private GameObject timerUI;
-    [SerializeField] ParticleSystem shine;
-    [SerializeField] private GameObject[] celebrates;
-    [SerializeField] private GameObject[] buckets;
+    [SerializeField] TextMeshPro timeText;  // 타이머
+    [SerializeField] GameObject leftRayController;  // 왼쪽 ray
+    [SerializeField] GameObject rightRayController; // 오른쪽 ray
+    [SerializeField] private OVRControllerHelper controllerHelperLeft;  // 왼쪽 컨트롤러
+    [SerializeField] private OVRControllerHelper controllerHelperRight; // 오른쪽 컨트롤러
+    [SerializeField] GameObject paintGun;   // 페인트총 모델 프리팹
+    [SerializeField] GameObject line;       // 조준선 
+    [SerializeField] private GameObject closeButton;    // 메뉴 닫기 버튼
+    [SerializeField] private GameObject timerUI;        // 타이머 UI
+    [SerializeField] ParticleSystem shine;              // 색칠 테두리 효과
+    [SerializeField] private GameObject[] celebrates;   // 게임 종료 파티클
+    [SerializeField] private GameObject[] buckets;      // 색 변경 페인트통
 
     Timer timer;
     DataManager dataManager;
@@ -37,6 +37,8 @@ public class TextileManager : MonoBehaviour
         dataManager = FindAnyObjectByType<DataManager>();
         clothes = FindAnyObjectByType<Clothes>();
         gun = FindAnyObjectByType<Gun>();
+
+        // 게임 초기 설정
         menu.SetActive(false);
         resultMenu.SetActive(false);
         timer = FindAnyObjectByType<Timer>();
@@ -53,16 +55,22 @@ public class TextileManager : MonoBehaviour
         {
             dataManager.SetClear();
             gun.EndGame();
+
+            // 게임 종료 파티클 실행
             for (int i=0; i < celebrates.Length; i++)
             {
                 ParticleSystem p = celebrates[i].GetComponent<ParticleSystem>();
                 p.Play();
             }
+
+            // 색 변경 페인트통 뒤로 이동
             for (int i=0; buckets.Length > i; i++)
             {
                 Animator anim = buckets[i].GetComponent<Animator>();
                 anim.SetBool("isClear", true);
             }
+
+            // 종료 설정
             clothes.PlayAnim();
             GetComponent<AudioSource>().Play();
             timerUI.gameObject.SetActive(false);
@@ -72,6 +80,8 @@ public class TextileManager : MonoBehaviour
             Invoke("OpenResultMenu", 3f);
             Invoke("OpenMenu", 3f);
         }
+
+        // 메뉴 열기 버튼 감지
         if (!isMenuOn)
         {
             if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
@@ -87,22 +97,28 @@ public class TextileManager : MonoBehaviour
         }
     }
 
-
+    // 타이틀 씬 로드
     public void LoadTitle()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
     }
+
+    // 도시디자인 씬 로드
     public void LoadCityScene()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("CityDesign");
     }
+
+    // 현재 씬 재실행
     public void RestartScene()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("TextileIndScene");
     }
+
+    //게임 종료
     public void EndGame()
     {
 #if UNITY_EDITOR
@@ -112,11 +128,14 @@ public class TextileManager : MonoBehaviour
 #endif
     }
 
+    // 메뉴 닫기
     public void CloseMenu()
     {
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false); 
+
+        // 메뉴얼을 이미 종료한 경우
         if (isMenualClosed)
         {
             leftRayController.SetActive(false);
@@ -127,6 +146,8 @@ public class TextileManager : MonoBehaviour
             line.gameObject.SetActive(true);
         }
     }
+
+    // 메뉴 열기
     private void OpenMenu()
     {
         Time.timeScale = 0;
@@ -138,19 +159,22 @@ public class TextileManager : MonoBehaviour
         controllerHelperRight.m_showState = OVRInput.InputDeviceShowState.ControllerInHandOrNoHand;
     }
 
+    // 결과창 열기
     private void OpenResultMenu()
     {
         resultMenu.SetActive(true);
     }
 
-
+    // 메뉴 열려이는지 여부
     public bool IsMenuOn()
     {
         return isMenuOn;
     }
 
+    // 메뉴얼 닫기
     public void EndManual()
     {
+        // 게임 시작 세팅
         isMenualClosed = true;
         paintGun.gameObject.SetActive(true);
         line.gameObject.SetActive(true);
