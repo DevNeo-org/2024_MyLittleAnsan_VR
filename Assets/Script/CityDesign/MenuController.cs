@@ -7,6 +7,9 @@ public class MenuController : MonoBehaviour
 {
     // 일시정지 메뉴
     [SerializeField] GameObject menu;
+
+    public GameObject gameManager;
+
     //컨트롤러
     [SerializeField] GameObject leftRayController;
     [SerializeField] GameObject rightRayController;
@@ -46,16 +49,19 @@ public class MenuController : MonoBehaviour
     //씬 재시작
     public void RestartScene()
     {
+        gameManager.GetComponent<AudioManager>().PlaySound(3);
         Time.timeScale = 1;
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
         if(sceneNum == 1)
             PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(sceneNum);
+
     }
 
     //게임 종료
     public void EndGame()
     {
+        gameManager.GetComponent<AudioManager>().PlaySound(3);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -66,6 +72,7 @@ public class MenuController : MonoBehaviour
     //타이틀 씬 로드
     public void LoadTitle()
     {
+        gameManager.GetComponent<AudioManager>().PlaySound(3);
         Time.timeScale = 1;
         SceneManager.LoadScene("Title");
     }
@@ -73,6 +80,7 @@ public class MenuController : MonoBehaviour
     //메뉴 활성화
     private void OpenMenu()
     {
+        gameManager.GetComponent<AudioManager>().PlaySound(3);
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true);
@@ -83,6 +91,7 @@ public class MenuController : MonoBehaviour
     //메뉴 비활성화
     public void CloseMenu()
     {
+        gameManager.GetComponent<AudioManager>().PlaySound(3);
         Time.timeScale = 1;
         isMenuOn = false;
         menu.SetActive(false);

@@ -19,6 +19,7 @@ public class Lobby : MonoBehaviour
     public bool token;
     
     public string[] samples = new string[] { "sample1", "sample2", "sample3", "sample4", "sample5" };
+    public string[] sampleClones = new string[] { "BuildingSample1(Clone)", "BuildingSample2(Clone)", "BuildingSample3(Clone)", "BuildingSample4(Clone)", "BuildingSample5(Clone)" };
     public string[] areas = new string[] { "area1","area2","area3"};
     
     public bool[] isClear = new bool[3];
@@ -88,35 +89,21 @@ public class Lobby : MonoBehaviour
             //건물 샘플이 아래로 떨어지면 삭제 및 재생성
                 for (int i = 0; i < 5; i++)
                 {
+                    //아직 사용되지 않은 건물일 경우
                     if (!sampleDestroyed[i])
                     {
-                        switch (i)
+                        buildingPrefab = GameObject.Find(sampleClones[i]);
+                        if (buildingPrefab != null)
                         {
-                            case 0:
-                                buildingPrefab = GameObject.Find("BuildingSample1(Clone)");
-                                break;
-                            case 1:
-                                buildingPrefab = GameObject.Find("BuildingSample2(Clone)");
-                                break;
-                            case 2:
-                                buildingPrefab = GameObject.Find("BuildingSample3(Clone)");
-                                break;
-                            case 3:
-                                buildingPrefab = GameObject.Find("BuildingSample4(Clone)");
-                                break;
-                            case 4:
-                                buildingPrefab = GameObject.Find("BuildingSample5(Clone)");
-                                break;
+                            //건물이 아래로 떨어질 경우
+                            if (buildingPrefab.transform.position.y < -5)
+                            {
+                                Destroy(buildingPrefab);
+                                Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
+                            }
                         }
                     }
-                    if(buildingPrefab != null)
-                    {
-                        if (buildingPrefab.transform.position.y < -5)
-                        {
-                            Destroy(buildingPrefab);
-                            Instantiate(samplePrefabs[i], samplePrefabs[i].transform.position, samplePrefabs[i].transform.rotation);
-                        }
-                    }
+                    
                 }
         
 
@@ -134,7 +121,7 @@ public class Lobby : MonoBehaviour
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        buttonObjects[i].SetActive(false);
                     }
                 }
             }
@@ -151,7 +138,7 @@ public class Lobby : MonoBehaviour
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        buttonObjects[i].SetActive(false);
                     }
                 }
             }
@@ -162,11 +149,11 @@ public class Lobby : MonoBehaviour
                 {
                     if (AreaObjects[i] != null)
                     {
-                        AreaObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        AreaObjects[i].SetActive(false);
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                        buttonObjects[i].SetActive(true);
                     }
                 }
             }
@@ -181,7 +168,7 @@ public class Lobby : MonoBehaviour
                 }
                 if (!isClear[i])
                 {
-                    buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    buttonObjects[i].gameObject.SetActive(false);
                 }
             }
         }
@@ -225,6 +212,8 @@ public class Lobby : MonoBehaviour
         completeEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         //파티클 재생
         completeEffect.Play();
+        //사운드 재생
+
     }
 
 }

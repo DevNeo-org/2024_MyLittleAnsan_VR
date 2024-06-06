@@ -34,7 +34,7 @@ public class BuildPosition : MonoBehaviour
             //∞«º≥ ¿Ã∆Â∆Æ
             playBuildEffect();
             //«›∆Ω Ω««‡
-            StartCoroutine(TriggerHaptics());
+            
             //buildPositionø° ∫Ùµ˘ «¡∏Æ∆’ ª˝º∫
             string bulidingType = Collider.gameObject.name;
             //πˆ∆∞¿ª ¥©∏£ººø‰ UI »∞º∫»≠
@@ -67,6 +67,8 @@ public class BuildPosition : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
             //SelectArea ø¿∫Í¡ß∆Æ ªË¡¶
             Destroy(transform.parent.gameObject);
+            //«›∆Ω ¡ﬂ¡ˆ
+            OVRInput.SetControllerVibration(0f, 0f, controller);
             //º±≈√ ¿Ã∆Â∆Æ ªË¡¶
             selctEffect = GameObject.Find("Area_circles_blue(Clone)");
             Destroy(selctEffect);
@@ -76,6 +78,7 @@ public class BuildPosition : MonoBehaviour
                 dataManager.GetComponent<DataManager>().SetGameClear();
                 gameManager.GetComponent<Lobby>().playCompleteEffect();
                 dialogManager.GetComponent<DialogManager>().SetClearUI();
+                gameManager.GetComponent<AudioManager>().PlaySound(4);
             }
         }
     }
@@ -100,8 +103,7 @@ public class BuildPosition : MonoBehaviour
     //«›∆Ω
     IEnumerator TriggerHaptics()
     {
-        OVRInput.SetControllerVibration(1f, 1f, controller);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }

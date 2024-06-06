@@ -7,6 +7,12 @@ public class LoadScene : MonoBehaviour
 {
     bool isHovering = false;
     public int sceneNum;
+    GameObject gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     void Update()
     {
@@ -27,6 +33,10 @@ public class LoadScene : MonoBehaviour
     //버튼을 누르면 씬을 불러오는 메소드
     void SceneTransform(int sceneNum)
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            gameManager.GetComponent<AudioManager>().PlaySound(1);
+        }
         SceneManager.LoadScene(sceneNum);
     }
 }
