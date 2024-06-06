@@ -37,7 +37,7 @@ public class ElecMenuManagement : MonoBehaviour
     }
     void Update()
     {
-       
+        //startgame = timer.StartGame();
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
@@ -118,6 +118,8 @@ public class ElecMenuManagement : MonoBehaviour
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true);
+        leftRayController.SetActive(true);
+        rightRayController.SetActive(true);
         leftSolder.gameObject.SetActive(false);
         rightSolder.gameObject.SetActive(false);
        
