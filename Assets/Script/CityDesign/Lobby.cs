@@ -121,7 +121,7 @@ public class Lobby : MonoBehaviour
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        buttonObjects[i].SetActive(false);
                     }
                 }
             }
@@ -138,7 +138,7 @@ public class Lobby : MonoBehaviour
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        buttonObjects[i].SetActive(false);
                     }
                 }
             }
@@ -149,11 +149,11 @@ public class Lobby : MonoBehaviour
                 {
                     if (AreaObjects[i] != null)
                     {
-                        AreaObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        AreaObjects[i].SetActive(false);
                     }
                     if (!isClear[i])
                     {
-                        buttonObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                        buttonObjects[i].SetActive(true);
                     }
                 }
             }
@@ -168,7 +168,7 @@ public class Lobby : MonoBehaviour
                 }
                 if (!isClear[i])
                 {
-                    buttonObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                    buttonObjects[i].gameObject.SetActive(false);
                 }
             }
         }

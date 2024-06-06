@@ -180,7 +180,6 @@ public class DialogManager : MonoBehaviour
         return isDialogue;
     }
 
-
     public void ShowManualUI()
     {
         ManualUI.SetActive(true);
