@@ -118,6 +118,8 @@ public class ElecMenuManagement : MonoBehaviour
         Time.timeScale = 0;
         isMenuOn = true;
         menu.SetActive(true);
+        leftRayController.SetActive(true);
+        rightRayController.SetActive(true);
         leftSolder.gameObject.SetActive(false);
         rightSolder.gameObject.SetActive(false);
        
