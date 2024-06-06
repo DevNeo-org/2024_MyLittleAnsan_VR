@@ -5,11 +5,10 @@ using UnityEngine;
 public class buildingGrapped : MonoBehaviour
 {
     public OVRInput.Controller controller;
-    GameObject gameManager;
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+
     }
 
     private void OnTriggerEnter(Collider Collider)
@@ -17,8 +16,8 @@ public class buildingGrapped : MonoBehaviour
         //ÇÝÆ½ Àç»ý
         StartCoroutine(TriggerHaptics());
         //¶¥°ú Ãæµ¹ÇÒ ¶§ È¿°úÀ½ Àç»ý
-        //if (Collider.gameObject.name == "Table")
-        //    gameManager.GetComponent<AudioManager>().PlaySound(3);
+        if (Collider.gameObject.name == "Table")
+            GetComponent<AudioSource>().Play();
     }
 
     IEnumerator TriggerHaptics()

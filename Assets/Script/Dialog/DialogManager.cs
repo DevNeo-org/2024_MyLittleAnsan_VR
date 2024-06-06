@@ -172,6 +172,7 @@ public class DialogManager : MonoBehaviour
     {
         skip = true;
         dialogText.text = "";
+        GetComponent<AudioSource>().Play();
     }
 
     public bool SendOnDialog()
@@ -191,6 +192,8 @@ public class DialogManager : MonoBehaviour
         //rayInteraction 비활성화
         leftRayController.SetActive(false);
         rightRayController.SetActive(false);
+
+        GetComponent<AudioSource>().Play();
     }
 
     public void ShowSelectButtonUI()

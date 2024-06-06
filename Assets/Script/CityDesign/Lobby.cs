@@ -212,6 +212,8 @@ public class Lobby : MonoBehaviour
         completeEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         //파티클 재생
         completeEffect.Play();
+        //사운드 재생
+
     }
 
 }

@@ -78,6 +78,7 @@ public class BuildPosition : MonoBehaviour
                 dataManager.GetComponent<DataManager>().SetGameClear();
                 gameManager.GetComponent<Lobby>().playCompleteEffect();
                 dialogManager.GetComponent<DialogManager>().SetClearUI();
+                gameManager.GetComponent<AudioManager>().PlaySound(4);
             }
         }
     }
