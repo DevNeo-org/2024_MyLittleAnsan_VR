@@ -16,6 +16,7 @@ public class ElecMenuManagement : MonoBehaviour
     [SerializeField] private GameObject leftSolder;
     [SerializeField] private GameObject rightSolder;
     [SerializeField] TextMeshPro scoreText;
+    [SerializeField] GameObject celebratePrefeb;
 
     Timer timer;
     private int score;
@@ -46,6 +47,7 @@ public class ElecMenuManagement : MonoBehaviour
             {
                 datamanager.SetClear();
                 resultMenu.SetActive(true);
+                celebratePrefeb.GetComponent<ParticleSystem>().Play();
             }
             OpenMenu();
             

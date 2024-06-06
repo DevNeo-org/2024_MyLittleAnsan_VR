@@ -59,5 +59,5 @@ public class Soldering : MonoBehaviour
         effectsound.Pause();
         enterTime = 0f;
     }
-
+   
 }
