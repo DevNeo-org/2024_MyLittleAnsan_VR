@@ -9,20 +9,20 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] GameObject menu; // 일시정지 메뉴
     [SerializeField] GameObject resultMenu; // 결과창
     [SerializeField] GameObject timerUI; // 타이머, 점수 UI
-    [SerializeField] GameObject leftRayController;
+    [SerializeField] GameObject leftRayController; // RayController 오브젝트
     [SerializeField] GameObject rightRayController;
-    [SerializeField] private OVRControllerHelper controllerHelperLeft;
+    [SerializeField] private OVRControllerHelper controllerHelperLeft; // 컨트롤러 그래픽 변경 용도
     [SerializeField] private OVRControllerHelper controllerHelperRight;
-    [SerializeField] private GameObject leftWrench;
+    [SerializeField] private GameObject leftWrench; // 오브젝트 hit 용도
     [SerializeField] private GameObject rightWrench;
-    [SerializeField] TextMeshPro scoreText;
-    [SerializeField] GameObject wrenchObjects;
-    [SerializeField] GameObject celebrate;
+    [SerializeField] TextMeshPro scoreText; // 점수 텍스트
+    [SerializeField] GameObject wrenchObjects; // 렌치 부모 오브젝트
+    [SerializeField] GameObject celebrate; // 클리어 축포 오브젝트
 
     Timer timer;
     HitboxSpawner spawner;
     private int score;
-    private bool isMenuOn = false;
+    private bool isMenuOn = false; // 일시정지 ON 여부
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
     private bool isDialogEnd = false; // 다이얼로그 종료 여부 확인
     DataManager dataManager;
@@ -30,6 +30,7 @@ public class VehicleManager : MonoBehaviour
     {
         score = 0;
         dataManager = FindAnyObjectByType<DataManager>();
+        // 체험 시작 후 메뉴, 결과창 Active 체크 해제
         menu.SetActive(false);
         resultMenu.SetActive(false);
         spawner = FindAnyObjectByType<HitboxSpawner>();
@@ -41,7 +42,7 @@ public class VehicleManager : MonoBehaviour
     {
         if (gameEnd) return;
         gameEnd = timer.GetBool();
-        if (gameEnd) // 시간 종료 첫 확인 시 실행
+        if (gameEnd) // 시간 종료 첫 확인 시 1회 실행
         {
             if (score >= 10)
             {
@@ -139,7 +140,7 @@ public class VehicleManager : MonoBehaviour
         celebrate.gameObject.SetActive(false);
         dataManager.SetClear();
         resultMenu.SetActive(true);
-        OpenMenu();
+        OpenMenu(); // 일시정지 메뉴도 활성화
         menu.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false); // 일시정지 메뉴의 CloseButton 제거
         rightRayController.SetActive(true);
     }
@@ -152,7 +153,7 @@ public class VehicleManager : MonoBehaviour
         isDialogEnd = true;
         wrenchObjects.SetActive(true);
     }
-    public void PlayConfetti()
+    public void PlayConfetti() // 클리어 축포 실행
     {
         celebrate.GetComponent<ParticleSystem>().Play(); // 결과창 직전 실행
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using Oculus.Interaction;
 using Oculus.Interaction.Input;
 
-public class ControllerInputsHandler : MonoBehaviour // 렌치 그랩 스크립트
+public class ControllerInputsHandler : MonoBehaviour // 자동차 산업 본체험 시작 전 렌치 Grab 체크용 스크립트
 {
     [SerializeField] private ControllerRef controllerRef;
     [SerializeField] private GrabInteractor grabInteractor;
@@ -33,6 +33,7 @@ public class ControllerInputsHandler : MonoBehaviour // 렌치 그랩 스크립트
             hitboxSpawner.PickUp(isLeft);
             controllerHelper.m_showState = OVRInput.InputDeviceShowState.ControllerNotInHand; // 컨트롤러 그래픽 비활성화
             grabInteractable = grabInteractor.SelectedInteractable;
+            // 씬을 재시작하지 않는 이상 다시 그랩할 이유는 없으므로 관련 오브젝트 Destroy 처리
             Destroy(grabInteractor.transform.parent.gameObject);
             Destroy(grabInteractable.gameObject);
             Destroy(gameObject);

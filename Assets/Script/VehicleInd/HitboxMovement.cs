@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitboxMovement : MonoBehaviour
 {
-    [SerializeField] float force;
+    [SerializeField] float force; // 이동속도
     [SerializeField] private Material[] materials;
     int index; // 부품 그래픽 child 순서
     HitboxSpawner spawner;
@@ -20,15 +20,14 @@ public class HitboxMovement : MonoBehaviour
         rb.velocity = direction * force;
         index = Random.Range(0, 10);
         transform.GetChild(1).GetChild(index).gameObject.SetActive(true);
+        // 랜덤 회전속도 설정
         rotationSpeedX = Random.Range(30,110);
         rotationSpeedY = Random.Range(30, 110);
         rotationSpeedZ = Random.Range(30, 110);
     }
     void Update()
     {
-        //rb.AddForce(direction);
-        //Debug.Log(direction * force);
-        transform.Rotate(new Vector3(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, rotationSpeedZ * Time.deltaTime));
+        transform.Rotate(new Vector3(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, rotationSpeedZ * Time.deltaTime)); // 랜덤하게 회전하며 이동
         if ((finalPoint.position - rb.position).magnitude < 0.05)
         {
             finalPoint.GetChild(0).GetChild(0).GetChild(1).GetChild(index).gameObject.SetActive(true); // Sub 오브젝트의 부품 그래픽 활성화
@@ -44,7 +43,7 @@ public class HitboxMovement : MonoBehaviour
             transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = false;
         }
     }
-    public void SetFinalPoint(int num)
+    public void SetFinalPoint(int num) // 최종 도달 위치
     {
         spawner = FindAnyObjectByType<HitboxSpawner>();
         finalPoint = spawner.finalPoints[num];
@@ -60,7 +59,7 @@ public class HitboxMovement : MonoBehaviour
     {
         return finalPoint;
     }
-    public void StopMovement()
+    public void StopMovement() // hit된 이후 위치 고정
     {
         rb.velocity = Vector3.zero;
     }

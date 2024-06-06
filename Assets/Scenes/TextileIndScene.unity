@@ -5666,7 +5666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11479374, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_showState
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11479374, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_controller
@@ -6281,7 +6281,7 @@ PrefabInstance:
     - target: {fileID: 8627155514460179119, guid: 6d906610e503e8a4faafbe2c80963836,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.618
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 8627155514460179119, guid: 6d906610e503e8a4faafbe2c80963836,
         type: 3}
@@ -15767,7 +15767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11479374, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_showState
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11479374, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_controller
@@ -29305,7 +29305,7 @@ PrefabInstance:
     - target: {fileID: 896504426727229296, guid: 42780b1cb10e0af40a6c2d43cc0df842,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.766
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 896504426727229296, guid: 42780b1cb10e0af40a6c2d43cc0df842,
         type: 3}
@@ -37853,12 +37853,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077376d66051df44ab2d8c3709099d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateTime: 0.5
   particleList:
   - {fileID: 4419787656612222712, guid: 7d71c517148070a438a77f11eaec71df, type: 3}
   - {fileID: 4419787656612222712, guid: c7facc866bbe5eb4dadeae7f519c0064, type: 3}
   - {fileID: 4419787656612222712, guid: b71d4f7ee0b626d438783820f92ec85c, type: 3}
   - {fileID: 4419787656612222712, guid: 903b22ebfb4505a4a86a1f141bcae450, type: 3}
-  generateTime: 0.5
 --- !u!4 &2078421158
 Transform:
   m_ObjectHideFlags: 0

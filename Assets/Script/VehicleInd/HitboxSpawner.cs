@@ -29,22 +29,24 @@ public class HitboxSpawner : MonoBehaviour
         if (timer > beat)
         {
             int num = Random.Range(0, 4); // 랜덤으로 스폰 위치 설정
-            while (numPast == num)
+            while (numPast == num) // 2번 연속 같은 위치 불가하도록 설정
             {
                 num = Random.Range(0, 4);
             }
             numPast = num;
+            // 랜덤 위치 히트박스 생성 코드 ->
             GameObject hitbox = Instantiate(hitboxPrefab, points[num]);
             hitbox.transform.localPosition = Vector3.zero;
             hitbox.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
             hitbox.GetComponent<HitboxMovement>().SetFinalPoint(num);
             hitbox.transform.GetChild(0).GetComponent<VehicleHitbox>().SetVehicleManager(vehicleManager);
+            // <-
             PlaySound();
             timer -= beat;
         }
         timer += Time.deltaTime;
     }
-    public void PickUp(bool isLeft)
+    public void PickUp(bool isLeft) // 초기 렌치 집었는지 여부
     {
         if (isLeft){ leftWrenchOn = true; }
         else { rightWrenchOn = true; }

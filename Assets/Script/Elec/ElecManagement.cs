@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.UI;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -15,13 +15,20 @@ public class ElecManagement : MonoBehaviour
     private GameObject[] circles;
     
     private Timer timer;
+    
     private float time = 3f;
     int randomIndex = -1;
     int prerandomIndex = -2;
-    bool startgame;
+    bool startgame = false;
+
+    [SerializeField] private GameObject leftSolder;
+    [SerializeField] private GameObject rightSolder;
     void Start()
     {
         timer = FindAnyObjectByType<Timer>();
+        leftSolder.gameObject.SetActive(false);
+        rightSolder.gameObject.SetActive(false);
+
         circles = new GameObject[9];
         for (int i = 0; i < 9; i++)
         {
@@ -51,6 +58,8 @@ public class ElecManagement : MonoBehaviour
         if (startgame)
         {
             timer.StartGame();
+            leftSolder.gameObject.SetActive(true);
+            rightSolder.gameObject.SetActive(true);
             time += Time.deltaTime;
             if (time >= 3f)
             {
@@ -67,12 +76,11 @@ public class ElecManagement : MonoBehaviour
             }
         }
     }
-    
     public void StartGame()
     {
         startgame = true;
     }
-    
+
 
 
 }
