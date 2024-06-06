@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MainCarObject : MonoBehaviour
 {
-    [SerializeField] int scoreIndex; // 0 또는 10으로 설정, 0이면 좌측으로 이동하는 애니메이션, 10이면 우측
+    [SerializeField] int scoreIndex; // 0 또는 10으로 설정, 0이면 차가 좌측으로 이동하는 애니메이션, 10이면 우측
     VehicleManager vehicleManager;
     int score = 0;
     private Animation anim;
@@ -24,12 +24,12 @@ public class MainCarObject : MonoBehaviour
         if (score != tmpScore) // 점수 변동이 있을 경우
         {
             score = tmpScore;
-            if (scoreIndex < score && score - scoreIndex < 9)
+            if (scoreIndex < score && score - scoreIndex < 9) // 부품 조립 애니메이션
             {
                 transform.GetChild(score - scoreIndex - 1).gameObject.SetActive(true);
                 anim.Play(animStates[score - scoreIndex - 1].name);
             }
-            if (score - scoreIndex == 9)
+            if (score - scoreIndex == 9) // 자동차 회전 애니메이션
             {
                 anim.Play(animStates[score - scoreIndex - 1].name);
             }

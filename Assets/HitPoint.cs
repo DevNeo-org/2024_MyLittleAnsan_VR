@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitPoint : MonoBehaviour
+public class HitPoint : MonoBehaviour // Hitbox가 Hit되는 지점 스크립트
 {
     public void Deactivate(Material mat)
     {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VehicleHitbox : MonoBehaviour
 {
-    [SerializeField] private GameObject correctEffectPrefab;
-    [SerializeField] private GameObject wrongEffectPrefab;
+    [SerializeField] private GameObject correctEffectPrefab; // 점수 획득 성공 이펙트
+    [SerializeField] private GameObject wrongEffectPrefab; // 점수 획득 실패 이펙트
     public bool isCorrect = false; // 오브젝트 위치가 점수 획득 가능한 위치인지 체크
     private GameObject instateEffectObj;
     private VehicleManager vehicleManager;
@@ -14,14 +14,14 @@ public class VehicleHitbox : MonoBehaviour
     {
         transform.parent.GetComponent<HitboxMovement>().StopMovement();
         GetComponent<MeshCollider>().enabled = false;
-        if (isCorrect)
+        if (isCorrect) // Hit존에 있을 때 hit 시 점수 획득
         {
             CorrectEffectPlay();
             vehicleManager.ScorePlus();
             Destroy(transform.parent.gameObject, 0.1f);
             return 0;
         }
-        else
+        else // 점수 획득 실패
         {
             WrongEffectPlay();
             Destroy(transform.parent.gameObject, 0.1f);
