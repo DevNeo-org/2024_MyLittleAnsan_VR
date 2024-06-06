@@ -37,7 +37,7 @@ public class ElecMenuManagement : MonoBehaviour
     }
     void Update()
     {
-       
+        //startgame = timer.StartGame();
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         if (gameEnd) // 시간 종료 첫 확인 시 실행
