@@ -16,15 +16,15 @@ public class ElecMenuManagement : MonoBehaviour
     [SerializeField] private GameObject leftSolder;
     [SerializeField] private GameObject rightSolder;
     [SerializeField] TextMeshPro scoreText;
-    [SerializeField] GameObject celebratePrefeb;
+    public GameObject celebratePrefab;
 
     Timer timer;
     private int score;
+    float delaytime = 0f;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager datamanager;
-    
-   
+
     bool startgame = false;
     void Start()
     {
@@ -41,15 +41,22 @@ public class ElecMenuManagement : MonoBehaviour
         //startgame = timer.StartGame();
         if (gameEnd) return;
         gameEnd = timer.GetBool();
+        
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
             if (score >= 10)
             {
-                datamanager.SetClear();
-                resultMenu.SetActive(true);
-                celebratePrefeb.GetComponent<ParticleSystem>().Play();
+                if (celebratePrefab != null)
+                {
+                    var particleSystem = celebratePrefab.GetComponent<ParticleSystem>();
+                    if (particleSystem != null)
+                    {
+                        particleSystem.Play();
+                    }
+                }
+                
             }
-            OpenMenu();
+            StartCoroutine(DelayedResultMenu());
             
         }
         if (!isMenuOn)
@@ -66,6 +73,14 @@ public class ElecMenuManagement : MonoBehaviour
             }
         }
         
+    }
+
+    private IEnumerator DelayedResultMenu()
+    {
+        yield return new WaitForSeconds(2); // 2초 대기
+        datamanager.SetClear();
+        resultMenu.SetActive(true);
+        OpenMenu();
     }
     public void ScorePlus()
     {
