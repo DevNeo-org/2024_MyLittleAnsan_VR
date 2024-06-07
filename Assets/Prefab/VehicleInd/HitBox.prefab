@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e486da03eaec24a94d4675ccd73538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.4
+  force: 0.3
   materials:
   - {fileID: 2100000, guid: c6e54ff6efe5801439826913da5e20ec, type: 2}
   - {fileID: 2100000, guid: eecc814917af2a040a4de13002f1290c, type: 2}
