@@ -42,37 +42,38 @@ public class DialogManager : MonoBehaviour
     {
         DialogParser theParser = GetComponent<DialogParser>();
         Dialogue[] dialogues = theParser.Parse("MyLittleAnsan_Dialog");
+        int sceneNum = SceneManager.GetActiveScene().buildIndex;
+
         for (int i = 0; i < dialogues.Length; i++)
         {
             dialogueDic.Add(i + 1, dialogues[i]);
         }
         isFinish = true;
 
+        isDialogue = true;
+        dialogUI.SetActive(true);
+
         //처음 시작일 때
         if (!System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
-            int sceneNum = SceneManager.GetActiveScene().buildIndex;
-            dialogUI.SetActive(true);
-            isDialogue = true;
             ShowDialogue(GetDialogue(sceneNum));
         }
         else
         {
-            //토큰이 존재하고, 도시디자인 신이면 건설 매뉴얼 활성화
-            int sceneNum = SceneManager.GetActiveScene().buildIndex;
+            //토큰이 존재하고, 도시디자인 씬인 경우
             if (sceneNum == 1)
-                buildManualUI.SetActive(true);
+            {
+                ShowDialogue(GetDialogue(5));
+            }
+                
             //체험 클리어 후 재시작 시 대사 출력
             else
             {
-                dialogUI.SetActive(true);
-                isDialogue = true;
                 ShowDialogue(GetDialogue(sceneNum));
             }
         }
-
-
     }
+
     void Update()
     {
         //대화 중인지 확인
@@ -109,7 +110,12 @@ public class DialogManager : MonoBehaviour
                         else//대화가 모두 끝났을 경우
                         {
                             EndDialogue();
-                            ShowManualUI();
+                            int sceneNum = SceneManager.GetActiveScene().buildIndex;
+                            //토큰이 존재하고, 도시디자인 신이면 건설 매뉴얼 활성화
+                            if (sceneNum == 1 && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token"))) 
+                                buildManualUI.SetActive(true);
+                            else 
+                                ManualUI.SetActive(true);
                         }
                     }
 
@@ -180,11 +186,6 @@ public class DialogManager : MonoBehaviour
         return isDialogue;
     }
 
-    public void ShowManualUI()
-    {
-        ManualUI.SetActive(true);
-    }
-
     public void CloseManualUI()
     {
         ManualUI.SetActive(false);
@@ -197,9 +198,10 @@ public class DialogManager : MonoBehaviour
 
     public void ShowSelectButtonUI()
     {
+        EndDialogue();
         dialogUI.SetActive(true);
         nextButton.SetActive(false);
-        dialogText.text = "버튼을 눌러 체험을 선택하세요";
+        dialogText.text = "다시 버튼을 눌러 다음 체험을 선택하세요";
         buildManualUI.SetActive(false);
     }
     public void SetClearUI()
@@ -207,7 +209,7 @@ public class DialogManager : MonoBehaviour
         buildManualUI.SetActive(false);
         dialogUI.SetActive(true);
         nextButton.SetActive(false);
-        dialogText.text = "게임 클리어!";
+        dialogText.text = "축하합니다! 나만의 안산시가 완성되었어요!";
     }
     public bool SendStart()
     {

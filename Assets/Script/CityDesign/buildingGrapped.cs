@@ -6,15 +6,10 @@ public class buildingGrapped : MonoBehaviour
 {
     public OVRInput.Controller controller;
 
-    void Start()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider Collider)
     {
         //ÇÝÆ½ Àç»ý
-        StartCoroutine(TriggerHaptics());
+        //StartCoroutine(TriggerHaptics());
         //¶¥°ú Ãæµ¹ÇÒ ¶§ È¿°úÀ½ Àç»ý
         if (Collider.gameObject.name == "Table")
             GetComponent<AudioSource>().Play();
