@@ -17,6 +17,7 @@ public class ElecMenuManagement : MonoBehaviour
     [SerializeField] private GameObject rightSolder;
     [SerializeField] TextMeshPro scoreText;
     public GameObject celebratePrefab;
+    public AudioSource celebratesound;
 
     Timer timer;
     private int score;
@@ -52,6 +53,7 @@ public class ElecMenuManagement : MonoBehaviour
                     if (particleSystem != null)
                     {
                         particleSystem.Play();
+                        celebratesound.Play();
                     }
                 }
                 
@@ -81,6 +83,7 @@ public class ElecMenuManagement : MonoBehaviour
         datamanager.SetClear();
         resultMenu.SetActive(true);
         OpenMenu();
+        celebratesound.Pause();
     }
     public void ScorePlus()
     {
