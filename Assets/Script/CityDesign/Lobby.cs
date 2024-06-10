@@ -35,6 +35,7 @@ public class Lobby : MonoBehaviour
     GameObject area;
 
     bool isDialog;
+    public bool isOnArea;
 
     void Start()
     {
@@ -216,4 +217,13 @@ public class Lobby : MonoBehaviour
 
     }
 
+    public void SetIsOnArea(bool torf)
+    {
+        isOnArea = torf;
+    }
+
+    public bool GetIsOnArea()
+    {
+        return isOnArea;
+    }
 }

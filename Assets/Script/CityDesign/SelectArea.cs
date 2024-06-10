@@ -6,14 +6,22 @@ public class selectArea : MonoBehaviour
 {
     public ParticleSystem effect;
     public GameObject effectPrefab;
+    public GameObject gameManager;
     GameObject instateEffectObj;
     public OVRInput.Controller controller;
+        
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     //buildingSample 오브젝트가 selectArea에 콜라이더 영역 안에 있을 때
     private void OnTriggerEnter(Collider collider)
     { 
         if(collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
+            //isOnArea를 true로 설정
+            gameManager.GetComponent<Lobby>().SetIsOnArea(true);
             //선택 효과 파티클 재생
             EffectPlay();
         }
@@ -24,7 +32,7 @@ public class selectArea : MonoBehaviour
     {
         if (collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
-            OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
+            //OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
         }
     }
 
@@ -33,10 +41,12 @@ public class selectArea : MonoBehaviour
     {
         if (collider.tag == "Buildings" && System.Convert.ToBoolean(PlayerPrefs.GetInt("Token")))
         {
+            //isOnArea를 false로 설정
+            gameManager.GetComponent<Lobby>().SetIsOnArea(false);
             //선택 효과 파티클 정지 및 삭제
             effect.Stop();
             Destroy(instateEffectObj);
-            OVRInput.SetControllerVibration(0f, 0f, controller);
+            //OVRInput.SetControllerVibration(0f, 0f, controller);
         }
           
     }
@@ -51,16 +61,6 @@ public class selectArea : MonoBehaviour
         effect.transform.localScale = new Vector3(0.056f, 0.056f, 0.056f);
         //파티클 재생
         effect.Play();
-        //햅틱 실행
-        //StartCoroutine(TriggerHaptics());
-    }
-
-    //햅틱
-    IEnumerator TriggerHaptics()
-    {
-        OVRInput.SetControllerVibration(0.3f, 0.3f, controller);
-        yield return new WaitForSeconds(1f);
-        OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 
 }

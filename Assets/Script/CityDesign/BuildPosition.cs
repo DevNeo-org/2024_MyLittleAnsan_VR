@@ -68,6 +68,7 @@ public class BuildPosition : MonoBehaviour
             //SelectArea 오브젝트 삭제
             Destroy(transform.parent.gameObject);
             //햅틱 중지
+            gameManager.GetComponent<Lobby>().SetIsOnArea(false);
             OVRInput.SetControllerVibration(0f, 0f, controller);
             //선택 이펙트 삭제
             selctEffect = GameObject.Find("Area_circles_blue(Clone)");
