@@ -23,6 +23,7 @@ public class VehicleHitbox : MonoBehaviour
         }
         else // Á¡¼ö È¹µæ ½ÇÆÐ
         {
+            transform.parent.GetComponent<HitboxMovement>().TurnOff();
             WrongEffectPlay();
             Destroy(transform.parent.gameObject, 0.1f);
             return 1;
