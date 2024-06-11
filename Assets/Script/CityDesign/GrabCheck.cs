@@ -16,7 +16,7 @@ public class GrabCheck : MonoBehaviour
     GameObject gameManager;
     bool isGrabbing;
     bool isOnArea;
-
+    bool grabBuilding;
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
@@ -27,12 +27,18 @@ public class GrabCheck : MonoBehaviour
         //Grab중이 아닌 경우
         if (!grabInteractor.HasSelectedInteractable)
         {
+            grabBuilding = false;
             grabInteractable = null;
             return;
         }
         //Grab했을 경우
         if (grabInteractor.HasSelectedInteractable) 
         {
+            if (!grabBuilding)
+            {
+                grabBuilding = true;
+                StartCoroutine(GrabBuildings());
+            }
             grabInteractable = grabInteractor.SelectedInteractable;
         }
 
@@ -55,6 +61,12 @@ public class GrabCheck : MonoBehaviour
     {
         OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
         yield return new WaitForSeconds(0.3f);
+        OVRInput.SetControllerVibration(0f, 0f, controller);
+    }
+    IEnumerator GrabBuildings()
+    {
+        OVRInput.SetControllerVibration(2.5f, 2.5f, controller);
+        yield return new WaitForSeconds(0.15f);
         OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }
