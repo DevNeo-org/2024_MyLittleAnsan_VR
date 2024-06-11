@@ -21,7 +21,6 @@ public class ElecMenuManagement : MonoBehaviour
 
     Timer timer;
     private int score;
-    float delaytime = 0f;
     private bool isMenuOn = false;
     private bool gameEnd = false; // 게임 시간 종료 여부 확인
     DataManager datamanager;
@@ -39,13 +38,12 @@ public class ElecMenuManagement : MonoBehaviour
     }
     void Update()
     {
-        //startgame = timer.StartGame();
         if (gameEnd) return;
         gameEnd = timer.GetBool();
         
         if (gameEnd) // 시간 종료 첫 확인 시 실행
         {
-            if (score >= 10)
+            if (score >= 10) //점수가 10점 이상일 때 파티클과 소리가 켜짐
             {
                 if (celebratePrefab != null)
                 {
@@ -61,7 +59,7 @@ public class ElecMenuManagement : MonoBehaviour
             StartCoroutine(DelayedResultMenu());
             
         }
-        if (!isMenuOn)
+        if (!isMenuOn) //메뉴 버튼을 눌렀을 때
         {
             if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
             {
@@ -77,7 +75,7 @@ public class ElecMenuManagement : MonoBehaviour
         
     }
 
-    private IEnumerator DelayedResultMenu()
+    private IEnumerator DelayedResultMenu() // 2초대기 후 메뉴 키기
     {
         yield return new WaitForSeconds(2); // 2초 대기
         datamanager.SetClear();
@@ -117,7 +115,7 @@ public class ElecMenuManagement : MonoBehaviour
         Application.Quit(); // 어플리케이션 종료
 #endif
     }
-    public void CloseMenu()
+    public void CloseMenu() //메뉴 닫을 때
     {
         timerUI.SetActive(true);
         Time.timeScale = 1;
@@ -132,7 +130,7 @@ public class ElecMenuManagement : MonoBehaviour
         rightSolder.gameObject.SetActive(true);
         
     }
-    private void OpenMenu()
+    private void OpenMenu() //메뉴 열 때
     {
         timerUI.SetActive(false);
         Time.timeScale = 0;
