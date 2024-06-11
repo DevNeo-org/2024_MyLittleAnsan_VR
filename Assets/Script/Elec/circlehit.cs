@@ -13,10 +13,8 @@ public class Circlehit : MonoBehaviour
     }
     public int ObjectHit()
     {
-        Debug.Log(gameObject);
-        transform.parent.gameObject.SetActive(false);
-        menuManagement.ScorePlus();
-
+        transform.parent.gameObject.SetActive(false); //¹°Ã¼¿¡ ´êÀ¸¸é ²¨Áü
+        menuManagement.ScorePlus(); //Á¡¼ö°¡ 1Á¡ ¿À¸§
         return 0;
     }
 

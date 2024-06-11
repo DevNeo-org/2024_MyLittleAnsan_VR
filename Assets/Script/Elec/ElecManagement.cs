@@ -9,14 +9,13 @@ using UnityEngine.SceneManagement;
 public class ElecManagement : MonoBehaviour    
 {
     public GameObject blinkingCirclePrefab;
-    public float blinkInterval = 3f;
     private float rowposition = -0.19f;
     private float columnposition = 0.18f;
     private GameObject[] circles;
     
     private Timer timer;
     
-    private float time = 3f;
+    private float time = 2f;
     int randomIndex = -1;
     int prerandomIndex = -2;
     bool startgame = false;
@@ -28,11 +27,9 @@ public class ElecManagement : MonoBehaviour
         timer = FindAnyObjectByType<Timer>();
         leftSolder.gameObject.SetActive(false);
         rightSolder.gameObject.SetActive(false);
-
         circles = new GameObject[9];
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 9; i++)  //9개의 원 생성
         {
-
             GameObject circle = Instantiate(blinkingCirclePrefab, transform.position, Quaternion.identity);
             circle.transform.position = new Vector3(rowposition, -0.29f, columnposition);
             circle.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -55,13 +52,13 @@ public class ElecManagement : MonoBehaviour
     }
     private void Update()
     {
-        if (startgame)
+        if (startgame) //게임 시작시
         {
             timer.StartGame();
             leftSolder.gameObject.SetActive(true);
             rightSolder.gameObject.SetActive(true);
             time += Time.deltaTime;
-            if (time >= 3f)
+            if (time >= 2f) //시간이 2초가 되면 랜덤으로 원을 키게 됨
             {
                 randomIndex = Random.Range(0, circles.Length);
                 while (randomIndex == prerandomIndex)
