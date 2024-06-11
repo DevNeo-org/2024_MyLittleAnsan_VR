@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5602819244101432756}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: circle
   m_TagString: Circle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03, y: 0, z: 0.03}
+  m_LocalScale: {x: 0.03, y: 0.001, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7931180991746374939}
@@ -73,7 +73,7 @@ PrefabInstance:
     - target: {fileID: 4984980826245493072, guid: 0e5709a7ddb77924090c112cf73bb98a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4984980826245493072, guid: 0e5709a7ddb77924090c112cf73bb98a,
         type: 3}

@@ -43,6 +43,10 @@ public class HitboxMovement : MonoBehaviour
             transform.GetChild(0).GetComponent<VehicleHitbox>().isCorrect = false;
         }
     }
+    public void TurnOff()
+    {
+        finalPoint.GetChild(0).GetChild(0).GetComponent<HitPoint>().Deactivate(materials[1]);
+    }
     public void SetFinalPoint(int num) // 최종 도달 위치
     {
         spawner = FindAnyObjectByType<HitboxSpawner>();
