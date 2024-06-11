@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (!gameStart || timeOver) return;
+        if (!gameStart || timeOver) return; //시작했거나 아니면 끝났는지 판단함
 
         // 시간 갱신
         timeInSeconds -= Time.deltaTime;
@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
         // 시간 표시 포맷 지정하여 TextMeshPro에 표시
         timeText.text = "남은 시간: " + string.Format("{00}", seconds);
     }
-    public void StartGame()
+    public void StartGame() //시작 여부
     {
         gameStart = true;
     }
