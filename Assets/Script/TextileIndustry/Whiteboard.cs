@@ -14,6 +14,6 @@ public class Whiteboard : MonoBehaviour
         texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
         // ¿Ê texture ¹× »ö ¼³Á¤
         r.material.mainTexture = texture;
-        r.material.color = new Color (236/(float)255, 243 / (float)255, 255 / (float)255, 60 / (float)255);
+        r.material.color = new Color (255/(float)255, 255 / (float)255, 255 / (float)255, 60 / (float)255);
     }
 }

@@ -757,7 +757,7 @@ PrefabInstance:
     - target: {fileID: 7863895377277707764, guid: 53dd9fbd799c64a4187c6c88aaad1568,
         type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7931180991746374939, guid: 53dd9fbd799c64a4187c6c88aaad1568,
         type: 3}
@@ -1073,7 +1073,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b639dd5d5d607764ca6984d29b81fc23, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e3d859c7db54c3948aec8b9214762c3a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
