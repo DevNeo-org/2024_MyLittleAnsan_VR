@@ -1,11 +1,10 @@
-# 추후 수정 예정(~06.15)
 # My Little Ansan 개발자 기술문서
 
 > My Little Ansan은 `타이틀`, `도시 디자인`, `자동차 산업`, `섬유 산업`, `전자 산업` 총 5개의 씬으로 구성된다.   
 > 본 기술문서에는 `VCS 관련 설명`, `주요 오브젝트 설명`, `씬 별 스크립트 설명`으로 구성되어 있다.
 
 ---
-# □ VCS
+# ● VCS
 * main 브랜치: 버그가 없고 배포 가능한 상태 유지
 * feature 브랜치: 각 역할별 기능 개발
 * 🔗[클래스 다이어그램](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_UML.png)
@@ -14,7 +13,7 @@
 
 
 ---
-# □ 주요 오브젝트 설명
+# ● 주요 오브젝트 설명
 > 각 씬의 Hierachy에서 중요한 오브젝트들에 관해 다룬다.
 ---
 ## Title.unity
@@ -79,7 +78,7 @@
   - Whiteboard.cs에서 초기 색깔을 설정하고 페인트 총알이 닿으면 Ball.cs에서 색칠을 진행한다.
 
 ---
-# □ 씬 별 스크립트 설명
+# ● 씬 별 스크립트 설명
 
 > 스크립트 설명은 크게 5 단락으로 되어있으며, `주요 씬 4개`(자동차, 섬유, 전자, 도시)와 `공통 기능`을 다룬 다이얼로그로 구성된다.
 
@@ -605,6 +604,63 @@ CityDesign.unity 씬에서 사용되는 스크립트의 기능들을 정의한�
   - public int GetAreaState(int index): 구역 건설 상태 반환 함수
   - public bool GetSampleDestroyed(int index): 빌딩 샘플 사용 여부 반환 함수
   - public void SetGameClear(): 게임 클리어 상태를 설정하는 함수
+---
+### GrabCheck
+
+도시 디자인 씬에서 Grab 상태를 체크하는 클래스
+
+- Fields:
+  - [SerializeField] private OVRInput.Controller controller: 컨트롤러 참조 변수
+  - [SerializeField] private ControllerRef controllerRef: 컨트롤러 참조 변수
+  - [SerializeField] private GrabInteractor grabInteractor: Grab 인터렉터 참조 변수
+  - [SerializeField] private OVRControllerHelper controllerHelper: OVR 컨트롤러 헬퍼 참조 변수
+  - [SerializeField] private bool isLeft: 좌우 구분 변수
+  - private GrabInteractable grabInteractable: Grab 가능한 오브젝트
+  - GameObject gameManager: 게임 매니저 오브젝트
+  - bool isGrabbing: Grab 여부
+  - bool isOnArea: 구역 내 위치 여부
+  - bool grabBuilding: 건물 Grab 여부
+
+- Methods:
+  - IEnumerator StartTriggerHaptics(): 햅틱 피드백을 처리하는 코루틴 함수
+  - IEnumerator GrabBuildings(): 건물 Grab 시 햅틱 피드백을 처리하는 코루틴 함수
+
+---
+### buildingGrapped
+
+도시 디자인 씬에서 건물을 잡은 상태에서 효과음을 재생하는 클래스
+
+- Fields:
+  - public OVRInput.Controller controller: 컨트롤러 참조 변수
+
+---
+### SelectArea
+
+도시 디자인 씬에서 구역을 선택하는 클래스
+
+- Fields:
+  - public ParticleSystem effect: 파티클 시스템
+  - public GameObject effectPrefab: 파티클 프리팹
+  - public GameObject gameManager: 게임 매니저 오브젝트
+  - GameObject instateEffectObj: 인스턴스화된 파티클 오브젝트
+  - public OVRInput.Controller controller: 컨트롤러 참조 변수
+
+- Methods:
+  - void EffectPlay(): 파티클 효과를 재생하는 함수
+
+---
+### LoadScene
+
+도시 디자인 씬에서 씬 전환을 관리하는 클래스
+
+- Fields:
+  - bool isHovering: 버튼 위에 있는지 여부
+  - public int sceneNum: 씬 번호
+  - GameObject gameManager: 게임 매니저 오브젝트
+
+- Methods:
+  - public void IsHovering(int n): 버튼 위에 있는지 여부를 설정하는 함수
+  - void SceneTransform(int sceneNum): 씬을 전환하는 함수
 
 ---
 
