@@ -6,7 +6,6 @@ public class BuildPosition : MonoBehaviour
 {
 
     public GameObject[] builidngPrefabs;
-    public bool isBuildComplete = false;
     GameObject selctEffect;
 
     public GameObject gameManager;
@@ -82,11 +81,6 @@ public class BuildPosition : MonoBehaviour
                 gameManager.GetComponent<AudioManager>().PlaySound(4);
             }
         }
-    }
-
-    public bool returnBuildComplete()
-    {
-        return isBuildComplete;
     }
 
     void playBuildEffect()

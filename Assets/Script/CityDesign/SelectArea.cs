@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class selectArea : MonoBehaviour
+public class SelectArea : MonoBehaviour
 {
     public ParticleSystem effect;
     public GameObject effectPrefab;
