@@ -17,6 +17,7 @@ public class GrabCheck : MonoBehaviour
     bool isGrabbing;
     bool isOnArea;
     bool grabBuilding;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager");

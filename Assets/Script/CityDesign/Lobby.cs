@@ -217,11 +217,13 @@ public class Lobby : MonoBehaviour
 
     }
 
+    //건물 모형이 건설 구역 위에 있는지 설정
     public void SetIsOnArea(bool torf)
     {
         isOnArea = torf;
     }
 
+    //건물 모형이 건설 구역 위에 있는지 반환
     public bool GetIsOnArea()
     {
         return isOnArea;
