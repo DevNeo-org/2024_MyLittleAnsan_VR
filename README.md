@@ -58,7 +58,6 @@
  ┣ 📂Skybox
  ┣ 📂TextMesh Pro
  ┣ 📂Tree 1_Textures
- ┣ 📂Tree 1_Textures
  ┣ 📂Tree_Textures
  ┣ 📂UnityFactorySceneHDRP
  ┣ 📂XR
@@ -90,7 +89,7 @@ https://assetstore.unity.com/packages/2d/gui/icons/20-logo-templates-with-custom
 Assets\License Free Assets\Extra Clean UI   
 https://assetstore.unity.com/packages/2d/gui/extra-clean-ui-138812
 
-- 효과음 (건설 및 UI)   
+- 효과음 (건설 및 UI, 총 발사)   
 Assets\License Free Assets\CasualGameSounds   
 https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
 
@@ -126,9 +125,29 @@ https://assetstore.unity.com/packages/3d/vehicles/land/hd-low-poly-racing-car-no
 Assets/License Free Assets/Junk Car Parts   
 https://assetstore.unity.com/packages/3d/props/junkyard-car-parts-119065
 
+- 효과음 (색 변경)   
+Assets\License Free Assets\Rocklynn Productions - Water Splash Pack   
+https://assetstore.unity.com/packages/audio/sound-fx/foley/water-splash-pack-14039
+
+- 페인트 총 모델   
+Assets\License Free Assets\Sci Fi Gun Heavy   
+https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-heavy-87878
+
+- 페인트통 나무 양동이   
+Assets\License Free Assets\StylizedWoodenBucket   
+https://assetstore.unity.com/packages/3d/props/tools/stylized-western-wooden-bucket-191513
+
+- 옷 텍스쳐   
+Assets\License Free Assets\Yughues Fabric Materials   
+https://assetstore.unity.com/packages/2d/textures-materials/fabric/yughues-free-fabric-materials-13002
+
 - 스카이박스   
 Assets/Skybox   
 https://assetstore.unity.com/packages/2d/textures-materials/sky/free-hdr-sky-61217
+
+- 섬유 산업 BGM   
+Assets\License Free Assets\Sci-FiGameBGM#6   
+https://assetstore.unity.com/packages/audio/music/sci-fi-bgm-6-245973
 
 - 자동차 산업 BGM   
 Assets/Audio   
@@ -151,6 +170,6 @@ Assets/Audio
 - **한양대학교 ERICA 캠퍼스 컴퓨터학부 가상및증강현실프로그래밍 수업의 IC-PBL 팀 프로젝트입니다.*
 - 연락처   
   [김나형] knh000125@hanyang.ac.kr   
-  [박준선]   
+  [박준선] my9544@naver.com   
   [김종하] heemang918@hanyang.ac.kr   
-  [전우진]
+  [전우진] jokey1344@gmail.com

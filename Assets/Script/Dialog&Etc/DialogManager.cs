@@ -36,7 +36,7 @@ public class DialogManager : MonoBehaviour
     bool isDialogue = false;
     bool skip = false;
 
-    private bool gameStart = false;
+    private bool gamestart = false;
 
     void Awake()
     {
@@ -144,7 +144,7 @@ public class DialogManager : MonoBehaviour
         lineCount = 0;
         dialogues = null;
         isNext = false;
-        gameStart = true;
+        gamestart = true;
         nextButton.SetActive(false);
     }
 
@@ -213,7 +213,7 @@ public class DialogManager : MonoBehaviour
     }
     public bool SendStart()
     {
-        return gameStart;
+        return gamestart;
     }
 
 }

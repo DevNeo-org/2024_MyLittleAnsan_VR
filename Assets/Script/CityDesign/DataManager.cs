@@ -52,22 +52,25 @@ public class DataManager : MonoBehaviour
         return isClear;
     }
 
+    //건물 모형 사용 여부 반환
     public bool GetSampleDestroyed(int sampleNum)
     {
         bool isDestroyed = System.Convert.ToBoolean(PlayerPrefs.GetInt(buildingSamples[sampleNum]));
         return isDestroyed;
     }
 
-    //건물 모형 사용됨
+    //건물 모형 사용 여부 설정
     public void SampleDestroyed(int num)
     {
         PlayerPrefs.SetInt(buildingSamples[num], System.Convert.ToInt16(true));
     }
+
     //구역 건설 여부 반환
     public int GetAreaState(int areaNum)
     {
         return PlayerPrefs.GetInt(areas[areaNum]);
     }
+
     //게임 전체 클리어 여부 설정
     public void SetGameClear()
     {

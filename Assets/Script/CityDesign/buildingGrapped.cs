@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buildingGrapped : MonoBehaviour
+public class BuildingGrapped : MonoBehaviour
 {
     public OVRInput.Controller controller;
 

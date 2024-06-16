@@ -1,8 +1,86 @@
-# 추후 수정 예정(~06.15)
 # My Little Ansan 개발자 기술문서
 
-My Little Ansan은 타이틀, 도시 디자인, 체험 3종, 총 5개의 씬으로 구성된다.
-개발자 기술문서는 크게 5 단락으로 되어있으며, 주요 씬 4개(자동차, 섬유, 전자, 도시)와 공통 기능을 다룬 다이얼로그
+> My Little Ansan은 `타이틀`, `도시 디자인`, `자동차 산업`, `섬유 산업`, `전자 산업` 총 5개의 씬으로 구성된다.   
+> 본 기술문서에는 `VCS 관련 설명`, `주요 오브젝트 설명`, `씬 별 스크립트 설명`으로 구성되어 있다.
+
+---
+# ● VCS
+* main 브랜치: 버그가 없고 배포 가능한 상태 유지
+* feature 브랜치: 각 역할별 기능 개발
+* 🔗[클래스 다이어그램](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_UML.png)
+1. 기능(씬) 별 브랜치 생성 후 각 브랜치에서 개발
+2. 기능 구현 후 Pull Request 열기   
+
+
+---
+# ● 주요 오브젝트 설명
+> 각 씬의 Hierachy에서 중요한 오브젝트들에 관해 다룬다.
+---
+## Title.unity
+![Title](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/assets/113578212/525379fc-669b-4c36-94ef-16b3a970f4a3)
+* CustomOVRPlayerController
+  - 모든 씬에 포함되어 있으며 컨트롤러, 메인 카메라 등을 관리/제어 한다.
+* BGM
+  - Title 씬에서 생성되고 DontDestroyOnLoad로 유지된다.
+  - 게임의 전반적인 BGM을 관리한다.
+* GameManager
+  - Title 씬과 CityDesign 씬에 있다.
+  - 씬 간 이동/로딩을 제어한다.
+---
+## CityDesign.unity
+![CityDesign](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/assets/113578212/0655741a-141d-4f9e-8c49-af248da8f342)
+* AutoMobButton, ElecButton, TextileButton
+  - 각 체험 씬으로 이동하는 버튼 오브젝트
+  - 컨트롤러의 Trigger 버튼으로 선택한다.
+* DataManager
+  - 각 체험 씬에서의 Clear 여부를 확인한다.
+  - Title 씬에서 Clear 여부를 자동 초기화하고, CityDesign 씬의 일시정지 메뉴에서도 수동으로 초기화 가능하다.
+* area1, area2, area3
+  - 건물 설치 단계에서 플레이어가 건물을 놓는 자리이다.
+* FlatCanvas
+  - 모든 씬에 있으며 플레이 방법, 설명 다이얼로그를 표시한다.
+* DialogManager
+  - FlatCanvas에 표시되는 다이얼로그를 제어한다.
+  - Assets/TextMesh Pro/Resources/My Little Ansan_Dialog.txt 에서 다이얼로그 내용을 수정할 수 있다.
+---
+## AutomobIndScene.unity
+![AutomobIndScene](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/assets/113578212/331eb1ed-8aa5-47eb-bee2-02fafe4fa3d0)
+* HitboxSpawner
+  - Hitbox 오브젝트를 생성한다.
+  - SpawnPoints와 FinalPoints 오브젝트로 Hitbox의 시작점과 끝점을 제어한다.
+* Car2, Car2_2
+  - 점수를 획득할 때 조립되는 자동차 오브젝트이다.
+  - 조립은 개별 Animation과 MainCarObject.cs로 제어한다.
+* desk_no_computer
+  - 플레이어 전방에 설치되어 있는 책상이다.
+  - 자식 오브젝트로 Wrench가 있으며 Wrench는 체험 시작 전 플레이어가 집어야 하는 PipeWrench 오브젝트가 있다.
+* Confetti_directional_multicolor
+  - 3개의 체험씬에 들어 있으며 체험 Clear 이후 나오는 축포 효과 오브젝트이다.
+---
+## Electronic.unity
+![Electronic](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/assets/113578212/c3331214-db54-48e3-917d-1818acda2498)
+* Circles
+  - PCB판 위에 등장하는 원형 히트박스 오브젝트이다.
+  - 자식 오브젝트에 있는 circle 오브젝트가 SetActive를 통해 표시된다.
+* EffectSound, clap
+  - AudioSource가 들어있는 효과음 재생용 오브젝트이다.
+  - 각각 인두기 소리, 클리어 소리가 들어있다.
+---
+## TextileIndScene.unity
+![TextileIndScene](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/assets/113578212/a54de626-6205-4413-8b9f-bd96953319f6)
+* BlueBucket, RedBucket, YellowBucket, BlackBucket
+  - 페인트총의 색깔을 바꿀 때 총을 담그는 페인트통 오브젝트이다.
+  - 자식 오브젝트에 있는 Mesh Collider로 페인트총과의 충돌을 감지한다.
+* Clothes
+  - 색을 칠하게 되는 메인 옷 오브젝트이다.
+  - 시간 종료 이후 Animation으로 축소되어 플레이어 앞으로 확대된다.
+  - 자식 오브젝트 중 Board 1에서 색칠이 진행된다.
+  - Whiteboard.cs에서 초기 색깔을 설정하고 페인트 총알이 닿으면 Ball.cs에서 색칠을 진행한다.
+
+---
+# ● 씬 별 스크립트 설명
+
+> 스크립트 설명은 크게 5 단락으로 되어있으며, `주요 씬 4개`(자동차, 섬유, 전자, 도시)와 `공통 기능`을 다룬 다이얼로그로 구성된다.
 
 1. [자동차 산업 씬](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C_%EA%B0%9C%EB%B0%9C%EC%9E%90.md#%EC%9E%90%EB%8F%99%EC%B0%A8-%EC%82%B0%EC%97%85-%EC%94%AC)
 2. [섬유 산업 씬](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C_%EA%B0%9C%EB%B0%9C%EC%9E%90.md#%EC%84%AC%EC%9C%A0-%EC%82%B0%EC%97%85-%EC%94%AC)
@@ -526,6 +604,63 @@ CityDesign.unity 씬에서 사용되는 스크립트의 기능들을 정의한�
   - public int GetAreaState(int index): 구역 건설 상태 반환 함수
   - public bool GetSampleDestroyed(int index): 빌딩 샘플 사용 여부 반환 함수
   - public void SetGameClear(): 게임 클리어 상태를 설정하는 함수
+---
+### GrabCheck
+
+도시 디자인 씬에서 Grab 상태를 체크하는 클래스
+
+- Fields:
+  - [SerializeField] private OVRInput.Controller controller: 컨트롤러 참조 변수
+  - [SerializeField] private ControllerRef controllerRef: 컨트롤러 참조 변수
+  - [SerializeField] private GrabInteractor grabInteractor: Grab 인터렉터 참조 변수
+  - [SerializeField] private OVRControllerHelper controllerHelper: OVR 컨트롤러 헬퍼 참조 변수
+  - [SerializeField] private bool isLeft: 좌우 구분 변수
+  - private GrabInteractable grabInteractable: Grab 가능한 오브젝트
+  - GameObject gameManager: 게임 매니저 오브젝트
+  - bool isGrabbing: Grab 여부
+  - bool isOnArea: 구역 내 위치 여부
+  - bool grabBuilding: 건물 Grab 여부
+
+- Methods:
+  - IEnumerator StartTriggerHaptics(): 햅틱 피드백을 처리하는 코루틴 함수
+  - IEnumerator GrabBuildings(): 건물 Grab 시 햅틱 피드백을 처리하는 코루틴 함수
+
+---
+### buildingGrapped
+
+도시 디자인 씬에서 건물을 잡은 상태에서 효과음을 재생하는 클래스
+
+- Fields:
+  - public OVRInput.Controller controller: 컨트롤러 참조 변수
+
+---
+### SelectArea
+
+도시 디자인 씬에서 구역을 선택하는 클래스
+
+- Fields:
+  - public ParticleSystem effect: 파티클 시스템
+  - public GameObject effectPrefab: 파티클 프리팹
+  - public GameObject gameManager: 게임 매니저 오브젝트
+  - GameObject instateEffectObj: 인스턴스화된 파티클 오브젝트
+  - public OVRInput.Controller controller: 컨트롤러 참조 변수
+
+- Methods:
+  - void EffectPlay(): 파티클 효과를 재생하는 함수
+
+---
+### LoadScene
+
+도시 디자인 씬에서 씬 전환을 관리하는 클래스
+
+- Fields:
+  - bool isHovering: 버튼 위에 있는지 여부
+  - public int sceneNum: 씬 번호
+  - GameObject gameManager: 게임 매니저 오브젝트
+
+- Methods:
+  - public void IsHovering(int n): 버튼 위에 있는지 여부를 설정하는 함수
+  - void SceneTransform(int sceneNum): 씬을 전환하는 함수
 
 ---
 

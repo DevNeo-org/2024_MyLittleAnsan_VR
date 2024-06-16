@@ -24,6 +24,7 @@ public class LoadScene : MonoBehaviour
         }
     }
 
+    //컨트롤러 위에 버튼이 있는지 확인
     public void IsHovering(int n)
     {
         isHovering = !isHovering;
