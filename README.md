@@ -199,15 +199,15 @@ https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-styled-modul
 Assets/License Free Assets/UnityFactorySceneHDRP   
 https://assetstore.unity.com/packages/3d/environments/industrial/unity-factory-276400    
 
--원형파티클   
+- 원형파티클   
 Assets/License Free Assets/Hovl Studio   
 https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933   
 
--불꽃파티클   
+- 불꽃파티클   
 Assets/License Free Assets/UnityTechnologies   
 https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325   
 
--효과음
+- 효과음
 Assets/Audio   
 ✔ SFX provided by 셀바이뮤직
 https://sellbuymusic.com/md/srjcfcb-jchtkhh
