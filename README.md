@@ -37,6 +37,7 @@
  ┣ 📂Plugins
  ┣ 📂Prefab
  ┣ 📂Resources
+ ┃ ┣📂Skybox
  ┣ 📂Samples
  ┣ 📂Scenes
  ┃ ┣ 📂AutomobIndScene // 담당: 김종하
@@ -46,7 +47,6 @@
  ┃ ┗ 📂Title // 담당: 김종하
  ┣ 📂Script
  ┣ 📂Settings
- ┣ 📂Skybox
  ┣ 📂TextMesh Pro
  ┣ 📂XR
  ┗ 📂XRI
@@ -152,19 +152,19 @@ Assets\Audio
 https://soundeffect-lab.info/
 
 - 메인 자동차   
-Assets/License Free Assets/Stylized Vehicles Pack Free   
+Assets\License Free Assets\Stylized Vehicles Pack Free   
 https://assetstore.unity.com/packages/3d/vehicles/land/stylized-vehicles-pack-free-150318
 
 - 렌치   
-Assets/License Free Assets/Monqo Pipe Wrench   
+Assets\License Free Assets\Monqo Pipe Wrench   
 https://assetstore.unity.com/packages/3d/props/tools/free-pipe-wrench-187070
 
 - 환경 배치용 자동차   
-Assets/License Free Assets/Azerilo   
+Assets\License Free Assets\Azerilo   
 https://assetstore.unity.com/packages/3d/vehicles/land/hd-low-poly-racing-car-no-1201-118603
 
 - 자동차 부품   
-Assets/License Free Assets/Junk Car Parts   
+Assets\License Free Assets\Junk Car Parts   
 https://assetstore.unity.com/packages/3d/props/junkyard-car-parts-119065
 
 - 효과음 (색 변경)   
@@ -184,36 +184,36 @@ Assets\License Free Assets\Yughues Fabric Materials
 https://assetstore.unity.com/packages/2d/textures-materials/fabric/yughues-free-fabric-materials-13002
 
 - 스카이박스   
-Assets/Skybox   
+Assets\Skybox   
 https://assetstore.unity.com/packages/2d/textures-materials/sky/free-hdr-sky-61217
 
 - PCB 기판 Image   
-Assets/License Free Assets/FLATICON   
+Assets\License Free Assets\FLATICON   
 https://www.flaticon.com/kr/free-icon/pcb-board_2779266?term=pcb&page=1&position=1&origin=search&related_id=2779266   
 
 - 배경  
-Assets/License Free Assets/Sci-Fi Styled Modular Pack   
+Assets\License Free Assets\Sci-Fi Styled Modular Pack   
 https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-styled-modular-pack-82913   
 
 - 배경(로봇 팔)   
-Assets/License Free Assets/UnityFactorySceneHDRP   
+Assets\License Free Assets\UnityFactorySceneHDRP   
 https://assetstore.unity.com/packages/3d/environments/industrial/unity-factory-276400    
 
 - 원형파티클   
-Assets/License Free Assets/Hovl Studio   
+Assets\License Free Assets\Hovl Studio   
 https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933   
 
 - 불꽃파티클   
-Assets/License Free Assets/UnityTechnologies   
+Assets\License Free Assets\UnityTechnologies   
 https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325   
 
 - 효과음
-Assets/Audio   
+Assets\Audio   
 ✔ SFX provided by 셀바이뮤직
 https://sellbuymusic.com/md/srjcfcb-jchtkhh
 
 - 전자 산업 BGM   
-Assets/Audio   
+Assets\Audio   
 https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13366540&menuNo=200020   
 
 - 섬유 산업 BGM   
@@ -221,16 +221,20 @@ Assets\License Free Assets\Sci-FiGameBGM#6
 https://assetstore.unity.com/packages/audio/music/sci-fi-bgm-6-245973
 
 - 자동차 산업 BGM   
-Assets/Audio   
+Assets\Audio   
 `"Too Cool" Kevin MacLeod (incompetech.com)`   
 `Licensed under Creative Commons: By Attribution 4.0 License`   
 `http://creativecommons.org/licenses/by/4.0/`
 
 - 타이틀, 도시 디자인 BGM
-Assets/Audio  
+Assets\Audio  
 `"Happy Bee" Kevin MacLeod (incompetech.com)`   
 `Licensed under Creative Commons: By Attribution 4.0 License`   
 `http://creativecommons.org/licenses/by/4.0/`
+
+- 폰트
+Assets\TextMesh Pro\Fonts  
+https://maplestory.nexon.com/Media/Font
 
 
 
