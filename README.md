@@ -29,7 +29,7 @@
 
 # 📁프로젝트 구조
 ```
-📂Assets // 추후 수정 예정
+📂Assets 
  ┣ 📂Audio
  ┣ 📂Image
  ┣ 📂License Free Assets
@@ -115,7 +115,7 @@
 > 
 > 🔗[전체 플로우차트](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%B0%A8%ED%8A%B8.png)
 > 
-> 🔗[개별 플로우차트](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%B0%A8%ED%8A%B8.png)
+> 🔗[개별 플로우차트](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/%EC%B2%B4%ED%97%98%EB%B3%84_%EC%83%81%EC%84%B8_%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%B0%A8%ED%8A%B8.png)
 > 
 > 🔗[클래스 다이어그램](https://github.com/DevNeo-org/2024_MyLittleAnsan_VR/blob/main/Documents/MyLittleAnsan_UML.png)
 > 
@@ -123,6 +123,11 @@
 >
 
 # 📥외부 에셋
+<details>
+<summary>외부 에셋 목록</summary>
+<div markdown="1">
+
+
 - 타이틀 로고   
 Assets\Image   
 https://assetstore.unity.com/packages/2d/gui/icons/20-logo-templates-with-customizable-psd-vector-sources-174999
@@ -236,6 +241,8 @@ Assets\Audio
 Assets\TextMesh Pro\Fonts  
 https://maplestory.nexon.com/Media/Font
 
+</div>
+</details>
 
 
 
