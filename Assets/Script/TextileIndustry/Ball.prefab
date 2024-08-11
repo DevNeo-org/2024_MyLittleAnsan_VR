@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a24b02307d5d57489581e86d556ead6, type: 2}
+  - {fileID: 2100000, guid: b961b3b0e33a9fc4cb8bcc642f9bcd98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,8 +100,6 @@ MonoBehaviour:
   penSize: 20
   particleManage: {fileID: 64753650978176026, guid: 3dd4eb7c1a0ac824084f516506fc7602,
     type: 3}
-  colorCode: 3
-  ballSpeed: 10
   gun: {fileID: 5509340777156719929, guid: f40972810da31404fae7e4a70994bf59, type: 3}
   colorMaterial:
   - {fileID: 2100000, guid: ddf5d286a1216d74d9313a2249c172a1, type: 2}
@@ -110,6 +108,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0ba3ce5de1831d04eb364bcdd4e98aee, type: 2}
   paintSizeRange: 4
   paintSize: 5
+  colorCode: 0
+  ballSpeed: 10
 --- !u!54 &8999744202695786915
 Rigidbody:
   m_ObjectHideFlags: 0
